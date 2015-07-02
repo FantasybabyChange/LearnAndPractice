@@ -1,0 +1,32 @@
+package com.fantasybaby.classloader;
+
+import java.io.UnsupportedEncodingException;
+
+public class ConvertCode {
+	public static void main(String[] args) throws UnsupportedEncodingException {  // TODO Auto-generated method stub
+		String s = "姬米娜我爱你";
+		String a = changeToBinaryCode(s);
+		System.out.println(a);
+//		String b = changeBinaryStrToString("111111111111111111111111111001011111111111111111111111111010011111111111111111111111111110101100111111111111111111111111111001111111111111111111111111111011000111111111111111111111111110110011111111111111111111111111111001011111111111111111111111111010100011111111111111111111111110011100111111111111111111111111111001101111111111111111111111111000100011111111111111111111111110010001111111111111111111111111111001111111111111111111111111111000100011111111111111111111111110110001111111111111111111111111111001001111111111111111111111111011110111111111111111111111111110100000");
+//		System.out.println(b);
+		}
+	public static String changeToBinaryCode(String str){
+		byte[] b = str.getBytes();
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < b.length; i++) {
+			Integer I = new Integer(b[i]);
+			sb.append(I.toBinaryString((b[i])));
+			
+		}
+		return sb.toString();
+	}
+	public static String changeBinaryStrToString(String str){
+		byte[] b = str.getBytes();
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < b.length; i++) {
+			char j = (char)Integer.parseInt(str.substring(i,i+2), 2);                  
+	        sb.append(new Character(j).toString());
+		}
+		return sb.toString();
+	}
+}

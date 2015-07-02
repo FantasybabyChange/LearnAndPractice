@@ -1,0 +1,9 @@
+package com.fantasybaby.classloader;
+
+public class ConvertCode {
+	public static void main(String[] args) {
+		String str = "我爱姬米娜";
+		String s = new String(str.getBytes("UTF-8"),"GBK");
+	}
+
+}
