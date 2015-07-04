@@ -1,0 +1,15 @@
+package com.fantasybaby.text;
+
+import com.fantasybaby.util.MergeUtil;
+
+public class TextLineList {
+	public void testUtil(){
+		Integer [] aList = {1,2,3};
+		Integer [] bList = {2,5,6};
+		MergeUtil.mergeCollections(aList, bList);
+		
+		
+		
+		
+	} 
+}

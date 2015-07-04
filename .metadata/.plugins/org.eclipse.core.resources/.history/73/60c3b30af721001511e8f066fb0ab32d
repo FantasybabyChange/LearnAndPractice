@@ -1,0 +1,90 @@
+package com.fantasybaby.inter.impl;
+
+import com.fantasybaby.inter.ILinerList;
+
+public class SimpleArrayImpl implements ILinerList<Integer> {
+	@Override
+	public void init(Integer[] tList) {
+		tList = new Integer[4];
+	}
+
+	@Override
+	public int getLength(Integer[] tList) {
+		if(tList != null){
+			return tList.length;	
+		}
+		return 0;
+	}
+
+	@Override
+	public Integer get(Integer[] tList, int index) {
+		if(tList != null &&index < tList.length && index >=0){
+			return tList[index];
+		}
+		return null;
+		
+	}
+
+	@Override
+	public Integer prior(Integer[] tList, Integer t) {
+		int locateIndex = locate(tList, t);
+		if(locateIndex >= 1 ){
+			return tList[locateIndex -1 ];
+		}
+		return null;
+	}
+
+	@Override
+	public Integer next(Integer[] tList, Integer t) {
+		int locateIndex = locate(tList, t);
+		if(locateIndex < (getLength(tList) - 1) ){
+			return tList[locateIndex + 1 ];
+		}
+		return null;
+	}
+
+	@Override
+	public int locate(Integer[] tList, Integer t) {
+		int count = -1;
+		if(tList != null && tList.length > 0){
+			for (Integer integer : tList) {
+				if(integer.intValue() == t.intValue()){
+					return count; 
+				}
+				count ++ ;
+			}
+		}
+		return count;
+	}
+
+	@Override
+	public boolean insert(Integer[] tList, int index, Integer t) {
+		
+		return false;
+	}
+
+	@Override
+	public boolean delete(Integer[] tList, int index) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean delete(Integer[] tList, Integer t) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean empty(Integer[] tList) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void clear(Integer[] tList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

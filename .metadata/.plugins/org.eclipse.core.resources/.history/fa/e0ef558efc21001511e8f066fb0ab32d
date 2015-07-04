@@ -1,0 +1,16 @@
+package com.fantasybaby.text;
+
+import org.junit.Test;
+
+import com.fantasybaby.util.MergeUtil;
+
+public class TextLineList {
+	
+	@Test
+	public void testUtil(){
+		Integer [] aList = {1,2,3};
+		Integer [] bList = {2,5,6};
+		Integer[] a_list = MergeUtil.mergeCollections(aList, bList);
+		System.out.println(a_list);
+	} 
+}

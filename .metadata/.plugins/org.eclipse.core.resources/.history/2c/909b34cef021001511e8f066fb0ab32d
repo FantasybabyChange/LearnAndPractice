@@ -1,0 +1,14 @@
+package com.fantasybabymg.inter;
+
+public interface ILinerList {
+	/**
+	 * init this liner list
+	 */
+	public void init();
+	/**
+	 * 
+	 * @return the liner_list length
+	 */
+	public int getLength();
+	
+}

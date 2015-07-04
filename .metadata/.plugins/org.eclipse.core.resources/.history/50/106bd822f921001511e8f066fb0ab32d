@@ -1,0 +1,12 @@
+package com.fantasybaby.util;
+
+public class MergeUtil {
+	/**
+	 * A = A U B
+	 */
+	public Integer[] mergeCollections(Integer[] a_list, Integer b_list){
+		
+		return a_list;
+	}
+
+}

@@ -892,3 +892,7 @@
 2015-06-22 13:14:07,637 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\main\resources
 2015-06-22 13:14:07,639 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2015-06-22 13:14:07,639 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\test\resources
+2015-07-04 09:52:06,683 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-04 09:52:06,696 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\main\resources
+2015-07-04 09:52:06,698 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-07-04 09:52:06,698 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\test\resources

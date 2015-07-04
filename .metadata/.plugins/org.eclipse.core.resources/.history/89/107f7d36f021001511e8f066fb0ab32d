@@ -1,0 +1,5 @@
+package com.fantasybabymg.alginterface;
+
+public interface ILinerList {
+
+}
