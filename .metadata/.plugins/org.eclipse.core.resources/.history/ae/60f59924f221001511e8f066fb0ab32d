@@ -1,8 +1,0 @@
-package com.fantasybaby.entity;
-
-import java.io.Serializable;
-
-public class SoryEntity implements Serializable{
-	
-
-}

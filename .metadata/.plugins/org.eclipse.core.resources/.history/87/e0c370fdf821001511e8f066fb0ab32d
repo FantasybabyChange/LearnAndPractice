@@ -1,9 +1,0 @@
-package com.fantasybaby.util;
-
-public class MergeUtil {
-	/**
-	 * A = A U B
-	 */
-	
-
-}

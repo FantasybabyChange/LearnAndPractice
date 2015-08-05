@@ -41,14 +41,14 @@ public class MergeUtil {
 				k++;
 			}
 		}
-		if(i < a_list.length){
-			while (i <= a_list.length) {
+		if(i < a_list.length  ){
+			while (i < a_list.length -1 ) {
 				c_list = linerList.insert(c_list, k + 1, linerList.get(a_list, i));
 				i++;
 				k++;
 			}
 		}else if(j < b_list.length){
-			while (j <= b_list.length) {
+			while (j < b_list.length) {
 				c_list = linerList.insert(c_list, k + 1, linerList.get(b_list, j));
 				j++;
 				k++;

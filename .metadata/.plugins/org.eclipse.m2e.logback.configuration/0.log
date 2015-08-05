@@ -896,3 +896,44 @@
 2015-07-04 09:52:06,696 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\main\resources
 2015-07-04 09:52:06,698 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2015-07-04 09:52:06,698 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\test\resources
+2015-08-05 22:37:59,473 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-05 22:37:59,496 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\main\resources
+2015-08-05 22:37:59,499 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-05 22:37:59,499 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\test\resources
+2015-08-05 22:38:52,016 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-05 22:38:52,017 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\main\resources
+2015-08-05 22:38:52,019 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-05 22:38:52,019 [Worker-7] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\test\resources
+2015-08-05 22:39:06,554 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-05 22:39:06,561 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\main\resources
+2015-08-05 22:39:06,564 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-05 22:39:06,564 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\test\resources
+2015-08-05 23:04:09,263 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-05 23:04:09,264 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\main\resources
+2015-08-05 23:04:09,267 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-05 23:04:09,267 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\test\resources
+2015-08-05 23:06:56,452 [Worker-2] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.fantasybaby:jvm-test:0.0.1-SNAPSHOT @ E:\workplace\javaSEWorkPlace\jvm-test\pom.xml.
+2015-08-05 23:06:56,774 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-05 23:06:56,774 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\main\resources
+2015-08-05 23:06:56,775 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-05 23:06:56,775 [Worker-2] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\test\resources
+2015-08-05 23:07:07,969 [Worker-8] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.fantasybaby:jvm-test:0.0.1-SNAPSHOT @ E:\workplace\javaSEWorkPlace\jvm-test\pom.xml.
+2015-08-05 23:07:08,027 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-05 23:07:08,027 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\main\resources
+2015-08-05 23:07:08,031 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-05 23:07:08,031 [Worker-8] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\test\resources
+2015-08-05 23:07:11,710 [Worker-3] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.fantasybaby:jvm-test:0.0.1-SNAPSHOT @ E:\workplace\javaSEWorkPlace\jvm-test\pom.xml.
+2015-08-05 23:07:11,761 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-05 23:07:11,761 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\main\resources
+2015-08-05 23:07:11,763 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-05 23:07:11,763 [Worker-3] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\test\resources
+2015-08-05 23:07:28,991 [Worker-8] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2015-08-05 23:07:29,081 [Worker-8] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.fantasybaby:jvm-test:0.0.1-SNAPSHOT @ E:\workplace\javaSEWorkPlace\jvm-test\pom.xml.
+2015-08-05 23:07:29,206 [Worker-8] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /jvm-test/src/main/java
+2015-08-05 23:07:29,207 [Worker-8] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /jvm-test/src/test/java
+2015-08-05 23:07:29,457 [Worker-8] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.fantasybaby:jvm-test:0.0.1-SNAPSHOT @ E:\workplace\javaSEWorkPlace\jvm-test\pom.xml.
+2015-08-05 23:07:29,507 [Worker-8] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 0 sec
+2015-08-05 23:07:29,910 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-05 23:07:29,910 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\main\resources
+2015-08-05 23:07:29,912 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2015-08-05 23:07:29,912 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory E:\workplace\javaSEWorkPlace\jvm-test\src\test\resources

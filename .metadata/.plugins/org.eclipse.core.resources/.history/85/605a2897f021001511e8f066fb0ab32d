@@ -1,6 +1,0 @@
-package com.fantasybabymg.inter;
-
-public interface ILinerList {
-	public int getLength();
-
-}
