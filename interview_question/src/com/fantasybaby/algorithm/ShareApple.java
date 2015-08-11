@@ -52,27 +52,31 @@ public class ShareApple {
 		for (int i = 0; i < currentNum ; i++) {
 			int tmpCurrentNum = currentNum - i;
 			int tmpSummaryNum = tmpCurrentNum + summaryNum;
+			System.out.print("第"+ currentBasket +"篮"+" 放"+tmpCurrentNum+"个");
 			if (summaryNum > appleNum || currentBasket > basketNum) {
 				throw new Exception("There is a error in programmer");
 			}
 			if (tmpSummaryNum == appleNum && currentNum <= lastNum) {
 				countCategory++;
 			}else{
-				if (2 * tmpCurrentNum > (appleNum - tmpSummaryNum) ) {
+				if (tmpCurrentNum >= (appleNum - tmpSummaryNum)/(basketNum-1) && currentNum <= lastNum) {
 					countCategory = shareAppleInBasket(appleNum - tmpSummaryNum,tmpCurrentNum,tmpSummaryNum,countCategory,(currentBasket + 1));
-				}else{
+				}else if (tmpCurrentNum < (appleNum - tmpSummaryNum)/(basketNum-1)) {
 					return countCategory;
 				}
 			}
-			if ((currentBasket + 1) >= basketNum) {
+			if (currentBasket  >= basketNum  ) {
 				return countCategory;
 			}
+			System.out.println("共"+countCategory+"方法");
+			System.out.print("\n");
 		}
 		return countCategory;
 	}
 	public int getCategoryNum() throws Exception{
-		int count = shareAppleInBasket(appleNum ,appleNum, 0 , 0 , 0);
-		return appleNum <= basketNum ? count+1 : count;
+		int count = shareAppleInBasket(appleNum ,appleNum, 0 , 0 , 1);
+//		return appleNum <= basketNum && appleNum > 1? count+1 : count;
+		return count;
 	}
 	
 
