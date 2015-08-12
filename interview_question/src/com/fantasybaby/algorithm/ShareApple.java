@@ -56,12 +56,12 @@ public class ShareApple {
 			if (summaryNum > appleNum || currentBasket > basketNum) {
 				throw new Exception("There is a error in programmer");
 			}
-			if (tmpSummaryNum == appleNum && currentNum <= lastNum) {
+			if (tmpSummaryNum == appleNum && tmpCurrentNum <= lastNum) {
 				countCategory++;
 			}else{
-				if (tmpCurrentNum >= (appleNum - tmpSummaryNum)/(basketNum-1) && currentNum <= lastNum) {
+				if (tmpCurrentNum > 0 && tmpCurrentNum <= lastNum) {
 					countCategory = shareAppleInBasket(appleNum - tmpSummaryNum,tmpCurrentNum,tmpSummaryNum,countCategory,(currentBasket + 1));
-				}else if (tmpCurrentNum < (appleNum - tmpSummaryNum)/(basketNum-1)) {
+				}else if(tmpCurrentNum <= 0){
 					return countCategory;
 				}
 			}
@@ -69,7 +69,6 @@ public class ShareApple {
 				return countCategory;
 			}
 			System.out.println("共"+countCategory+"方法");
-			System.out.print("\n");
 		}
 		return countCategory;
 	}
