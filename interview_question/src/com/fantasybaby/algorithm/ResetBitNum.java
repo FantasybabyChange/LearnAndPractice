@@ -57,16 +57,16 @@ public class ResetBitNum {
 		StringBuffer binary = new StringBuffer();
 		while(decimal/2 != 0){
 			if(decimal % 2 == 0){
-				binary.append("0");	
+				binary.insert(0, "0");	
 			}else{
-				binary.append("1");
+				binary.insert(0,"1");
 			}
 			decimal = decimal/2;
 			if(decimal <= 1){
 				if(decimal == 1){
-					binary.append("1");
+					binary.insert(0,"1");
 				}else if(decimal == 0){
-					binary.append("0");
+					binary.insert(0,"0");
 				}
 				return binary;
 			}

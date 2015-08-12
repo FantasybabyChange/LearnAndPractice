@@ -48,7 +48,8 @@ public class ShareApple {
 			throw new Exception("the input is illegal");
 		}
 	}
-	public int shareAppleInBasket(int currentNum,int lastNum,int summaryNum,int countCategory,int currentBasket) throws Exception{
+	public int shareAppleInBasket(int currentNum,int lastNum,int summaryNum,
+			int countCategory,int currentBasket) throws Exception{
 		for (int i = 0; i < currentNum ; i++) {
 			int tmpCurrentNum = currentNum - i;
 			int tmpSummaryNum = tmpCurrentNum + summaryNum;
