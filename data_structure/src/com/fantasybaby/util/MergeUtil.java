@@ -1,15 +1,17 @@
 package com.fantasybaby.util;
 
+import com.fantasybaby.entity.SoryEntity;
+import com.fantasybaby.inter.AbstractLinerList;
 import com.fantasybaby.inter.ILinerList;
 import com.fantasybaby.inter.impl.SimpleArrayImpl;
+import com.fantasybaby.inter.impl.SimpleLinerList;
 
 public class MergeUtil {
-	private static ILinerList<Integer> linerList = null;
+	private static ILinerList<Integer> linerList = new SimpleArrayImpl();
 	/**
 	 * A = A U B
 	 */
 	public static Integer[] mergeCollections(Integer[] a_list, Integer[] b_list){
-		linerList = new SimpleArrayImpl();
 		for (int i = 0; i < b_list.length; i++) {
 			int locate = linerList.locate(a_list, b_list[i]);
 			if (locate < 0) {
@@ -23,7 +25,6 @@ public class MergeUtil {
 	 * merge two linear increased 
 	 */
 	public static Integer[] mergelinear(Integer[] a_list, Integer[] b_list){
-		linerList = new SimpleArrayImpl();
 		Integer[] c_list = null;
 		int i=0;
 		int j=0;
@@ -57,5 +58,53 @@ public class MergeUtil {
 		
 		return c_list;
 	}
-
+	/**
+	 * A = A U B
+	 */
+	public static AbstractLinerList<SoryEntity> mergeCollections1(AbstractLinerList<SoryEntity> a_list, AbstractLinerList<SoryEntity> b_list){
+		for (int i = 0; i < b_list.getCurrentIndex(); i++) {
+			int locate = a_list.locate(b_list.get(i));
+			if (locate < 0) {
+				a_list.insert(a_list.getCurrentIndex(),b_list.get(i));
+			}
+		}
+		return a_list;
+	}
+	/**
+	 * merge two linear increased 
+	 */
+	public static AbstractLinerList<SoryEntity> mergelinear1(AbstractLinerList<SoryEntity> a_list, AbstractLinerList<SoryEntity> b_list){
+		AbstractLinerList<SoryEntity>  c_list = new SimpleLinerList<SoryEntity>(a_list.getCurrentIndex()+b_list.getCurrentIndex());
+		int i=0;
+		int j=0;
+		int k =1;
+		while (a_list.getCurrentIndex() > i && b_list.getCurrentIndex() > j) {
+			SoryEntity soryEntity = a_list.get(i);
+			SoryEntity soryEntity2 = b_list.get(j);
+			if (soryEntity.getData() < soryEntity2.getData()) {
+				c_list.insert(k, soryEntity);
+				i++;
+				k++;
+			}else{
+				c_list.insert(k, soryEntity2);
+				j++;
+				k++;
+			}
+		}
+		if(i < a_list.getCurrentIndex()  ){
+			while (i < a_list.getCurrentIndex()) {
+				c_list.insert( k, a_list.get(i));
+				i++;
+				k++;
+			}
+		}else if(j < b_list.getCurrentIndex()){
+			while (j < b_list.getCurrentIndex()) {
+				c_list.insert(k, b_list.get(j));
+				j++;
+				k++;
+			}
+		}
+		
+		return c_list;
+	}
 }
