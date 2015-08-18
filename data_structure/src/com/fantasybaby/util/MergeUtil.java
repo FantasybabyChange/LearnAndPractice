@@ -1,10 +1,10 @@
 package com.fantasybaby.util;
 
 import com.fantasybaby.entity.SoryEntity;
-import com.fantasybaby.inter.AbstractLinerList;
+import com.fantasybaby.inter.AbstractSQLList;
 import com.fantasybaby.inter.ILinerList;
 import com.fantasybaby.inter.impl.SimpleArrayImpl;
-import com.fantasybaby.inter.impl.SimpleLinerList;
+import com.fantasybaby.inter.impl.SimpleSQLList;
 
 public class MergeUtil {
 	private static ILinerList<Integer> linerList = new SimpleArrayImpl();
@@ -61,7 +61,7 @@ public class MergeUtil {
 	/**
 	 * A = A U B
 	 */
-	public static AbstractLinerList<SoryEntity> mergeCollections1(AbstractLinerList<SoryEntity> a_list, AbstractLinerList<SoryEntity> b_list){
+	public static AbstractSQLList<SoryEntity> mergeCollections1(AbstractSQLList<SoryEntity> a_list, AbstractSQLList<SoryEntity> b_list){
 		for (int i = 0; i < b_list.getCurrentIndex(); i++) {
 			int locate = a_list.locate(b_list.get(i));
 			if (locate < 0) {
@@ -73,8 +73,8 @@ public class MergeUtil {
 	/**
 	 * merge two linear increased 
 	 */
-	public static AbstractLinerList<SoryEntity> mergelinear1(AbstractLinerList<SoryEntity> a_list, AbstractLinerList<SoryEntity> b_list){
-		AbstractLinerList<SoryEntity>  c_list = new SimpleLinerList<SoryEntity>(a_list.getCurrentIndex()+b_list.getCurrentIndex());
+	public static AbstractSQLList<SoryEntity> mergelinear1(AbstractSQLList<SoryEntity> a_list, AbstractSQLList<SoryEntity> b_list){
+		AbstractSQLList<SoryEntity>  c_list = new SimpleSQLList<SoryEntity>(a_list.getCurrentIndex()+b_list.getCurrentIndex());
 		int i=0;
 		int j=0;
 		int k =1;

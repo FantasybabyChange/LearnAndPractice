@@ -1,27 +1,27 @@
 package com.fantasybaby.inter.impl;
 
 import com.fantasybaby.exception.FantasyBabyException;
-import com.fantasybaby.inter.AbstractLinerList;
+import com.fantasybaby.inter.AbstractSQLList;
 /**
  * A simple implementation about liner List sequential storage
  * @author Reid.Liu
  *
  * @param <T>
  */
-public class SimpleLinerList<T> extends AbstractLinerList<T> {
+public class SimpleSQLList<T> extends AbstractSQLList<T> {
 	private int DEFAULT_MAX_LENGTH =1000000;
 	private int DEFAULT_LENGTH =10;
-	public SimpleLinerList() {
+	public SimpleSQLList() {
 		init();
 	}
-	public SimpleLinerList(int _length,int _maxLength) {
+	public SimpleSQLList(int _length,int _maxLength) {
 		try {
 			init(_length,_maxLength);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	public SimpleLinerList(int _length) {
+	public SimpleSQLList(int _length) {
 		try {
 			init(_length);
 		} catch (Exception e) {

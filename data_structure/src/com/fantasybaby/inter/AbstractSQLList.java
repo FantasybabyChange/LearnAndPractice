@@ -8,7 +8,7 @@ import com.fantasybaby.exception.FantasyBabyException;
  * @author FantasyBaby
  *
  */
-public abstract class AbstractLinerList<T> {
+public abstract class AbstractSQLList<T> {
 	protected Object[] data = null;
 	/**
 	 * 表实际有数据的长度

@@ -3,10 +3,10 @@ package com.fantasybaby.test;
 import org.junit.Test;
 
 import com.fantasybaby.entity.SoryEntity;
-import com.fantasybaby.inter.AbstractLinerList;
+import com.fantasybaby.inter.AbstractSQLList;
 import com.fantasybaby.inter.ILinerList;
 import com.fantasybaby.inter.impl.SimpleArrayImpl;
-import com.fantasybaby.inter.impl.SimpleLinerList;
+import com.fantasybaby.inter.impl.SimpleSQLList;
 import com.fantasybaby.util.MergeUtil;
 
 public class TextLineList {
@@ -41,7 +41,7 @@ public class TextLineList {
 	} 
 	@Test
 	public void testLinerListEssential(){
-		AbstractLinerList<SoryEntity> s = new SimpleLinerList<SoryEntity>();
+		AbstractSQLList<SoryEntity> s = new SimpleSQLList<SoryEntity>();
 		/*SoryEntity s1 = new SoryEntity(1);
 		SoryEntity s2 = new SoryEntity(2);
 		s.add(s1);
@@ -73,14 +73,14 @@ public class TextLineList {
 	}
 	@Test
 	public void testUtilMergeCollections1(){
-		AbstractLinerList<SoryEntity> s = new SimpleLinerList<SoryEntity>();
+		AbstractSQLList<SoryEntity> s = new SimpleSQLList<SoryEntity>();
 		SoryEntity s1 = new SoryEntity(1);
 		SoryEntity s2 = new SoryEntity(2);
 		SoryEntity s3 = new SoryEntity(3);
 		s.add(s1);
 		s.add(s2);
 		s.add(s3);
-		AbstractLinerList<SoryEntity> se1 = new SimpleLinerList<SoryEntity>();
+		AbstractSQLList<SoryEntity> se1 = new SimpleSQLList<SoryEntity>();
 		SoryEntity s4 = new SoryEntity(3);
 		SoryEntity s5 = new SoryEntity(4);
 		SoryEntity s6 = new SoryEntity(6);
@@ -91,28 +91,28 @@ public class TextLineList {
 		se1.add(s6);
 		se1.add(s7);
 		se1.add(s8);
-		AbstractLinerList<SoryEntity> mergeCollections1 = MergeUtil.mergeCollections1(s,se1);
+		AbstractSQLList<SoryEntity> mergeCollections1 = MergeUtil.mergeCollections1(s,se1);
 		for (int i = 0; i < mergeCollections1.getCurrentIndex(); i++) {
 			System.out.println(mergeCollections1.get(i));
 		}
 	} 
 	@Test
 	public void testUtilMergeLinearList1(){
-		AbstractLinerList<SoryEntity> s = new SimpleLinerList<SoryEntity>();
+		AbstractSQLList<SoryEntity> s = new SimpleSQLList<SoryEntity>();
 		SoryEntity s1 = new SoryEntity(1);
 		SoryEntity s2 = new SoryEntity(2);
 		SoryEntity s3 = new SoryEntity(3);
 		s.add(s1);
 		s.add(s2);
 		s.add(s3);
-		AbstractLinerList<SoryEntity> se1 = new SimpleLinerList<SoryEntity>();
+		AbstractSQLList<SoryEntity> se1 = new SimpleSQLList<SoryEntity>();
 		SoryEntity s4 = new SoryEntity(2);
 		SoryEntity s5 = new SoryEntity(4);
 		SoryEntity s6 = new SoryEntity(6);
 		se1.add(s4);
 		se1.add(s5);
 		se1.add(s6);
-		AbstractLinerList<SoryEntity> mergeCollections1 = MergeUtil.mergelinear1(s, se1);
+		AbstractSQLList<SoryEntity> mergeCollections1 = MergeUtil.mergelinear1(s, se1);
 		for (int i = 0; i < mergeCollections1.getCurrentIndex(); i++) {
 			System.out.println(mergeCollections1.get(i));
 		}
