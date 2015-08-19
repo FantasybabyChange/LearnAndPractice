@@ -97,7 +97,9 @@ public  class SimpleLinkList<T> extends AbstractLinkList<T> {
 		isComplete = true;
 		return isComplete;
 	}
-
+	/**
+	 * insert in last index 
+	 */
 	@Override
 	public boolean add(Object t) throws FantasyBabyException {
 		boolean isComplete = false;
@@ -117,7 +119,24 @@ public  class SimpleLinkList<T> extends AbstractLinkList<T> {
 		isComplete = true;
 		return isComplete;
 	}
-
+	/**
+	 * insert at pro node
+	 */
+	@Override
+	public  boolean addPro(Object[] t) throws FantasyBabyException{
+		boolean isComplete = false;
+		if (t != null && t.length > 0) {
+			for (int i = (t.length-1); i >= 0; i--) {
+				Node<T> nodeTmp = new Node<T>();
+				nodeTmp.setData(t[i]);
+				nodeTmp.setNext(head.getNext());
+				head.setNext(nodeTmp);
+				size++;
+			}
+		}
+		isComplete = true;
+		return isComplete;
+	}
 	@Override
 	public boolean delete(int index) throws FantasyBabyException {
 		boolean isComplete = false;

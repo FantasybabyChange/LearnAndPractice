@@ -50,11 +50,17 @@ public abstract class AbstractLinkList<T> {
 	 */
 	public abstract boolean set(int index,Object t)throws FantasyBabyException;
 	/**
-	 *
+	 *insert in last
 	 * @param t
 	 * @return if add successful return true
 	 */
 	public abstract boolean add(Object t) throws FantasyBabyException;
+	/**
+	 * insert in pro 
+	 * @param t
+	 * @return if add successful return true
+	 */
+	public abstract boolean addPro(Object[] t) throws FantasyBabyException;
 	/**
 	 * delete the data element by index
 	 * @param index
