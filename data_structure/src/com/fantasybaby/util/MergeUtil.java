@@ -1,12 +1,15 @@
 package com.fantasybaby.util;
 
+import com.fantasybaby.entity.Node;
 import com.fantasybaby.entity.SoryEntity;
+import com.fantasybaby.exception.FantasyBabyException;
+import com.fantasybaby.inter.AbstractLinkList;
 import com.fantasybaby.inter.AbstractSQLList;
 import com.fantasybaby.inter.ILinerList;
 import com.fantasybaby.inter.impl.SimpleArrayImpl;
 import com.fantasybaby.inter.impl.SimpleSQLList;
 
-public class MergeUtil {
+public class MergeUtil<T> {
 	private static ILinerList<Integer> linerList = new SimpleArrayImpl();
 	/**
 	 * A = A U B
@@ -106,5 +109,30 @@ public class MergeUtil {
 		}
 		
 		return c_list;
+	}
+	/**
+	 * merge two link sequential list
+	 * @param link1
+	 * @param link2
+	 * @return
+	 * @throws FantasyBabyException 
+	 */
+	public AbstractLinkList<Integer> mergeTwoSeqLinkList(AbstractLinkList<Integer> link1,AbstractLinkList<Integer> link2) throws FantasyBabyException{
+		Node<Integer> node = link1.getNode(0);
+		Node<Integer> node2 = link2.getNode(0);
+		Node<Integer> nodeTmp = null;
+		Integer data = (Integer) node.getData();
+		Integer data2 = (Integer) node2.getData();
+		if (data >= data2) {
+			nodeTmp = node;
+		}else{
+			nodeTmp = node2;
+		}
+		
+		
+		
+		
+		return null;
+		
 	}
 }
