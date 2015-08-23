@@ -174,5 +174,13 @@ public  class SimpleLinkList<T> extends AbstractLinkList<T> {
 	public int getSize() {
 		return size;
 	}
+	@Override
+	public Node<T> getHeadeNode() {
+		return head;
+	}
+	@Override
+	public void setSize(int _size) {
+		this.size = _size;
+	}
 
 }

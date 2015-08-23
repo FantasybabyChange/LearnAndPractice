@@ -18,6 +18,7 @@ public abstract class AbstractLinkList<T> {
 	public abstract void init();
 	
 	public abstract int getSize();
+	public abstract void setSize(int size);
 	/**
 	 * init this liner list
 	 */
@@ -78,6 +79,11 @@ public abstract class AbstractLinkList<T> {
 	 * @return if the line list is empty return true
 	 */
 	public abstract boolean empty();
+	/**
+	 * get the head
+	 * @return
+	 */
+	public abstract Node<T> getHeadeNode();
 	/**
 	 * clear this line list
 	 */

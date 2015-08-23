@@ -2,10 +2,13 @@ package com.fantasybaby.test;
 
 import org.junit.Test;
 
+import com.fantasybaby.exception.FantasyBabyException;
 import com.fantasybaby.inter.AbstractLinkList;
 import com.fantasybaby.inter.impl.SimpleLinkList;
+import com.fantasybaby.util.MergeUtil;
 
 public class TestLinkList {
+	MergeUtil<Integer> mereUtil = new MergeUtil<Integer>();
 	
 	@Test
 	public void test() {
@@ -65,5 +68,18 @@ public class TestLinkList {
 			e.printStackTrace();
 		}
 	}
+	@Test
+	public void test2() throws FantasyBabyException {
+		AbstractLinkList<Integer> al = new SimpleLinkList<Integer>();
+		AbstractLinkList<Integer> al1 = new SimpleLinkList<Integer>();
+		al.add(2);
+		al.add(4);
+		al1.add(1);
+		al1.add(3);
+		AbstractLinkList<Integer> mergeTwoSeqLinkList = mereUtil.mergeTwoSeqLinkList(al, al1);
+		for (int i = 0; i < mergeTwoSeqLinkList.getSize(); i++) {
+			System.out.println(mergeTwoSeqLinkList.get(i));
+		}
+		}
 
 }
