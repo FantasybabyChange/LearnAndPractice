@@ -76,7 +76,7 @@ public class TestLinkList {
 		al.add(4);
 		al1.add(1);
 		al1.add(3);
-		AbstractLinkList<Integer> mergeTwoSeqLinkList = mereUtil.mergeTwoSeqLinkList(al, al1);
+		AbstractLinkList<Integer> mergeTwoSeqLinkList = mereUtil.mergeTwoSeqLinkList2(al, al1);
 		for (int i = 0; i < mergeTwoSeqLinkList.getSize(); i++) {
 			System.out.println(mergeTwoSeqLinkList.get(i));
 		}

@@ -154,4 +154,36 @@ public class MergeUtil<T> {
 		link1.setSize(link1.getSize() + link2.getSize());
 		return link1;
 	}
+	/**
+	 * merge two link sequential list2
+	 * @param link1
+	 * @param link2
+	 * @return
+	 * @throws FantasyBabyException 
+	 */
+	public AbstractLinkList<Integer> mergeTwoSeqLinkList2(AbstractLinkList<Integer> link1,AbstractLinkList<Integer> link2) throws FantasyBabyException{
+		Node<Integer> headeNode = link1.getHeadeNode();
+		Node<Integer> headeNode2 = link2.getHeadeNode();
+		Node<Integer> node = headeNode.getNext();
+		Node<Integer> node2 = headeNode2.getNext();
+		Node<Integer> nodeTmp = headeNode;
+		while (node != null && node2 != null) {
+			if ((Integer)node.getData() <= (Integer)node2.getData()) {
+				nodeTmp.setNext(node);
+				nodeTmp = node;
+				node = node.getNext();
+			}else{
+				nodeTmp.setNext(node2);
+				nodeTmp = node2;
+				node2 = node2.getNext();
+			}
+		}
+		if (node != null) {
+			nodeTmp.setNext(node);
+		}else{
+			nodeTmp.setNext(node2);
+		}
+		link1.setSize(link1.getSize() + link2.getSize());
+		return link1;
+	}
 }
