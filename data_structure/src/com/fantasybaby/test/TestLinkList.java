@@ -2,6 +2,7 @@ package com.fantasybaby.test;
 
 import org.junit.Test;
 
+import com.fantasybaby.entity.Node;
 import com.fantasybaby.exception.FantasyBabyException;
 import com.fantasybaby.inter.AbstractLinkList;
 import com.fantasybaby.inter.impl.SimpleLinkList;
@@ -77,8 +78,15 @@ public class TestLinkList {
 		al1.add(1);
 		al1.add(3);
 		AbstractLinkList<Integer> mergeTwoSeqLinkList = mereUtil.mergeTwoSeqLinkList2(al, al1);
-		for (int i = 0; i < mergeTwoSeqLinkList.getSize(); i++) {
+		/*for (int i = 0; i < mergeTwoSeqLinkList.getSize(); i++) {
 			System.out.println(mergeTwoSeqLinkList.get(i));
+		}*/
+		int count = 0;
+		Object data = null;
+		while ((data =mergeTwoSeqLinkList.get(count)) != null) {
+			System.out.println(data);
+			count++;
+			
 		}
 		}
 
