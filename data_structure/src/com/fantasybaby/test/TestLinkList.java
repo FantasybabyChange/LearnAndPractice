@@ -82,9 +82,8 @@ public class TestLinkList {
 			System.out.println(mergeTwoSeqLinkList.get(i));
 		}*/
 		int count = 0;
-		Object data = null;
-		while ((data =mergeTwoSeqLinkList.get(count)) != null) {
-			System.out.println(data);
+		while (count < al.getSize()) {
+			System.out.println(al.get(count));
 			count++;
 			
 		}

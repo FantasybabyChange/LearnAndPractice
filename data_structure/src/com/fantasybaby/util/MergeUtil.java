@@ -186,4 +186,15 @@ public class MergeUtil<T> {
 		link1.setSize(link1.getSize() + link2.getSize());
 		return link1;
 	}
+	/**
+	 * 计算polynomial的和    (x^1+2x^2+...+nx^n)+(2x^1+3x^2+...+nx^n) 
+	 * 指数相同 系数相加 记得处理  系数和为零的情况
+	 * @param link1
+	 * @param link2
+	 */
+	public void sumPolynomial(AbstractLinkList<Integer> link1,AbstractLinkList<Integer> link2){
+		
+		
+		
+	} 
 }
