@@ -1,5 +1,6 @@
 package com.fantasybaby.util;
 
+import com.fantasybaby.entity.DataPolyNomial;
 import com.fantasybaby.entity.Node;
 import com.fantasybaby.entity.SoryEntity;
 import com.fantasybaby.exception.FantasyBabyException;
@@ -193,8 +194,40 @@ public class MergeUtil<T> {
 	 * @param link2
 	 */
 	public void sumPolynomial(AbstractLinkList<Integer> link1,AbstractLinkList<Integer> link2){
-		
-		
-		
+		Node<Integer> link1Head = link1.getHeadeNode();
+		Node<Integer> link2Head = link2.getHeadeNode();
+		Node<Integer> pa = link1Head.getNext();
+		Node<Integer> pb = link2Head.getNext();
+		Node<Integer> pre = link1Head;
+		while (pa != null && pb != null) {
+			DataPolyNomial paData = (DataPolyNomial)pa.getData();
+			DataPolyNomial pbData = (DataPolyNomial)pa.getData();
+			int exp1 = paData.getExponent();
+			int exp2 = pbData.getExponent();
+			if (exp1 < exp2) {
+				pre = pa;
+				pa = pa.getNext();
+			}else if(exp1 == exp2){
+			    int x = paData.getCoefficient() + pbData.getCoefficient();
+			    if (x > 0) {
+					paData.setCoefficient(x);
+					pre = pa;
+				}else{
+					pre.setNext(pa.getNext());
+					
+				}
+			    pb = pb.getNext();
+			    pa = pa.getNext();
+			}else{
+				Node<Integer> pbTmp = pb.getNext();
+				pb.setNext(pre.getNext());
+				pre.setNext(pb);
+				pre = pb;
+				pb = pbTmp;
+			}
+		}
+		if (pb != null) {
+			pre.setNext(pb);
+		}
 	} 
 }
