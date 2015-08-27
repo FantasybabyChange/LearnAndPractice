@@ -2,6 +2,7 @@ package com.fantasybaby.test;
 
 import org.junit.Test;
 
+import com.fantasybaby.entity.DataPolyNomial;
 import com.fantasybaby.entity.Node;
 import com.fantasybaby.exception.FantasyBabyException;
 import com.fantasybaby.inter.AbstractLinkList;
@@ -87,6 +88,34 @@ public class TestLinkList {
 			count++;
 			
 		}
+	}
+	
+	@Test
+	public void test3() throws FantasyBabyException {
+		AbstractLinkList<Integer> al = new SimpleLinkList<Integer>();
+		AbstractLinkList<Integer> al1 = new SimpleLinkList<Integer>();
+		DataPolyNomial dp = new DataPolyNomial(1,1);
+		DataPolyNomial dp1 = new DataPolyNomial(3,3);
+		
+		DataPolyNomial dq = new DataPolyNomial(2,2);
+		DataPolyNomial dq1 = new DataPolyNomial(4,3);
+		al.add(dp);
+		al.add(dp1);
+		al1.add(dq);
+		al1.add(dq1);
+		mereUtil.sumPolynomial(al, al1);
+		/*for (int i = 0; i < mergeTwoSeqLinkList.getSize(); i++) {
+			System.out.println(mergeTwoSeqLinkList.get(i));
+		}*/
+		int count = 0;
+		Node<Integer> headeNode = al.getHeadeNode();
+		Node<Integer> next = headeNode.getNext();
+		while ( next != null) {
+			DataPolyNomial data = (DataPolyNomial)next.getData();
+			System.out.print(data.getCoefficient()+"x^"+data.getExponent()+"+");
+			next = next.getNext();
+			
 		}
+	}
 
 }

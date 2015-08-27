@@ -201,7 +201,7 @@ public class MergeUtil<T> {
 		Node<Integer> pre = link1Head;
 		while (pa != null && pb != null) {
 			DataPolyNomial paData = (DataPolyNomial)pa.getData();
-			DataPolyNomial pbData = (DataPolyNomial)pa.getData();
+			DataPolyNomial pbData = (DataPolyNomial)pb.getData();
 			int exp1 = paData.getExponent();
 			int exp2 = pbData.getExponent();
 			if (exp1 < exp2) {
