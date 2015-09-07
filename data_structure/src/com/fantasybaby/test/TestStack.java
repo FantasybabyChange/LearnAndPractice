@@ -2,10 +2,14 @@ package com.fantasybaby.test;
 
 import static org.junit.Assert.*;
 
+import java.beans.Expression;
+
 import org.junit.Test;
 
+import com.fantasybaby.constant.ExpressionOper;
 import com.fantasybaby.inter.AbstractStack;
 import com.fantasybaby.inter.impl.SimpleSQLStack;
+import com.fantasybaby.util.StackApplyUtil;
 
 public class TestStack {
 
@@ -22,6 +26,13 @@ public class TestStack {
 //			
 //		}
 		
+	}
+	@Test
+	public void testEnum() {
+		 System.out.println(ExpressionOper.NUMBERSIGN);
+		 System.out.println(StackApplyUtil.getValueByChar('#'));
+		 String str = "+3+8*2-(2+1)";
+		 StackApplyUtil.evaluateExpression(str);
 	}
 
 }
