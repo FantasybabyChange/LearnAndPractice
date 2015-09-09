@@ -8,12 +8,12 @@ package com.fantasybaby.constant;
 public enum ExpressionOper {
 	DIGITAL(0),
 	ADD(1),
-	SUBSTRACT(1),
-	MULTIPLY(2),
-	DIVIDE(2),
-	RBRACKET(3),
-	LBRACKET(4),
-	NUMBERSIGN(5);
+	SUBSTRACT(2),
+	MULTIPLY(3),
+	DIVIDE(4),
+	RBRACKET(5),
+	LBRACKET(5),
+	NUMBERSIGN(6);
 	private final int value;
 	ExpressionOper(int value){
 		this.value = value;
