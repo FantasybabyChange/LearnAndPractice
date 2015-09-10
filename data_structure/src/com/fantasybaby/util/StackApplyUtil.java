@@ -1,6 +1,7 @@
 package com.fantasybaby.util;
 
 import com.fantasybaby.constant.ExpressionOper;
+import com.fantasybaby.exception.FantasyBabyException;
 import com.fantasybaby.inter.AbstractStack;
 import com.fantasybaby.inter.impl.SimpleSQLStack;
 
@@ -10,7 +11,9 @@ import com.fantasybaby.inter.impl.SimpleSQLStack;
  *
  */
 public class StackApplyUtil {
-	private static final char[] opers = {'+','-','*','/','(',')','#'};
+	private static final int LARGE_THAN = '1';
+	private static final int LESS_THAN = -1;
+	private static final int EQUAL = 0;
 	public static int getValueByChar(char value){
 		int returnValue = ExpressionOper.NUMBERSIGN.getValue();
 		if (Character.isDigit(value)) {
@@ -30,10 +33,10 @@ public class StackApplyUtil {
 					returnValue = ExpressionOper.DIVIDE.getValue();
 				   break;
 				case '(':
-					returnValue = ExpressionOper.RBRACKET.getValue();
+					returnValue = ExpressionOper.LBRACKET.getValue();
 				   break;
 				case ')':
-					returnValue = ExpressionOper.LBRACKET.getValue();
+					returnValue = ExpressionOper.RBRACKET.getValue();
 				   break;
 				case '#':
 					returnValue = ExpressionOper.NUMBERSIGN.getValue();
@@ -44,53 +47,100 @@ public class StackApplyUtil {
 		}
 		return returnValue;
 	}
-	public int operNum(int a,int b,int operChar){
+	public static int operNum(int a,int b,char operChar){
 		int sum = 0;
 		switch(operChar){
-			case 1:
+			case '+':
 				sum = a + b;
 				break;
-			case 2:
+			case '-':
 				sum = a - b;
 				break;
-			case 3:
+			case '*':
 				sum = a * b;
 				break;
-			case 4:
+			case '/':
 				sum = a / b;
 				break;
 		}
 		return sum;
+	}
+	public static int precedeOper(int first, int second){
+		int result = EQUAL;
+		if (first == second) {
+			result =  LARGE_THAN;
+		}else if(first < second){
+				result = LESS_THAN;
+		}else if(first > second){
+			if (first == ExpressionOper.LBRACKET.getValue()) {
+				result =  LESS_THAN;
+			}else if(first == ExpressionOper.NUMBERSIGN.getValue()){
+				result =  LESS_THAN;
+			}else{
+				result =  LARGE_THAN;
+			}
+		}
+		return result;
 	}
 	/**
 	 * Use the method to deal with the split 
 	 * the String then  analytic the char is digital
 	 * or  symbol
 	 * @return
+	 * @throws FantasyBabyException 
 	 */
-	public static String evaluateExpression(String str){
-		AbstractStack<String> oper = new SimpleSQLStack<String>();
+	public static String evaluateExpression(String str) throws FantasyBabyException{
+		AbstractStack<Character> oper = new SimpleSQLStack<Character>();
 		AbstractStack<Integer> data = new SimpleSQLStack<Integer>();
-		StringBuffer expression = new StringBuffer(str);
+		char[] charArray = str.toCharArray();
 		int count = 0;
-		/*if (getValueByChar(expression.substring(0,1)) > 0) {
-			
-		}*/
-		int expressionLength = expression.length();	
+		if (charArray.length == 0||charArray.length > 0&&getValueByChar(charArray[0]) > 0) {
+			throw new FantasyBabyException("expression format exceptiion");
+		}
+		oper.push('#');
+		int expressionLength = charArray.length;	
 		while (count < expressionLength) {
-			String tmpStr = expression.substring(0,1);
-			char currentValue = tmpStr.charAt(0);
+			char currentValue = charArray[count];
 			int propertyValue = getValueByChar(currentValue);
-			if (propertyValue == 0) {
-				data.push(Integer.parseInt(currentValue+""));
+			if (propertyValue == ExpressionOper.DIGITAL.getValue()) {
+				data.push(Integer.parseInt(String.valueOf(currentValue)));
+			}else{
+				char stackTopValue = oper.top();
+				int stackToPProperty = getValueByChar(stackTopValue);
+				if (precedeOper(stackToPProperty, propertyValue) == LARGE_THAN) {
+					Integer second = data.pop();
+					Integer first = data.pop();
+					stackTopValue = oper.pop();
+					data.push(operNum(first,second,stackTopValue));
+					oper.push(currentValue);
+				}else if(precedeOper(stackToPProperty, propertyValue) == LESS_THAN){
+					if (propertyValue == ExpressionOper.RBRACKET.getValue()) {
+						while (stackToPProperty != ExpressionOper.RBRACKET.getValue()) {
+							Integer second = data.pop();
+							Integer first = data.pop();
+							stackTopValue = oper.pop();
+							stackToPProperty = getValueByChar(stackTopValue);
+							data.push(operNum(first,second,stackTopValue));
+						}
+					}else{
+						oper.push(currentValue);
+					}
+				}
 			}
-			expression.deleteCharAt(0);
 			count ++;
+		}
+		if (oper.top() != ExpressionOper.NUMBERSIGN.getValue()) {
+			Integer second = data.pop();
+			Integer first = data.pop();
+			data.push(operNum(first,second,oper.pop()));
 		}
 		while(!data.empty()){
 			System.out.println(data.pop());
 		}
 		System.out.println("-----"+data.getLength());
+		while(!oper.empty()){
+			System.out.println(oper.pop());
+		}
 		return null;
 	}
 

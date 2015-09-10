@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.fantasybaby.constant.ExpressionOper;
 import com.fantasybaby.entity.SoryEntity;
+import com.fantasybaby.exception.FantasyBabyException;
 import com.fantasybaby.inter.AbstractStack;
 import com.fantasybaby.inter.impl.SimpleSQLStack;
 import com.fantasybaby.util.StackApplyUtil;
@@ -30,8 +31,12 @@ public class TestStack {
 	}
 	@Test
 	public void testEnum() {
-		 String str = "+3+8*2-(2+1)";
-		 StackApplyUtil.evaluateExpression(str);
+		 String str = "3+(8-1)";
+		 try {
+			StackApplyUtil.evaluateExpression(str);
+		} catch (FantasyBabyException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -63,5 +63,13 @@ public class SimpleSQLStack<T> extends AbstractStack<T>{
 	public boolean empty() {
 		return length == 0;
 	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public T top() {
+		if (empty()) {
+			return null;
+		}
+		return (T) data[length-1];
+	}
 	
 }

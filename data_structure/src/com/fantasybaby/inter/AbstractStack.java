@@ -12,6 +12,7 @@ public abstract class AbstractStack<T> {
 	
 	public abstract boolean push(T t);
 	public abstract T pop();
+	public abstract T top();
 	public abstract void init();
 	/**
 	 * init this liner list
