@@ -31,7 +31,7 @@ public class TestStack {
 	}
 	@Test
 	public void testEnum() {
-		 String str = "3+(8-1)";
+		 String str = "(1+2)+2*3";
 		 try {
 			StackApplyUtil.evaluateExpression(str);
 		} catch (FantasyBabyException e) {

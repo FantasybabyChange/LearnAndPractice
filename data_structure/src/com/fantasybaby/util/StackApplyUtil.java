@@ -94,12 +94,11 @@ public class StackApplyUtil {
 		AbstractStack<Integer> data = new SimpleSQLStack<Integer>();
 		char[] charArray = str.toCharArray();
 		int count = 0;
-		if (charArray.length == 0||charArray.length > 0&&getValueByChar(charArray[0]) > 0) {
+		if (charArray.length == 0||charArray.length > 0&&getValueByChar(charArray[0]) > 0&&getValueByChar(charArray[0]) < 3) {
 			throw new FantasyBabyException("expression format exceptiion");
 		}
 		oper.push('#');
-		int expressionLength = charArray.length;	
-		while (count < expressionLength) {
+		while (count ==0 || getValueByChar(oper.top()) != ExpressionOper.NUMBERSIGN.getValue()) {
 			char currentValue = charArray[count];
 			int propertyValue = getValueByChar(currentValue);
 			if (propertyValue == ExpressionOper.DIGITAL.getValue()) {
@@ -115,12 +114,14 @@ public class StackApplyUtil {
 					oper.push(currentValue);
 				}else if(precedeOper(stackToPProperty, propertyValue) == LESS_THAN){
 					if (propertyValue == ExpressionOper.RBRACKET.getValue()) {
-						while (stackToPProperty != ExpressionOper.RBRACKET.getValue()) {
+						stackTopValue = oper.pop();
+						while (stackToPProperty != ExpressionOper.LBRACKET.getValue()) {
 							Integer second = data.pop();
 							Integer first = data.pop();
-							stackTopValue = oper.pop();
 							stackToPProperty = getValueByChar(stackTopValue);
 							data.push(operNum(first,second,stackTopValue));
+							stackTopValue = oper.pop();
+							stackToPProperty = getValueByChar(stackTopValue);
 						}
 					}else{
 						oper.push(currentValue);
