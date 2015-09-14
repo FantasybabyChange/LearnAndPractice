@@ -98,7 +98,7 @@ public class StackApplyUtil {
 			throw new FantasyBabyException("expression format exceptiion");
 		}
 		oper.push('#');
-		while (count ==0 || getValueByChar(oper.top()) != ExpressionOper.NUMBERSIGN.getValue()) {
+		while (count !=charArray.length && oper.empty()) {
 			char currentValue = charArray[count];
 			int propertyValue = getValueByChar(currentValue);
 			if (propertyValue == ExpressionOper.DIGITAL.getValue()) {
@@ -128,7 +128,10 @@ public class StackApplyUtil {
 					}
 				}
 			}
-			count ++;
+			if(count < charArray.length){
+				count ++;
+			}
+			
 		}
 		if (oper.top() != ExpressionOper.NUMBERSIGN.getValue()) {
 			Integer second = data.pop();
