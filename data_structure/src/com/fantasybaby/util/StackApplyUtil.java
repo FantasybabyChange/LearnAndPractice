@@ -98,7 +98,7 @@ public class StackApplyUtil {
 			throw new FantasyBabyException("expression format exceptiion");
 		}
 		oper.push('#');
-		while (count !=charArray.length && oper.empty()) {
+		while (count !=charArray.length && !oper.empty()) {
 			char currentValue = charArray[count];
 			int propertyValue = getValueByChar(currentValue);
 			if (propertyValue == ExpressionOper.DIGITAL.getValue()) {
