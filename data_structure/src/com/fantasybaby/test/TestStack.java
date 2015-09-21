@@ -38,5 +38,14 @@ public class TestStack {
 			e.printStackTrace();
 		}
 	}
+	@Test
+	public void testExpression() {
+		 String str = "(1+2)+2*3";
+		 try {
+			StackApplyUtil.evaluate_expression(str);
+		} catch (FantasyBabyException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
