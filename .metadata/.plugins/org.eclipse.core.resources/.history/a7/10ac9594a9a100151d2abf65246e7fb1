@@ -1,0 +1,5 @@
+package com.fantasybaby.bytecode;
+
+public class HelloWord {
+
+}
