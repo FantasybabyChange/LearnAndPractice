@@ -9,10 +9,13 @@
 <fullyQualifiedTypeName name="com.fantasybaby.classloader.CreateWordCode"/>
 <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
-<fullyQualifiedTypeName name="java.io.Serializable"/>
-<fullyQualifiedTypeName name="com.fantasybaby.util.MergeUtil"/>
 <fullyQualifiedTypeName name="org.junit.Test"/>
 <fullyQualifiedTypeName name="com.fantasybaby.inter.ILinerList"/>
 <fullyQualifiedTypeName name="com.fantasybaby.inter.impl.SimpleArrayImpl"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="com.fantasybaby.util.MergeUtil"/>
+<fullyQualifiedTypeName name="java.io.Serializable"/>
+<fullyQualifiedTypeName name="com.fantasybaby.entity.Node"/>
+<fullyQualifiedTypeName name="javax.xml.crypto.Data"/>
+<fullyQualifiedTypeName name="com.fantasybaby.entity.DataPolyNomial"/>
 </qualifiedTypeNameHistroy>
