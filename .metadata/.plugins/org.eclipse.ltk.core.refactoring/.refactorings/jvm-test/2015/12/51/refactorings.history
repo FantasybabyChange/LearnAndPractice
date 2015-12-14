@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;com.fantasybaby.bytecode.LocalVirable&apos; to &apos;LocalVariable&apos;&#x0D;&#x0A;- Original project: &apos;jvm-test&apos;&#x0D;&#x0A;- Original element: &apos;com.fantasybaby.bytecode.LocalVirable&apos;&#x0D;&#x0A;- Renamed element: &apos;com.fantasybaby.bytecode.LocalVariable&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;LocalVirable&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;com.fantasybaby.bytecode{LocalVirable.java[LocalVirable" matchStrategy="1" name="LocalVariable" qualified="false" references="true" similarDeclarations="false" stamp="1450019515883" textual="false" version="1.0"/>
-</session>

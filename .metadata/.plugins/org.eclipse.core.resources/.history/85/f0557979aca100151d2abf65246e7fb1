@@ -1,5 +1,0 @@
-package com.fantasybaby.bytecode;
-
-public class LocalVariable {
-	int a = 2;
-}
