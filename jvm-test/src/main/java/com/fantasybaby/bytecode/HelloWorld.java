@@ -1,6 +1,10 @@
 package com.fantasybaby.bytecode;
 
-public class HelloWorld {
+import com.fantasybaby.inter.HelloWorldInterface;
+
+public class HelloWorld implements HelloWorldInterface{
+	private int b = 1001;
+	public static final String str = "testFantasyBaby";
 		public static void main(String[] args) {
 			System.out.println("Hello World");
 		}
