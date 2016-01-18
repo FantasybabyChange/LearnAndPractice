@@ -14,7 +14,7 @@ import com.fantasybaby.hibernateValidtor.bean.UserLogin;
 public class TestValidator{
 	@Test
 	public void test1(){
-		UserLogin user = new UserLogin("gagaaagagaaaaaaa", "password", 5);
+		UserLogin user = new UserLogin("", "password", 3);
 		//create factory
 		ValidatorFactory facotry = Validation.buildDefaultValidatorFactory();
 		//get validator

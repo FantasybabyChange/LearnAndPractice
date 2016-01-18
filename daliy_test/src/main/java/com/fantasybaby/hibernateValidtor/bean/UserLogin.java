@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 public class UserLogin {
 
-	 @NotBlank
+	 @NotBlank(message="{username.notnull}")
 	 @Size(max=10,message="用户名称过长")
 	 private String username;
 	 @NotBlank
