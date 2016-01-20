@@ -5,9 +5,11 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.fantasybaby.hibernateValidtor.annatation.UserNameNotNull;
+
 public class UserLogin {
 
-	 @NotBlank(message="{username.notnull}")
+	 @UserNameNotNull(message="请输入用户名")
 	 @Size(max=10,message="用户名称过长")
 	 private String username;
 	 @NotBlank
