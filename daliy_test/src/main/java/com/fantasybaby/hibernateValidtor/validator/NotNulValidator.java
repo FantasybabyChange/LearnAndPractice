@@ -8,6 +8,11 @@ import com.fantasybaby.hibernateValidtor.annatation.UserNameNotNull;
 public class NotNulValidator implements ConstraintValidator<UserNameNotNull, String>{
 
 	public boolean isValid(String value, ConstraintValidatorContext context) {
+		/*String messageTemplate = context.getDefaultConstraintMessageTemplate();
+		System.out.println(messageTemplate);
+		context.disableDefaultConstraintViolation();  
+        context.buildConstraintViolationWithTemplate(messageTemplate)  
+                .addConstraintViolation();*/
     if(value == null || value.trim().length() == 0 ){
     	
     }
@@ -15,6 +20,7 @@ public class NotNulValidator implements ConstraintValidator<UserNameNotNull, Str
 	}
 
 	public void initialize(UserNameNotNull constraintAnnotation) {
+		
 //		System.out.println(constraintAnnotation.message());		
 	}
 

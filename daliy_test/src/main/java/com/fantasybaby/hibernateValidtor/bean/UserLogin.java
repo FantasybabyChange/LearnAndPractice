@@ -9,7 +9,7 @@ import com.fantasybaby.hibernateValidtor.annatation.UserNameNotNull;
 
 public class UserLogin {
 
-	 @UserNameNotNull(message="请输入用户名")
+	 @UserNameNotNull(message="{username.notnull}")
 	 @Size(max=10,message="用户名称过长")
 	 private String username;
 	 @NotBlank
