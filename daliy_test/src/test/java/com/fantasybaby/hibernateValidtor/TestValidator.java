@@ -28,6 +28,7 @@ public class TestValidator{
 		validator.validateValue(UserLogin.class, "remember", 3);
 		System.out.println(validate);
 	}
+	//通过参数拿到name
 	@Test
 	public void test2(){
 		HelloEnum[] values = HelloEnum.values();
