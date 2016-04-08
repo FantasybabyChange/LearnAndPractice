@@ -9,6 +9,7 @@ import javax.validation.ValidatorFactory;
 
 import org.junit.Test;
 
+import com.fantasybaby.enumP.HelloEnum;
 import com.fantasybaby.hibernateValidtor.bean.UserLogin;
 
 public class TestValidator{
@@ -26,5 +27,14 @@ public class TestValidator{
 		System.out.println(validate);
 		validator.validateValue(UserLogin.class, "remember", 3);
 		System.out.println(validate);
+	}
+	@Test
+	public void test2(){
+		HelloEnum[] values = HelloEnum.values();
+		for (HelloEnum helloEnum : values) {
+			if (helloEnum.getValue().equals("你好")) {
+				System.out.println(helloEnum.name());
+			}
+		}
 	}
 }
