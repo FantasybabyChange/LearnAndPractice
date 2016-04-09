@@ -19,5 +19,14 @@
             id="TestRPC.perspective">
       </perspective>
    </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="com.fantasybaby.view.HelloView"
+            icon="icons/sample.gif"
+            id="com.fantasybaby.view.HelloView"
+            name="Hello View">
+      </view>
+   </extension>
 
 </plugin>

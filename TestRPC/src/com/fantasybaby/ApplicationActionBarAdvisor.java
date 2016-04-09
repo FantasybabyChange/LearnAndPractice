@@ -34,9 +34,9 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor {
     @Override
     protected void fillCoolBar(ICoolBarManager coolBar)  
     {  
-    IToolBarManager toolbar = new ToolBarManager(SWT.FLAT | SWT.RIGHT);  
+ /*   IToolBarManager toolbar = new ToolBarManager(SWT.FLAT | SWT.RIGHT);  
     coolBar.add(new ToolBarContributionItem(toolbar, "main"));  
-    toolbar.add(helloAction);  
+    toolbar.add(helloAction);  */
 
     } 
 }
