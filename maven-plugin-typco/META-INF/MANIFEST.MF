@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Maven-plugin-typco
+Bundle-SymbolicName: maven-plugin-typco;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.fantasybaby.activator.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
