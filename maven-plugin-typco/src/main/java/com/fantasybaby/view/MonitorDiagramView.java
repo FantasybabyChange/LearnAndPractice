@@ -29,6 +29,7 @@ import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.part.ViewPart;
 
 import com.fantasybaby.constant.HistogramData;
+import com.fantasybaby.dialog.RadioBoxDialog;
 
 public class MonitorDiagramView extends ViewPart {
 
@@ -94,6 +95,8 @@ public class MonitorDiagramView extends ViewPart {
 				        db.renderChartByDataSet(diagramDefition);
 				}
 			}).run();
+			RadioBoxDialog radio = new RadioBoxDialog(parent.getShell(), "测试Title");
+			radio.open();
 //		    jobDas = DasFactoryImpl.getInstance().createDas(IJobDas.class);
 			/*   new Thread(new Runnable() {
 						@Override
