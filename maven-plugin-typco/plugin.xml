@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="com.fantasybaby.MyApplication">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="RCP Perspective"
+            class="com.fantasybaby.Perspective"
+            id="maven-plugin-typco.perspective">
+      </perspective>
+   </extension>
+    <extension
+         point="org.eclipse.ui.views">
+       <view
+	   		 name="监控图"
+	   		 allowMultiple="false"
+	         class="com.fantasybaby.view.MonitorDiagramView"
+	         id="fantasybaby.MonitorDiagramView">
+       </view>
+   </extension>
+
+</plugin>
