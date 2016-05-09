@@ -13,12 +13,21 @@ import org.json.JSONObject;
  */
 public class JsonBean {
 	private String name;
+	private Integer inteNum;
 	private List<String> list;
 	private boolean isTrue;
 	public String getName() {
 		return name;
 	}
 	
+	public Integer getInteNum() {
+		return inteNum;
+	}
+
+	public void setInteNum(Integer inteNum) {
+		this.inteNum = inteNum;
+	}
+
 	public boolean isTrue() {
 		return isTrue;
 	}
