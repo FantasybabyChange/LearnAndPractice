@@ -12,6 +12,7 @@ public class TestEggQuesion {
 					&& i%7 == 0 && i%8 == 1 
 					&& i %9 == 0){
 				System.out.println(i);
+				return i;
 			}
 		}
 		return 0;
