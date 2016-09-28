@@ -1,9 +1,10 @@
 package com.fantasybaby.client;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
+import javax.jms.DeliveryMode;
+import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
@@ -20,7 +21,7 @@ import javax.naming.NamingException;
 /**
  * http://activemq.2283324.n4.nabble.com/Exception-occur-when-JNDI-lookup-td2356071.html jndi tmp
  * @author FantasyBaby
- *
+ * 使用activemq来实现一个基本的聊天软件 使用发布订阅的模式
  */
 public class Chat implements MessageListener{
 	private TopicSession topicSession;
@@ -30,11 +31,13 @@ public class Chat implements MessageListener{
 	Chat(String topicFactory,String topicName,String userName) throws Exception{
 		InitialContext initialContext = new InitialContext();
 		TopicConnectionFactory topicConnectionFactory = (TopicConnectionFactory) initialContext.lookup(topicFactory);
+//		TopicConnectionFactory topicConnectionFactory  = new ActiveMQConnectionFactory("tcp://192.168.20.222:61616");
 		TopicConnection topicConnection = topicConnectionFactory.createTopicConnection("walleuser","walle123");
 		TopicSession session1 = topicConnection.createTopicSession(false,Session.AUTO_ACKNOWLEDGE);
 		TopicSession session2 = topicConnection.createTopicSession(false,Session.AUTO_ACKNOWLEDGE);
 		Topic chatTopic = (Topic) initialContext.lookup(topicName);
-		
+//		Topic chatTopic = session1.createTopic(topicName);
+		System.out.println(chatTopic.getTopicName());
 		TopicPublisher topicPublisher = session1.createPublisher(chatTopic);
 		TopicSubscriber topicSubscriber = session2.createSubscriber(chatTopic,null,true);
 		topicSubscriber.setMessageListener(this);
@@ -47,8 +50,18 @@ public class Chat implements MessageListener{
 	}
 	@Override
 	public void onMessage(Message arg0) {
-		TextMessage message = (TextMessage) arg0;
 		try {
+			System.out.println(arg0.getJMSType());
+			System.out.println(arg0.getJMSPriority());
+			System.out.println(arg0.getJMSMessageID());
+			System.out.println(arg0.getJMSDestination());
+			System.out.println(arg0.getJMSDeliveryMode());
+			System.out.println(DeliveryMode.PERSISTENT);
+			System.out.println(DeliveryMode.NON_PERSISTENT);
+			System.out.println(arg0.getJMSType());
+			Destination jmsReplyTo = arg0.getJMSReplyTo();
+			System.out.println(jmsReplyTo);
+			TextMessage message = (TextMessage) arg0;
 			System.out.println(message.getText());
 		} catch (JMSException e) {
 			e.printStackTrace();
@@ -64,7 +77,7 @@ public class Chat implements MessageListener{
 		}
 	}
 	public static void main(String[] args) throws NamingException {
-		String topicName = "mytopic";
+		String topicName = "mytopic1";
 		System.out.println("请随便输入用户名称:  ");
 		BufferedReader reader  = new BufferedReader(new InputStreamReader(System.in));
 		try {

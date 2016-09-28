@@ -8,7 +8,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -28,7 +29,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  *
  */
 public class POIParse {
-	private static Logger _logger = Logger.getLogger(POIParse.class);
+	
+	private static Logger _logger = LogManager.getLogger(POIParse.class);
 	private File  file;
 	private static POIParse poiParse;
 	private PoiExcelEnum poiType;

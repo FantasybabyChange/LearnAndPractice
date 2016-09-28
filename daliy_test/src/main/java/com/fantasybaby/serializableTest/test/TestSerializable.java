@@ -11,12 +11,16 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import com.fantasybaby.hibernateValidtor.TestValidator;
 import com.fantasybaby.serializableTest.vo1.UserBean;
 
 public class TestSerializable {
 	private OutputStream output = null;	
 	private InputStream input = null;
+	private static Logger _logger = LoggerFactory.getLogger(TestSerializable.class);
 	/**
 	 * 如果两个相同结构的bean使用不同的序列ID
 	 * 解析和反解析
@@ -25,6 +29,7 @@ public class TestSerializable {
 	 */
 	@Test
 	public void test1() throws IOException, ClassNotFoundException{
+		_logger.info("呵呵呵呵呵");
 		output = new FileOutputStream(new File("Object1.txt"));
 		ObjectOutputStream objectOutPut = new ObjectOutputStream(output);
 		UserBean userBean1 = new UserBean();
