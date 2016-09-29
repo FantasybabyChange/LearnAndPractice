@@ -4,11 +4,17 @@
     <Console name="Console" target="SYSTEM_OUT">
       <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS}	%p	%t	%c{1}:%L	%m%n"/>
     </Console>
+	<StringAppender name="stringAppender">
+		 <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] [%-5p] {%F:%L} - %m%n" />
+	</StringAppender>
+
   </Appenders>
   <Loggers>
+  <logger name="com.fantasybaby" level="info" />
      <Root level="info">
-         <AppenderRef ref="Console" />
+         <AppenderRef ref="stringAppender" />
      </Root>
+     
   </Loggers>
 </Configuration>
 
