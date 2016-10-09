@@ -13,6 +13,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Layout;
 import org.eclipse.swt.widgets.Shell;
+
 /**
  * A alert message Dialog in a new shell
  * @author FantasyBaby
@@ -25,7 +26,7 @@ public class AlertMessageDialog {
     private Label secondLabel;
     private static AlertMessageDialog _instance;
     private Layout shellLayout;
-    private  String alertInfo = "这是提示!!!";
+    private  String alertInfo = "请初始化提示!!!";
     private boolean isAutoClose = false;
     private int closeSeconds = 3; 
     private int shellWidth = 100;
@@ -34,13 +35,16 @@ public class AlertMessageDialog {
     private int shellLocationy = 0;
     private boolean isMove = false;
     private int moveSpeed = 3;
-    private int alpha = 150;
+    private int alpha = 200;
     private ShellPositionEnum position = null;
     
-    private Color shellBackColor = SWTResourceManager.getColor(SWT.COLOR_RED);
-    private Font labelFont = SWTResourceManager.getFont("Microsoft YaHei UI", StationUIUtils.scale(15), SWT.BOLD);
-    private Color labelBackColor = SWTResourceManager.getColor(SWT.COLOR_RED);
-    private Color labelColor = SWTResourceManager.getColor(SWT.COLOR_BLACK);
+    private Color shellBackColor = SWTResourceManager.getColor(SWT.COLOR_DARK_YELLOW);
+    private Font labelFont = SWTResourceManager.getFont("Microsoft YaHei UI", StationUIUtils.scale(30), SWT.BOLD);
+    private Color labelBackColor = SWTResourceManager.getColor(SWT.COLOR_DARK_YELLOW);
+    private Color labelColor = SWTResourceManager.getColor(SWT.COLOR_WHITE);
+    private Timer timer = new Timer();
+    private TimerTask timerTask = null;
+    private Thread moveThread;
 	private AlertMessageDialog() {
 		
 	}
@@ -132,6 +136,8 @@ public class AlertMessageDialog {
 	}
 	
 	public void showAlert(){
+		//end the Timer
+		initTimer();
 		shell.setBackground(shellBackColor);
 		shell.setAlpha(alpha);
 		shell.setSize(this.shellWidth,this.shellHeight);
@@ -139,9 +145,9 @@ public class AlertMessageDialog {
 		if(shellLayout != null){
 			shell.setLayout(shellLayout);
 		}
-		Composite parentComposite = new Composite(shell,SWT.NONE);
 		float height = this.labelFont.getFontData()[0].height;
 		float labelLength = 1.5f*this.alertInfo.length()*height;
+		Composite parentComposite = new Composite(shell,SWT.NONE);
 		parentComposite.setSize((int)labelLength, 2*(int)height);
 		parentComposite.setLocation(10, 0);
 		this.fisrtLabel = new Label(parentComposite,SWT.NONE);
@@ -152,12 +158,11 @@ public class AlertMessageDialog {
 		fisrtLabel.setLocation(0,0);
 //		fisrtLabel.pack();
 		
-		
 		fisrtLabel.setSize((int)labelLength, 2*(int)height);
 		if(isMove){
 			this.secondLabel = new Label(parentComposite,SWT.NONE);
 			secondLabel.setBackground(labelBackColor);
-//			secondLabel.setForeground(labelColor);
+			secondLabel.setForeground(labelColor);
 			secondLabel.setFont(labelFont);
 			secondLabel.setText(this.alertInfo);
 			secondLabel.setLocation(fisrtLabel.getSize().x,0);
@@ -169,23 +174,31 @@ public class AlertMessageDialog {
 		shell.setLocation(shellLocationx, shellLocationy);
 		shell.open();
 		if(this.isMove){
-			new Thread(new Runnable() {
-				
-				@Override
-				public void run() {
-					autoMove();
+			if(moveThread == null){
+				moveThread = new Thread(new Runnable() {
 					
-				}
-			}).start();
+					@Override
+					public void run() {
+						autoMove();
+						
+					}
+				});
+				moveThread.start();
+			}
 		}
 		if(this.isAutoClose){
-	    	Timer timer = new Timer();
-	    	timer.schedule(new TimerTask() {
-				@Override
-				public void run() {
-					autoCloseAlert();
-				}
-				}, this.closeSeconds*1000);
+			if(timer == null){
+				timer = new Timer();
+			}
+			if(timerTask == null){
+				timerTask = new TimerTask() {
+					@Override
+					public void run() {
+						autoCloseAlert();
+					}
+					};
+			}
+	    	timer.schedule(timerTask, this.closeSeconds*1000);
 		    
 		}
 //		 shell.setSize(15*str.length(),hello.getBounds().height+2);
@@ -224,10 +237,21 @@ public class AlertMessageDialog {
 		private void autoCloseAlert(){
 			Display.getDefault().syncExec(new Runnable() {
 	    	    public void run() {
-			if(shell != null && !shell.isDisposed()){
-				shell.close();
-				shell.dispose();
-				shell = null;
+	    	 closeAlert();
+	    	 initTimer();
+			  }
+		});
+	}
+		private void initTimer(){
+			Display.getDefault().syncExec(new Runnable() {
+	    	    public void run() {
+	    	 if(timer != null){
+	    		 timer.cancel();
+	    		 timer = null;
+	    	 }
+			if(timerTask != null){
+				timerTask.cancel();
+				timerTask = null;
 			}
 			  }
 		});
@@ -239,29 +263,30 @@ public class AlertMessageDialog {
 		while (true) {
 			try {
 				Thread.sleep(500);
-				Display.getDefault().asyncExec(new Runnable() {
-					@Override
-					public void run() {
-						if(fisrtLabel != null &&!fisrtLabel.isDisposed()){
-							Point firstLocation = fisrtLabel.getLocation();
-							Point secondLocation = secondLabel.getLocation();
-							if(firstLocation.x < secondLocation.x){
-								if(firstLocation.x+fisrtLabel.getSize().x <= 0){
-									fisrtLabel.setLocation(secondLocation.x+secondLabel.getSize().x, 0);
+				if(fisrtLabel != null &&!fisrtLabel.isDisposed()){
+					Display.getDefault().asyncExec(new Runnable() {
+						@Override
+						public void run() {
+								Point firstLocation = fisrtLabel.getLocation();
+								Point secondLocation = secondLabel.getLocation();
+								if(firstLocation.x < secondLocation.x){
+									if(firstLocation.x+fisrtLabel.getSize().x <= 0){
+										fisrtLabel.setLocation(secondLocation.x+secondLabel.getSize().x, 0);
+									}
+								}else{
+									if(secondLocation.x+secondLabel.getSize().x <= 0){
+										secondLabel.setLocation(firstLocation.x+fisrtLabel.getSize().x, 0);
+									}
 								}
-							}else{
-								if(secondLocation.x+secondLabel.getSize().x <= 0){
-									secondLabel.setLocation(firstLocation.x+fisrtLabel.getSize().x, 0);
-								}
-							}
-							fisrtLabel.setLocation(fisrtLabel.getLocation().x-moveSpeed,fisrtLabel.getLocation().y);
-							secondLabel.setLocation(secondLabel.getLocation().x-moveSpeed,secondLabel.getLocation().y);
-						}else{
-							return;
+								fisrtLabel.setLocation(fisrtLabel.getLocation().x-moveSpeed,fisrtLabel.getLocation().y);
+								secondLabel.setLocation(secondLabel.getLocation().x-moveSpeed,secondLabel.getLocation().y);
+							
 						}
-						
-					}
-				});
+					});
+			}else{
+				moveThread = null;
+				return;
+			}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
