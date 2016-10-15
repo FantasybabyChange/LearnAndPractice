@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import com.fantasybaby.hibernateValidtor.annatation.UserNameNotNull;
 
-public class UserLogin {
+public class UserLogin extends ClassParent{
 
 	 @UserNameNotNull(message="{username.notnull}")
 	 @Size(max=10,message="用户名称过长")

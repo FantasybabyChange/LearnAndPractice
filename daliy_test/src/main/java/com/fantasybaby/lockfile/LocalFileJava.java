@@ -19,6 +19,7 @@ public class LocalFileJava {
 		System.out.println(file.getParent());
 		System.out.println(file.getParentFile().getPath());
 		parent = parent.concat(File.separator).concat("fantasybaby.lock");
+		System.out.println(parent);
 		try {
 			RandomAccessFile  randomFille = new RandomAccessFile(parent, "rw");
 			FileChannel channel = randomFille.getChannel();
