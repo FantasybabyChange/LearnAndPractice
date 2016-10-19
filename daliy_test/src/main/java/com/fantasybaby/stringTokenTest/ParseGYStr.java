@@ -1,5 +1,7 @@
 package com.fantasybaby.stringTokenTest;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.StringTokenizer;
 
 import com.fantasybaby.unicodeconvert.UnicodeConvertUtil;
@@ -9,7 +11,9 @@ import com.fantasybaby.unicodeconvert.UnicodeConvertUtil;
  *
  */
 public class ParseGYStr {
-	String parseStr = "62687|SH9|CTDKC|201609290064||GY0012666419|2OA010101|041|2|414490140◇◇00◇A16205◇WS3000067◇◇◇◇◇429◇48◆414477959◇◇00◇M002901◇WS3000411◇◇◇◇◇429◇20|";
+//	String parseStr = "62687|SH9|CTDKC|201609290064||GY0012666419|2OA010101|041|2|414490140\u25a1◇00◇A16205◇WS3000067◇◇◇◇◇429◇48◆414477959◇◇00◇M002901◇WS3000411◇◇◇◇◇429◇20|";
+	String parseStr ="a□b";
+	byte[] strByte = parseStr.getBytes();
 	int messageTypeIndex = 2;
 	String UNICODE25A1 = "□";
 	String UNICODE25A0 = "■";
@@ -51,9 +55,34 @@ public class ParseGYStr {
 //			}
 //		}
 	}
+	public void parseByte(){
+		try {
+			String[] split = parseStr.split("\u25a1");
+			for (String string : split) {
+				System.out.println(string);
+			}
+			System.out.println(this.strByte.length);
+			byte[] byteArra = new byte[5];
+			for (int i = 0; i < strByte.length; i++) {
+				byteArra[i%5] = strByte[i];
+				if(i%5 == 4){
+					String byteString = new String(byteArra,"UTF-8");
+					System.out.println(byteString +"---");
+				}
+				
+			}
+			
+			String byteString = new String(this.strByte,"UTF-8");
+			System.out.println(byteString);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) {
 //		new ParseGYStr().parseStr();
-		new ParseGYStr().splitStr();
+//		new ParseGYStr().splitStr();
+		new ParseGYStr().parseByte();
 		/*int a = 124;
 		char e = (char)a;
 		System.out.println(e);*/

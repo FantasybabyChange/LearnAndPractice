@@ -1,5 +1,9 @@
 package com.fantasybaby.unicodeconvert;
 
+import java.io.UnsupportedEncodingException;
+
+import com.fantasybaby.gytest.enumGY.UniCodeEnum;
+
 public class UnicodeConvertUtil {
 	/** 
 	* 将字符串转成unicode 
@@ -87,8 +91,38 @@ public class UnicodeConvertUtil {
 	} 
 	return sb.toString(); 
 	}
-	public static void main(String[] args) {
-		String convert = new UnicodeConvertUtil().revert("\u25c6");
+	public static void main(String[] args) throws UnsupportedEncodingException {
+		String convert = new UnicodeConvertUtil().convert("|");
+		char a1 = '□';
+		char convert1 = '\u25a1';
+//		byte[] bytes = convert1.getBytes();
+		String str1 = "\u25a1";
+		String hehe = convert1 + str1;
+		System.out.println(hehe.length());
+		byte[] bytes = str1.getBytes();
+		System.out.println(new String(bytes,"UTF-8"));
+		System.out.println("--------------");
+		char a = '□';
+		char b = '\u25a1';
+		System.out.println(b);
+		System.out.println(a);
+		System.out.println(a == b);
 		System.out.println(convert);
+		byte startHex = 0x02;
+		String startStr = new String(new byte[]{startHex},"UTF-8");
+		String startUnicode = "\u0002";
+		
+		System.out.println(startStr.equals(startUnicode));
+		System.out.println(startUnicode.length());
+		byte endHex = 0x03;
+//		System.out.println(startHex.length());
+		UniCodeEnum[] values = UniCodeEnum.values();
+		UnicodeConvertUtil unicodeConvertUtil = new UnicodeConvertUtil();
+		System.out.println("-- start convert");
+		for (UniCodeEnum uniCodeEnum : values) {
+			String revert = unicodeConvertUtil.revert(uniCodeEnum.getUnicode());
+			String convert2 = unicodeConvertUtil.convert(uniCodeEnum.getUnicodeLike());
+			System.out.println(revert +"-" + convert2);
+		}
 	}
 }

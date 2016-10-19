@@ -20,6 +20,8 @@ public class StrategyTest {
 //		MyColor myColor = new MyColor(new RedColor());
 		MyColor myColor = new MyColor("green");
 		_logger.info(myColor.showColor());
+		char c = '\u0003';
+		System.out.println(c);
 //		System.out.println(myColor.showColor());
 	}
 }
