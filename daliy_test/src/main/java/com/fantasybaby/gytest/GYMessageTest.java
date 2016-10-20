@@ -7,6 +7,7 @@ import com.fantasybaby.gytest.enumGY.UniCodeEnum;
 
 public class GYMessageTest {
 	private static final int message_type_index = 2;
+	private static final int skus_index = 9;
 	public void simpleSpelateString(byte[] byteArrays){
 		try {
 			if(byteArrays != null && byteArrays.length > 0){
@@ -19,8 +20,19 @@ public class GYMessageTest {
 					}
 					String parseEnd = new String(byteArra,"UTF-8");
 					System.out.println(parseEnd);
-					String[] split = parseEnd.split("\\"+UniCodeEnum.U007C.getUnicode());
+					String[] split = parseEnd.split(UniCodeEnum.U007C.getUnicode());
+					for (String string : split) {
+						System.out.println(string +" ---");
+					}
 					String messageType = split[message_type_index];
+					String quantity = split[skus_index-1];
+					System.out.println("quantity:" +quantity);
+					String skuDetails = split[skus_index];
+					System.out.println(skuDetails);
+					String[] split2 = skuDetails.split(UniCodeEnum.U25C6.getUnicode());
+					for (String eachSku : split2) {
+						System.out.println(eachSku +" +++");
+					}
 					System.out.println(messageType);
 				}else{
 					throw new Exception("格式不正确 缺少开头或者结尾的标志位");
@@ -33,7 +45,7 @@ public class GYMessageTest {
 	}
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		String parseStr= UniCodeEnum.STX.getUnicode()+"62687|SH9|CTDKC|201609290064||GY0012666419|2OA010101|041|2|414490140◇◇00◇A16205◇WS3000067◇◇◇◇◇429◇48◆414477959◇◇00◇M002901◇WS3000411◇◇◇◇◇429◇20|"+UniCodeEnum.EXT.getUnicode();
-		byte[] bytes = UniCodeEnum.STX.getUnicode().getBytes("UTF-8");
+		/*byte[] bytes = UniCodeEnum.STX.getUnicode().getBytes("UTF-8");
 		int sdksdj = 0x25a1;
 		
 		
@@ -55,7 +67,7 @@ public class GYMessageTest {
 		byte str = 0x7f;
 		byte a123 = (byte) (111100000);
 		System.out.println(a123+"--aaaa");
-		System.out.println(str);
+		System.out.println(str);*/
 //		System.out.println(bytes2.length);
 //		System.out.println(bytes.length);
 		new GYMessageTest().simpleSpelateString(parseStr.getBytes("UTF-8"));

@@ -7,7 +7,7 @@ public enum UniCodeEnum {
 	U25A0("\u25a0","■",0x25a0),
 	U25C7("\u25c7","◇",0x25c7),
 	U25C6("\u25c6","◆",0x25c6),
-	U007C("\u007c","|",0x007c)
+	U007C("\\\u007c","|",0x007c)
 	;
 	private String unicode;
 	private String unicodeLike;
