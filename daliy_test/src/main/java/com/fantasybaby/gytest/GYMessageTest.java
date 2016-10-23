@@ -1,7 +1,6 @@
 package com.fantasybaby.gytest;
 
 import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
 
 import com.fantasybaby.gytest.enumGY.UniCodeEnum;
 

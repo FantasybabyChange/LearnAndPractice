@@ -1,4 +1,4 @@
-package com.fantasybaby.hibernateValidtor;
+/*package com.fantasybaby.hibernateValidtor;
 
 import org.json.JSONObject;
 import org.junit.Test;
@@ -9,8 +9,8 @@ import com.fantasybaby.hibernateValidtor.bean.UserLogin;
 public class FilePathTest {
 	@Test
 	public void Test1(Class classStr){
-		/*String path = FilePathTest.class.getResource("testExcel.xlsx").getPath();
-		System.out.println(path);*/
+		String path = FilePathTest.class.getResource("testExcel.xlsx").getPath();
+		System.out.println(path);
 		try {
 //			Object newInstance = classStr.newInstance();
 //			Class superclass = classStr.getSuperclass();
@@ -28,3 +28,4 @@ public class FilePathTest {
 		new FilePathTest().Test1(UserLogin.class);
 	}
 }
+*/

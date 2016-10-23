@@ -1,4 +1,4 @@
-package com.fantasybaby.serializableTest.test;
+/*package com.fantasybaby.serializableTest.test;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,12 +21,12 @@ public class TestSerializable {
 	private OutputStream output = null;	
 	private InputStream input = null;
 	private static Logger _logger = LoggerFactory.getLogger(TestSerializable.class);
-	/**
+	*//**
 	 * 如果两个相同结构的bean使用不同的序列ID
 	 * 解析和反解析
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
-	 */
+	 *//*
 	@Test
 	public void test1() throws IOException, ClassNotFoundException{
 		_logger.info("呵呵呵呵呵");
@@ -40,13 +40,13 @@ public class TestSerializable {
 		objectOutPut.close();
 		output.close();
 	}
-	/**如果两个相同结构的bean使用不同的序列ID
+	*//**如果两个相同结构的bean使用不同的序列ID
 	 * 解析和反解析
 	 * 读取
 	 * @throws IOException 
 	 * @throws ClassNotFoundException 
 	 * 
-	 */
+	 *//*
 	@Test
 	public void test2() {
 		try {
@@ -60,3 +60,4 @@ public class TestSerializable {
 		}
 	}
 }
+*/
