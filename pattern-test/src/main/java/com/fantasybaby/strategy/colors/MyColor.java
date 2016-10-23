@@ -56,6 +56,7 @@ public class MyColor {
 				_logger.info("load " + fullClassName);
 				Class<?> loadClass = classLoader.loadClass(fullClassName);
 				if(IColors.class.isAssignableFrom(loadClass)){
+					_logger.info("add class " + loadClass.toString());
 					this.childClass.add((Class<? extends IColors>)loadClass);
 				}
 			}
@@ -70,14 +71,14 @@ public class MyColor {
             File file = new File(classLoader.getResource(BASICP_ACKAGE.replace(".", "/")).toURI());
             return file.listFiles(new FileFilter() {
                 public boolean accept(File pathname) {
-                    if (pathname.getName().endsWith(".class")) {//我们只扫描class文件
+                    if (pathname.getName().endsWith(".class")) {
                         return true;
                     }
                     return false;
                 }
             });
         } catch (URISyntaxException e) {
-            throw new RuntimeException("未找到策略资源");
+            throw new RuntimeException("未找到对应的类文件");
         }
     }
 }
