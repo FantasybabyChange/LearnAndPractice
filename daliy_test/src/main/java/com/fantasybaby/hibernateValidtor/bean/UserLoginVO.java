@@ -9,7 +9,7 @@ import com.fantasybaby.context.SystemContext;
 import com.fantasybaby.ubean.Criterion;
 
 
-public class UserLoginVO {
+public class UserLoginVO extends UserLogin{
  
  @NotBlank(message="{password_username_notempty}")
  @Length(min=4,max=15,message="{username_maxlength}")
