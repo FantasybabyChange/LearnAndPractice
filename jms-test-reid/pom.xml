@@ -34,6 +34,7 @@
 	    <artifactId>activemq-core</artifactId>
 	    <version>5.7.0</version>
 	</dependency> -->
+	
 		<dependency>
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activemq-client</artifactId>
@@ -55,6 +56,11 @@
 				</exclusions>
 
 			</dependency>	
+			<dependency>
+			    <groupId>io.netty</groupId>
+			    <artifactId>netty-all</artifactId>
+			    <version>4.1.6.Final</version>
+			</dependency>
   </dependencies>
   <build>
   	<plugins>
@@ -65,8 +71,8 @@
 	              <version>3.0</version>  
 	              <configuration>  
 	             	 <defaultLibBundleDir>lib</defaultLibBundleDir>
-	                 <source>1.7</source>  
-	                  <target>1.7</target>  
+	                 <source>1.8</source>  
+	                  <target>1.8</target>  
 	                  <encoding>UTF-8</encoding>  
 	                  <verbal>true</verbal>  
 	              </configuration>  

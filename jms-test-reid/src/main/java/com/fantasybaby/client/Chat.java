@@ -28,6 +28,9 @@ public class Chat implements MessageListener{
 	private TopicPublisher publisher;
 	private TopicConnection connection;
 	private String userName;
+	public Chat(){
+		
+	}
 	Chat(String topicFactory,String topicName,String userName) throws Exception{
 		InitialContext initialContext = new InitialContext();
 		TopicConnectionFactory topicConnectionFactory = (TopicConnectionFactory) initialContext.lookup(topicFactory);
