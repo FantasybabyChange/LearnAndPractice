@@ -5,7 +5,7 @@ import org.junit.Test;
 import com.fantasybaby.classloader.ClassloaderSequence;
 
 public class TestSequenceClassLoader {
-	ClassloaderSequence cs = ClassloaderSequence.getInstance();
+	ClassloaderSequence cs = new ClassloaderSequence();
 	@Test
 	public void text1(){
 			System.out.println(cs.count);

@@ -61,6 +61,41 @@
 			    <artifactId>netty-all</artifactId>
 			    <version>4.1.6.Final</version>
 			</dependency>
+			
+			
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-api</artifactId>
+				<version>2.4.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-core</artifactId>
+				<version>2.4.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-jcl</artifactId>
+				<version>2.4.1</version>
+			</dependency>
+			<dependency>
+				 <groupId>org.apache.logging.log4j</groupId>
+				 <artifactId>log4j-web</artifactId>
+				 <version>2.0.2</version>
+			</dependency>
+			<!-- slf4j -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.7.7</version>
+			</dependency>
+
+			<!-- slf4j-log4j -->
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-slf4j-impl</artifactId>
+				<version>2.1</version>
+			</dependency>
   </dependencies>
   <build>
   	<plugins>
@@ -70,11 +105,11 @@
 	              <artifactId>maven-compiler-plugin</artifactId>  
 	              <version>3.0</version>  
 	              <configuration>  
-	             	 <defaultLibBundleDir>lib</defaultLibBundleDir>
+	             <!--	 <defaultLibBundleDir>lib</defaultLibBundleDir>-->
 	                 <source>1.8</source>  
 	                  <target>1.8</target>  
 	                  <encoding>UTF-8</encoding>  
-	                  <verbal>true</verbal>  
+	                  <!--<verbal>true</verbal>  -->
 	              </configuration>  
 	          </plugin>  
 	          <plugin>  
