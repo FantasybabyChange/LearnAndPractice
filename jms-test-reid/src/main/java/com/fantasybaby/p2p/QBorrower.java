@@ -3,7 +3,9 @@ package com.fantasybaby.p2p;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Enumeration;
 
+import javax.jms.ConnectionMetaData;
 import javax.jms.JMSException;
 import javax.jms.MapMessage;
 import javax.jms.Queue;
@@ -18,6 +20,7 @@ import javax.naming.InitialContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.impl.StaticMarkerBinder;
 
 import com.fantasybaby.log.LoggerUtils;
 
@@ -44,6 +47,8 @@ public class QBorrower {
 			InitialContext context = new InitialContext();
 			QueueConnectionFactory connectionFactory = (QueueConnectionFactory) context.lookup(queueFactory);
 			queueConnection = connectionFactory.createQueueConnection("walleuser","walle123");
+			
+			showMetaData();
 			queueSession = queueConnection.createQueueSession(false,Session.AUTO_ACKNOWLEDGE);
 			requestQueue = (Queue) context.lookup(requstQueueName);
 			responseQueue = (Queue) context.lookup(responseQueueName);
@@ -52,35 +57,61 @@ public class QBorrower {
 			e.printStackTrace();
 		}
 	}
-	private void sendLoanRequest(String firstParam,String secondParam){
+	private void showMetaData(){
 		try {
-			System.out.println("---------start create Message---------");
-			MapMessage messageMap = queueSession.createMapMessage();
-			messageMap.setString("firstParam", firstParam);
-			messageMap.setString("secondParam", secondParam);
-			QueueSender sender = queueSession.createSender(requestQueue);
-			sender.send(messageMap);
-			System.out.println("---------afterSendMessage---------");
-			QueueReceiver createReceiver = queueSession.createReceiver(responseQueue);
-			TextMessage receiveMessage = (TextMessage) createReceiver.receive(3000);
-			String text = receiveMessage.getText();
-			System.out.println(text+" -- borrower receive");
+			ConnectionMetaData metaData = queueConnection.getMetaData();
+			_logger.info("providerName :"+metaData.getJMSProviderName());
+			_logger.info("version :"+metaData.getJMSVersion());
+			Enumeration propertyNames = metaData.getJMSXPropertyNames();
+			while (propertyNames.hasMoreElements()) {
+				_logger.info((String)propertyNames.nextElement());
+				
+			}
 			
 		} catch (JMSException e) {
 			e.printStackTrace();
 		}
 	}
-	public static void main(String[] args) throws IOException {
+	private void sendLoanRequest(String firstParam) throws InterruptedException{
+		try {
+			_logger.info("---------start create Message---------");
+			MapMessage messageMap = queueSession.createMapMessage();
+			messageMap.setString("firstParam", firstParam);
+//			messageMap.setString("secondParam", secondParam);
+			QueueSender sender = queueSession.createSender(requestQueue);
+			sender.send(messageMap);
+			_logger.info("---------afterSendMessage---------");
+			QueueReceiver createReceiver = queueSession.createReceiver(responseQueue);
+			TextMessage receiveMessage = (TextMessage) createReceiver.receive(3000);
+			String text = receiveMessage.getText();
+			_logger.info(text+" -- borrower receive");
+		} catch (JMSException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void exit(){
+		try {
+			this.queueConnection.close();
+			System.exit(0);
+		} catch (JMSException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public static void main(String[] args) throws IOException, InterruptedException {
 		
-		/*QBorrower borrower = new QBorrower("QueueConnectionFactory","requestQueue","responseQueue");
-		BufferedReader reader  = new BufferedReader(new InputStreamReader(System.in));*/
+		QBorrower borrower = new QBorrower("QueueConnectionFactory","requestQueue","responseQueue");
+		BufferedReader reader  = new BufferedReader(new InputStreamReader(System.in));
 		_logger.info("-----start borrower");
+		Thread.sleep(100000);
 		while (true) {
-			/*String readLine = reader.readLine();
+			String readLine = reader.readLine();
 			if(readLine.equals("exit")){
-				System.exit(0);
+				borrower.exit();
 			}else{
-			}*/
+				borrower.sendLoanRequest(readLine);
+			}
 		}
 	}
 }
