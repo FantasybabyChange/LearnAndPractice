@@ -78,13 +78,18 @@ public class QBorrower {
 			MapMessage messageMap = queueSession.createMapMessage();
 			messageMap.setString("firstParam", firstParam);
 //			messageMap.setString("secondParam", secondParam);
+			messageMap.setJMSReplyTo(responseQueue);
 			QueueSender sender = queueSession.createSender(requestQueue);
 			sender.send(messageMap);
 			_logger.info("---------afterSendMessage---------");
 			QueueReceiver createReceiver = queueSession.createReceiver(responseQueue);
-			TextMessage receiveMessage = (TextMessage) createReceiver.receive(3000);
-			String text = receiveMessage.getText();
-			_logger.info(text+" -- borrower receive");
+			TextMessage receiveMessage = (TextMessage) createReceiver.receive(30000);
+			if(receiveMessage != null){
+				String text = receiveMessage.getText();
+				_logger.info(text+" -- borrower receive");
+			}else{
+				_logger.info(" -- no reback message");
+			}
 		} catch (JMSException e) {
 			e.printStackTrace();
 		}
@@ -104,7 +109,6 @@ public class QBorrower {
 		QBorrower borrower = new QBorrower("QueueConnectionFactory","requestQueue","responseQueue");
 		BufferedReader reader  = new BufferedReader(new InputStreamReader(System.in));
 		_logger.info("-----start borrower");
-		Thread.sleep(100000);
 		while (true) {
 			String readLine = reader.readLine();
 			if(readLine.equals("exit")){
