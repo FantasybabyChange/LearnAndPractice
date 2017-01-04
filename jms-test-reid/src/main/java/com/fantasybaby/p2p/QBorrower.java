@@ -39,7 +39,7 @@ public class QBorrower {
 	private Queue responseQueue;
 	private static Logger _logger ;
 	static {
-		LoggerUtils.init();
+		//LoggerUtils.init();
 		_logger = LoggerFactory.getLogger(QBorrower.class);
 	}
 	public QBorrower(String queueFactory,String requstQueueName,String responseQueueName){
