@@ -72,6 +72,7 @@ public class QBorrower {
 			e.printStackTrace();
 		}
 	}
+	
 	private void sendLoanRequest(String firstParam) throws InterruptedException{
 		try {
 			_logger.info("---------start create Message---------");
@@ -82,8 +83,11 @@ public class QBorrower {
 			QueueSender sender = queueSession.createSender(requestQueue);
 			sender.send(messageMap);
 			_logger.info("---------afterSendMessage---------");
-			QueueReceiver createReceiver = queueSession.createReceiver(responseQueue);
-			TextMessage receiveMessage = (TextMessage) createReceiver.receive(30000);
+//			if(createReceiver == null){
+			String filter="JMSCorrelationID='" + messageMap.getJMSMessageID()+"'";
+			QueueReceiver createReceiver = queueSession.createReceiver(responseQueue,filter);
+//			}
+			TextMessage receiveMessage = (TextMessage) createReceiver.receive();
 			if(receiveMessage != null){
 				String text = receiveMessage.getText();
 				_logger.info(text+" -- borrower receive");
