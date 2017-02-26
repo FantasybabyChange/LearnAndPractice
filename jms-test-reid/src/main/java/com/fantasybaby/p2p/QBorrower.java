@@ -20,9 +20,6 @@ import javax.naming.InitialContext;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.impl.StaticMarkerBinder;
-
-import com.fantasybaby.log.LoggerUtils;
 
 /**
  * 异步请求/应答
