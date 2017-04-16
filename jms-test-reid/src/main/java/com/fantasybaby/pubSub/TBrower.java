@@ -39,9 +39,15 @@ public class TBrower implements MessageListener{
 			Context context = new InitialContext();
 			TopicConnectionFactory factory = (TopicConnectionFactory) context.lookup(factoryName);
 			connection = (TopicConnection) factory.createConnection("walleuser","walle123");
+			//持久化订阅需要设置客户ID
+			connection.setClientID("xige");
 			session = connection.createTopicSession(false, Session.AUTO_ACKNOWLEDGE);
+			
 			topic = (Topic) context.lookup(topicName);
-			TopicSubscriber subScriber = session.createSubscriber(topic);
+			//非持久化订阅
+//			TopicSubscriber subScriber = session.createSubscriber(topic);
+			//持久化订阅
+			TopicSubscriber subScriber = session.createDurableSubscriber(topic, "lenderTopic");
 			subScriber.setMessageListener(this);
 			connection.start();
 			System.out.println("waiting input message");
