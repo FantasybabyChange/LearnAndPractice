@@ -38,7 +38,6 @@ public class Saler2 implements MessageListener {
 			QueueReceiver createReceiver = queueSession.createReceiver(requestQueue,"type='ge'");
 			createReceiver.setMessageListener(this);
 			queueConnection.start();
-			
 		} catch (NamingException e) {
 			e.printStackTrace();
 		} catch (JMSException e) {
@@ -48,8 +47,7 @@ public class Saler2 implements MessageListener {
 	}
 	public static void main(String[] args) {
 		_logger.info("slaer2 start");
-		Saler2 retailer = new Saler2("TopicConnectionFactory","requestQueue");
-		
+		new Saler2("TopicConnectionFactory","requestQueue");
 	}
 	@Override
 	public void onMessage(Message receive) {
