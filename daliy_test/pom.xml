@@ -89,9 +89,16 @@
 				<groupId>org.apache.logging.log4j</groupId>
 				<artifactId>log4j-slf4j-impl</artifactId>
 				<version>2.1</version>
-			</dependency>
-		
-		<!-- javax comm -->
+	  	</dependency>
+	  <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+	  <dependency>
+		  <groupId>org.projectlombok</groupId>
+		  <artifactId>lombok</artifactId>
+		  <version>1.16.16</version>
+	  </dependency>
+
+
+	  <!-- javax comm -->
 
 			<!-- swt -->
 			<!-- https://mvnrepository.com/artifact/org.eclipse/swt -->
@@ -168,7 +175,7 @@
                  <source>1.7</source>  
                   <target>1.7</target>  
                   <encoding>UTF-8</encoding>  
-                  <verbal>true</verbal>  
+                  <!--<verbal>true</verbal>  -->
               </configuration>  
           </plugin>  
           <plugin>
