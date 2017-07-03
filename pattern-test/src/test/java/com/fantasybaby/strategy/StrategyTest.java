@@ -18,7 +18,7 @@ public class StrategyTest {
 	@Test
 	public void test1(){
 //		MyColor myColor = new MyColor(new RedColor());
-		MyColor myColor = new MyColor("red");
+		MyColor myColor = new MyColor("blue");
 		_logger.info(myColor.showColor());
 		char c = '\u0003';
 		System.out.println(c);

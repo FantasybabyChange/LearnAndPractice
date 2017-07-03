@@ -96,12 +96,11 @@
 			<!-- swt -->
 			<!-- https://mvnrepository.com/artifact/org.eclipse/swt -->
 			<!-- https://mvnrepository.com/artifact/org.eclipse/swt -->
-		<!-- 	<dependency>
+		 	<dependency>
 				    <groupId>org.eclipse</groupId>
 				    <artifactId>swt</artifactId>
 				    <version>3.2.1-v3235e</version>
 				</dependency>
- -->
  			<!-- https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.win32.win32.x86 -->
 	<!-- https://mvnrepository.com/artifact/org.eclipse.swt/org.eclipse.swt.cocoa.macosx.x86_64 -->
 	<dependency>
@@ -168,7 +167,7 @@
                  <source>1.7</source>  
                   <target>1.7</target>  
                   <encoding>UTF-8</encoding>  
-                  <verbal>true</verbal>  
+                  <!--<verbal>true</verbal>  -->
               </configuration>  
           </plugin>  
           <plugin>
