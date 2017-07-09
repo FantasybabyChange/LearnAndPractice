@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean
+            class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:datasource.properties"/>
+    </bean>
+
+    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="${jms.brokerURL}"/>
+        <property name="userName" value="${jms.userName}"/>
+        <property name="password" value="${jms.password}"/>
+    </bean>
+
+    <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg index="0" value="${jms.messageTopic}" />
+    </bean>
+    <bean id="destinationTopic" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg index="0" value="${jms.messageTopic}" />
+    </bean>
+
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="defaultDestination" ref="destination"/>
+    </bean>
+
+    <bean id="messageSender" class="com.fantasybaby.bindspring.MQMessageSender">
+        <constructor-arg index="0" ref="jmsTemplate"/>
+    </bean>
+
+</beans>
