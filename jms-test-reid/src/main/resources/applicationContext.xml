@@ -1,32 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd  ">
     <bean
             class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="classpath:datasource.properties"/>
     </bean>
+    <context:component-scan base-package="com.fantasybaby.*"/>
+    <!-- 使用jndi配置 start-->
+     <!-- 1.创建jndiTmplate bean 用于配置链接地址 以及安全认证-->
+    <bean id="jndiTmplate" class="org.springframework.jndi.JndiTemplate ">
+        <property name="environment">
+            <props>
+                <prop key="java.naming.factory.initial">${jms.init.factory}</prop>
+                <prop key="java.naming.provider.url">${jms.brokerURL}</prop>
+                <prop key=" java.naming.security.principal">${jms.init.factory}</prop>
+                <prop key=" java.naming.security.credentials">${jms.init.factory}</prop>
+                <prop key="connectionFactoryNames">ConnectionFactory</prop>
+            </props>
+        </property>
+    </bean>
 
-    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+    <bean id="jndiQueueConnectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiTemplate" ref="jndiTmplate"></property>
+        <property name="jndiName" value="ConnectionFactory"></property>
+    </bean>
+    <bean id="queueConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+        <property name="targetConnectionFactory" ref="jndiQueueConnectionFactory"></property>
+        <property name="sessionCacheSize" value="1"></property>
+    </bean>
+    <bean id="destinationResolver" class="org.springframework.jms.support.destination.JndiDestinationResolver">
+            <property name="jndiTemplate" ref="jndiTmplate"></property>
+    </bean>
+    <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg index="0" value="${jms.messageTopic}" />
+    </bean>
+    <!--end jndi property-->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="queueConnectionFactory"/>
+        <property name="destinationResolver" ref="destinationResolver"/>
+        <property name="defaultDestination" ref="destination"/>
+        <property name="pubSubDomain" value="false"/>
+        <!--<property name="connectionFactory" ref="connectionFactory"/>
+        <property name="defaultDestination" ref="destination"/>-->
+    </bean>
+
+ <!--   <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
         <property name="brokerURL" value="${jms.brokerURL}"/>
         <property name="userName" value="${jms.userName}"/>
         <property name="password" value="${jms.password}"/>
     </bean>
-
     <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
         <constructor-arg index="0" value="${jms.messageTopic}" />
     </bean>
     <bean id="destinationTopic" class="org.apache.activemq.command.ActiveMQTopic">
         <constructor-arg index="0" value="${jms.messageTopic}" />
-    </bean>
+    </bean>-->
 
-    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-        <property name="connectionFactory" ref="connectionFactory"/>
-        <property name="defaultDestination" ref="destination"/>
-    </bean>
-
-    <bean id="messageSender" class="com.fantasybaby.bindspring.MQMessageSender">
-        <constructor-arg index="0" ref="jmsTemplate"/>
-    </bean>
-
+    <!--<bean id="messageSender" class="com.fantasybaby.bindspring.MQMessageSender">
+    </bean>-->
 </beans>

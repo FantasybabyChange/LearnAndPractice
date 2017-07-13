@@ -12,6 +12,8 @@ public class TestMessage {
                 new ClassPathXmlApplicationContext("applicationContext.xml");
         IMessageSender sender = ctx.getBean(IMessageSender.class);
         sender.sendMessage("Hello");
+        IMessageReceive receive = ctx.getBean(IMessageReceive.class);
+        receive.receiveMessage();
         ctx.close();
     }
 }
