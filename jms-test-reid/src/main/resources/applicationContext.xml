@@ -16,9 +16,11 @@
             <props>
                 <prop key="java.naming.factory.initial">${jms.init.factory}</prop>
                 <prop key="java.naming.provider.url">${jms.brokerURL}</prop>
-                <prop key=" java.naming.security.principal">${jms.init.factory}</prop>
-                <prop key=" java.naming.security.credentials">${jms.init.factory}</prop>
+                <prop key="java.naming.security.principal">${jms.userName}</prop>
+                <prop key="java.naming.security.credentials">${jms.password}</prop>
                 <prop key="connectionFactoryNames">ConnectionFactory</prop>
+                <prop key="userName">${jms.userName}</prop>
+                <prop key="password">${jms.password}</prop>
             </props>
         </property>
     </bean>

@@ -25,7 +25,7 @@ public class Sender {
         try {
             InitialContext context = new InitialContext();
             QueueConnectionFactory connectionFactory = (QueueConnectionFactory) context.lookup(queueFactory);
-            queueConnection = connectionFactory.createQueueConnection(UserNameUtil.USERNAME,UserNameUtil.USERPWD);
+            queueConnection = connectionFactory.createQueueConnection();
 
             queueSession = queueConnection.createQueueSession(false,Session.CLIENT_ACKNOWLEDGE);
             requestQueue = (Queue) context.lookup(requstQueueName);
