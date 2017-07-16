@@ -16,11 +16,12 @@
             <props>
                 <prop key="java.naming.factory.initial">${jms.init.factory}</prop>
                 <prop key="java.naming.provider.url">${jms.brokerURL}</prop>
-                <prop key="java.naming.security.principal">${jms.userName}</prop>
-                <prop key="java.naming.security.credentials">${jms.password}</prop>
+                <!--<prop key="java.naming.security.principal">${jms.userName}</prop>
+                <prop key="java.naming.security.credentials">${jms.password}</prop>-->
                 <prop key="connectionFactoryNames">ConnectionFactory</prop>
                 <prop key="userName">${jms.userName}</prop>
                 <prop key="password">${jms.password}</prop>
+                <prop key="queue.requestQueue1" >${jms.messagequenue2}</prop>
             </props>
         </property>
     </bean>
@@ -37,7 +38,7 @@
             <property name="jndiTemplate" ref="jndiTmplate"></property>
     </bean>
     <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
-        <constructor-arg index="0" value="${jms.messageTopic}" />
+        <constructor-arg index="0" value="${jms.messagequenue}" />
     </bean>
     <!--end jndi property-->
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
@@ -48,7 +49,17 @@
         <!--<property name="connectionFactory" ref="connectionFactory"/>
         <property name="defaultDestination" ref="destination"/>-->
     </bean>
-
+   <!-- 普通消息监听-->
+    <bean id="messageListener" class="com.fantasybaby.bindspring.MessageReceiveSyn"/>
+    <!--使用默认消息监听容器 -->
+    <bean id="defaultListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="queueConnectionFactory"/>
+        <property name="destinationResolver" ref="destinationResolver"/>
+        <property name="concurrentConsumers" value="3"/>
+        <!-- 定义消息监听的实现-->
+        <property name="destinationName" value="requestQueue1"/>
+        <property name="messageListener" ref="messageListener"/>
+    </bean>
  <!--   <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
         <property name="brokerURL" value="${jms.brokerURL}"/>
         <property name="userName" value="${jms.userName}"/>

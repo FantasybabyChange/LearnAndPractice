@@ -23,7 +23,8 @@ public class Receive implements MessageListener{
 			QueueConnectionFactory factory = (QueueConnectionFactory) context.lookup(queueFc);
 			queueConnection = factory.createQueueConnection();
 			queueSession = queueConnection.createQueueSession(false,QueueSession.CLIENT_ACKNOWLEDGE);
-			requestQueue = (Queue) context.lookup(requestQueueStr);
+//			requestQueue = (Queue) context.lookup(requestQueueStr);
+			requestQueue = queueSession.createQueue(requestQueueStr);
 			queueConnection.start();
 
 			QueueReceiver createReceiver = queueSession.createReceiver(requestQueue);

@@ -28,7 +28,8 @@ public class Sender {
             queueConnection = connectionFactory.createQueueConnection();
 
             queueSession = queueConnection.createQueueSession(false,Session.CLIENT_ACKNOWLEDGE);
-            requestQueue = (Queue) context.lookup(requstQueueName);
+//            requestQueue = (Queue) context.lookup(requstQueueName);
+            requestQueue  =  queueSession.createQueue(requstQueueName);
             queueConnection.start();
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,6 +1,5 @@
 package com.fantasybaby.bindspring;
 
-import org.apache.axis2.clustering.MessageSender;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -12,8 +11,8 @@ public class TestMessage {
                 new ClassPathXmlApplicationContext("applicationContext.xml");
         IMessageSender sender = ctx.getBean(IMessageSender.class);
         sender.sendMessage("Hello");
-        IMessageReceive receive = ctx.getBean(IMessageReceive.class);
-        receive.receiveMessage();
+        /*IMessageReceive receive = ctx.getBean(IMessageReceive.class);
+        receive.receiveMessage();*/
         ctx.close();
     }
 }
