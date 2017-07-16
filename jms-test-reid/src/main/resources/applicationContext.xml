@@ -2,8 +2,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jms="http://www.springframework.org/schema/jms"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context.xsd  ">
+    http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-2.5.xsd">
     <bean
             class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="location" value="classpath:datasource.properties"/>
@@ -21,7 +22,10 @@
                 <prop key="connectionFactoryNames">ConnectionFactory</prop>
                 <prop key="userName">${jms.userName}</prop>
                 <prop key="password">${jms.password}</prop>
+                <prop key="queue.requestQueue" >${jms.messagequenue}</prop>
                 <prop key="queue.requestQueue1" >${jms.messagequenue2}</prop>
+                <prop key="topic.requestTopic" >${jms.messageTopic}</prop>
+                <prop key="topic.requestTopic1" >${jms.messageTopic1}</prop>
             </props>
         </property>
     </bean>
@@ -36,30 +40,45 @@
     </bean>
     <bean id="destinationResolver" class="org.springframework.jms.support.destination.JndiDestinationResolver">
             <property name="jndiTemplate" ref="jndiTmplate"></property>
+
     </bean>
-    <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+    <!--<bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
         <constructor-arg index="0" value="${jms.messagequenue}" />
+    </bean>-->
+    <!-- 发布订阅 -->
+    <bean id="destination" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg index="0" value="${jms.messageTopic}" />
     </bean>
     <!--end jndi property-->
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
         <property name="connectionFactory" ref="queueConnectionFactory"/>
         <property name="destinationResolver" ref="destinationResolver"/>
         <property name="defaultDestination" ref="destination"/>
-        <property name="pubSubDomain" value="false"/>
+        <property name="pubSubDomain" value="true"/>
+        <property name="pubSubNoLocal" value="true"/>
         <!--<property name="connectionFactory" ref="connectionFactory"/>
         <property name="defaultDestination" ref="destination"/>-->
     </bean>
    <!-- 普通消息监听-->
-    <bean id="messageListener" class="com.fantasybaby.bindspring.MessageReceiveSyn"/>
+    <bean id="messageListener"   class="com.fantasybaby.bindspring.MessageReceiveSyn"/>
+    <bean id="messageListener1" class="com.fantasybaby.bindspring.MessageReceiveSyn2"/>
     <!--使用默认消息监听容器 -->
-    <bean id="defaultListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+    <!--<bean id="defaultListenerContainer"   class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="queueConnectionFactory"/>
         <property name="destinationResolver" ref="destinationResolver"/>
         <property name="concurrentConsumers" value="3"/>
-        <!-- 定义消息监听的实现-->
+        &lt;!&ndash; 定义消息监听的实现&ndash;&gt;
         <property name="destinationName" value="requestQueue1"/>
         <property name="messageListener" ref="messageListener"/>
-    </bean>
+    </bean>-->
+    <!-- 使用spring命名空间 jms 使用topic-->
+    <jms:listener-container  destination-type="topic"  connection-factory="queueConnectionFactory" destination-resolver="destinationResolver" concurrency="3">
+        <!--<jms:listener destination="requestQueue1" ref="messageListener"/>-->
+        <!--<jms:listener destination="requestQueue" ref="messageListener1"/>-->
+        <jms:listener destination="requestTopic" ref="messageListener"/>
+        <jms:listener destination="requestTopic1" ref="messageListener1"/>
+    </jms:listener-container>
+
  <!--   <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
         <property name="brokerURL" value="${jms.brokerURL}"/>
         <property name="userName" value="${jms.userName}"/>

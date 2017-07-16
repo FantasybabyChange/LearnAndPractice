@@ -5,4 +5,5 @@ package com.fantasybaby.bindspring;
  */
 public interface IMessageReceive {
     void receiveMessage();
+    void receiveMessage(String destinationName);
 }

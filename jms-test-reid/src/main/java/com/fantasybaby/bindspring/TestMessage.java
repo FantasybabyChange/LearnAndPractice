@@ -10,9 +10,10 @@ public class TestMessage {
         ClassPathXmlApplicationContext ctx =
                 new ClassPathXmlApplicationContext("applicationContext.xml");
         IMessageSender sender = ctx.getBean(IMessageSender.class);
-        sender.sendMessage("Hello");
-        /*IMessageReceive receive = ctx.getBean(IMessageReceive.class);
-        receive.receiveMessage();*/
+        sender.sendMessage("requestTopic","Hello queue1");
+
+        sender.sendMessage("requestTopic1","Hello queue2");
+
         ctx.close();
     }
 }

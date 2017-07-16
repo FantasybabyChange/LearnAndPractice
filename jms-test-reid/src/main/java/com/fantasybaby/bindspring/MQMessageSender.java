@@ -16,12 +16,14 @@ public class MQMessageSender implements  IMessageSender {
     @Autowired
     private JmsTemplate jmsTemplate;
 
-    public static final String customDestination = "requestQueue1";
 
     @Override
     public void sendMessage(String message) {
-
-        jmsTemplate.convertAndSend(customDestination,message);
+        jmsTemplate.convertAndSend(message);
     }
 
+    @Override
+    public void sendMessage(String destination, String message) {
+        jmsTemplate.convertAndSend(destination,message);
+    }
 }

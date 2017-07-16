@@ -13,7 +13,14 @@ public class MQMessageReceive implements  IMessageReceive {
 
     @Override
     public void receiveMessage() {
-        Object o = jmsTemplate.receiveAndConvert(MQMessageSender.customDestination);
+        Object o = jmsTemplate.receiveAndConvert();
+        String str = (String) o;
+        System.out.println("==" + str + "====");
+    }
+
+    @Override
+    public void receiveMessage(String destinationName) {
+        Object o = jmsTemplate.receiveAndConvert(destinationName);
         String str = (String) o;
         System.out.println("==" + str + "====");
     }

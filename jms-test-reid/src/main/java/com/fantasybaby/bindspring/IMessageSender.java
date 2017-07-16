@@ -8,4 +8,5 @@ import org.springframework.stereotype.Component;
  */
 public interface IMessageSender {
     void sendMessage(String message);
+    void sendMessage(String destination,String message);
 }
