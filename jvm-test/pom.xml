@@ -19,7 +19,7 @@
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.10</version>
-      <scope>test</scope>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
    <build>  
@@ -33,7 +33,7 @@
                    <source>1.8</source>  
                     <target>1.8</target>  
                     <encoding>UTF-8</encoding>  
-                    <verbal>true</verbal>  
+                    <!--<verbal>true</verbal>-->
                 </configuration>  
             </plugin>   
         </plugins>  

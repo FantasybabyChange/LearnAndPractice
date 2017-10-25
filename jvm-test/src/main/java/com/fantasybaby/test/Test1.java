@@ -1,6 +1,7 @@
 package com.fantasybaby.test;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.swing.JOptionPane;
 
@@ -8,7 +9,8 @@ import org.junit.Test;
 
 import com.fantasybaby.classloader.CreateWordCode;
 
-public class Test1 {
+public class Test1 implements Serializable{
+
 	@Test
 	public void testCreateWord(){
 //		CreateWordCode create = new CreateWordCode("E:\\text.txt");

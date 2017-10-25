@@ -1,5 +1,7 @@
 package com.fantasybaby.writefile;
 
+import org.apache.commons.net.ftp.FTPClient;
+
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,6 +14,7 @@ import java.util.zip.ZipOutputStream;
  */
 public class ZipWriteHelp {
     public static void main(String[] args) {
+        FTPClient ftpClient = new FTPClient();
         String fileName = "test.txt";
         String zipName = "test.zip";
         String filePath = null;
