@@ -22,10 +22,13 @@ public class TestAOP {
         IDao proxyUserDao = (IDao) proxy.bind(new DaoUserImpl());
         proxyUserDao.insert();
 
-        Enhancer enhance = new Enhancer();
+        CGLibProxyHandler proxyHandler = new CGLibProxyHandler();
+        IDao bind = (IDao) proxyHandler.bind(new DaoImpl());
+        bind.insert();
+       /* Enhancer enhance = new Enhancer();
         enhance.setSuperclass(DaoUserImpl.class);
         enhance.setCallback(new CGLibProxyHandler());
         IDao daoCG = (IDao) enhance.create();
-        daoCG.insert();
+        daoCG.insert();*/
     }
 }
