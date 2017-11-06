@@ -1,3 +1,5 @@
 .*
 daliy_test/.*
 */*.iml
+*/*/*.iml
+target
