@@ -1,6 +1,6 @@
 package com.fantasybaby.hibernateValidtor;
 
-import com.fantasybaby.lombok.UserBean;
+import com.fantasybaby.normaltest.lombok.UserBean;
 import org.junit.Test;
 
 /**

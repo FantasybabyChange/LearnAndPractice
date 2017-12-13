@@ -3,10 +3,8 @@ package com.fantasybaby.hibernateValidtor;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fantasybaby.hibernateValidtor.bean.UserChildList;
-import com.fantasybaby.hibernateValidtor.bean.UserLogin;
-import com.fantasybaby.hibernateValidtor.bean.UserLoginVO;
-import com.fasterxml.jackson.core.JsonParser;
+import com.fantasybaby.validtor.hibernateValidtor.bean.UserChildList;
+import com.fantasybaby.validtor.hibernateValidtor.bean.UserLoginVO;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

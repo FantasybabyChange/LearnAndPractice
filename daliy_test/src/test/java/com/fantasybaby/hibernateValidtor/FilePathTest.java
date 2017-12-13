@@ -3,8 +3,8 @@
 import org.json.JSONObject;
 import org.junit.Test;
 
-import com.fantasybaby.hibernateValidtor.bean.ClassParent;
-import com.fantasybaby.hibernateValidtor.bean.UserLogin;
+import ClassParent;
+import UserLogin;
 
 public class FilePathTest {
 	@Test

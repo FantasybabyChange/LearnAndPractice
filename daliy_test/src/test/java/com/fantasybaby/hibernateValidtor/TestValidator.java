@@ -11,8 +11,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fantasybaby.enumP.HelloEnum;
-import com.fantasybaby.hibernateValidtor.bean.UserLogin;
+import com.fantasybaby.validtor.enums.HelloEnum;
+import com.fantasybaby.validtor.hibernateValidtor.bean.UserLogin;
 
 public class TestValidator{
 	private static Logger _logger = LoggerFactory.getLogger(TestValidator.class);

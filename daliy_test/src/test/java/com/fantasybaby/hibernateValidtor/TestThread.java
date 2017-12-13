@@ -2,7 +2,7 @@ package com.fantasybaby.hibernateValidtor;
 
 import org.junit.Test;
 
-import com.fantasybaby.threadTest.UserLoginThread;
+import com.fantasybaby.thread.threadlocal.login.UserLoginThread;
 
 public class TestThread {
 
