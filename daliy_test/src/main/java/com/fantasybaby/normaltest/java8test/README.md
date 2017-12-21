@@ -8,3 +8,10 @@
   <li>orElse  如果没有值则返回传入值<br /></li>
   <li>map 方法 传入lambda 表达式 可以修改当前值 并且返回一个新的Optional对象<br /></li>
   </ul>
+  <head1>Stream</head1>
+  Stream是元素的集合，这点让Stream看起来用些类似Iterator；
+  可以支持顺序和并行的对原Stream进行汇聚的操作
+  http://ifeve.com/stream/
+   <ul>
+    <li></li>
+   </ul> 
