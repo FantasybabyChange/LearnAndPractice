@@ -1,6 +1,7 @@
 package com.fantasybaby.normaltest.java8test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -107,9 +108,25 @@ public class LambadaTest {
         }
 
     }
+    public void testStringArrayToLong(){
+        String str = "1,2,3,4,5,6";
+        List<Long> longArrays = Arrays.stream(str.split(",")).map(sowTaskId -> Long.valueOf(sowTaskId))
+            .collect(Collectors.toList());
+        longArrays.forEach( System.out::println);
+    }
+
+    public void testLambaArr(){
+        List<UserBean> u1s = new ArrayList<>();
+        List<UserBean> u2s = new ArrayList<>();
+        u1s.stream().forEach(u1 ->u2s.stream().forEach(u2 ->{
+
+            })
+        );
+    }
     public static void main(String[] args) {
         LambadaTest lambadaTest = new LambadaTest();
-        lambadaTest.testGroupByChangeValue();
+        //lambadaTest.testGroupByChangeValue();
+        lambadaTest.testStringArrayToLong();
         //lambadaTest.testGroupBy();
         //lambadaTest.testPutFiledInList();
        //lambadaTest.testAnyMatch();
