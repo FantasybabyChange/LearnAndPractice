@@ -123,13 +123,27 @@ public class LambadaTest {
             })
         );
     }
+    public void testNotEmpty(){
+        List<String> collect = userBeans.stream().map(user -> getValue()).filter(a-> a != null).collect(Collectors.toList());
+        collect.forEach(System.out::println);
+    }
+    private static int a = 0;
+    private String getValue(){
+        a++;
+        if(a == 3){
+            return null;
+        }else{
+            return a+"";
+        }
+    }
     public static void main(String[] args) {
         LambadaTest lambadaTest = new LambadaTest();
         //lambadaTest.testGroupByChangeValue();
-        lambadaTest.testStringArrayToLong();
+        //lambadaTest.testStringArrayToLong();
         //lambadaTest.testGroupBy();
         //lambadaTest.testPutFiledInList();
        //lambadaTest.testAnyMatch();
+        lambadaTest.testNotEmpty();
 
     }
 }
