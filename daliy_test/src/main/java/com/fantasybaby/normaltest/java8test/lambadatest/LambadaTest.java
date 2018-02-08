@@ -1,14 +1,15 @@
-package com.fantasybaby.normaltest.java8test;
+package com.fantasybaby.normaltest.java8test.lambadatest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.fantasybaby.normaltest.lombok.UserBean;
-import sun.applet.Main;
 
 /**
  * @author liuxi
@@ -136,6 +137,17 @@ public class LambadaTest {
             return a+"";
         }
     }
+
+    /**
+     * jdk1.8排序练习
+     */
+    public  void testComparator(){
+        List<String> names = Arrays.asList("peter", "anna", "mike", "xenia");
+
+        Collections.sort(names, Comparator.reverseOrder());
+        names.forEach(System.out::println);
+    }
+
     public static void main(String[] args) {
         LambadaTest lambadaTest = new LambadaTest();
         //lambadaTest.testGroupByChangeValue();
@@ -143,7 +155,9 @@ public class LambadaTest {
         //lambadaTest.testGroupBy();
         //lambadaTest.testPutFiledInList();
        //lambadaTest.testAnyMatch();
-        lambadaTest.testNotEmpty();
+       // lambadaTest.testNotEmpty();
+        lambadaTest.testComparator();
+
 
     }
 }
