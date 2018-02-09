@@ -6,7 +6,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import com.fantasybaby.normaltest.lombok.UserBean;
@@ -148,6 +151,27 @@ public class LambadaTest {
         names.forEach(System.out::println);
     }
 
+    /**
+     * predicate使用
+     */
+    public void testPredicate(){
+        Predicate<String> predicate  = (a)->a.substring(0,1).equals("a");
+        boolean testAnser = predicate.test("ahello");
+
+        System.out.println(testAnser);
+    }
+
+    /**
+     * function接口测试
+     */
+    public void testFunction(){
+        Function<String,Integer> function = Integer::valueOf;
+        Integer applyValue = function.apply("123");
+        System.out.println(applyValue);
+        Function<Integer,String> function1 = (s)->s+"hehe";
+        Function<String, String> functionNew = function.andThen(function1);
+        System.out.println(functionNew.apply("1231"));
+    }
     public static void main(String[] args) {
         LambadaTest lambadaTest = new LambadaTest();
         //lambadaTest.testGroupByChangeValue();
@@ -156,8 +180,12 @@ public class LambadaTest {
         //lambadaTest.testPutFiledInList();
        //lambadaTest.testAnyMatch();
        // lambadaTest.testNotEmpty();
-        lambadaTest.testComparator();
-
-
+       // lambadaTest.testComparator();
+       // lambadaTest.testPredicate();
+        lambadaTest.testFunction();
+        Random r = new Random();
+        for (int i = 0; i < 30; i++) {
+            System.out.println(r.nextInt(4));
+        }
     }
 }
