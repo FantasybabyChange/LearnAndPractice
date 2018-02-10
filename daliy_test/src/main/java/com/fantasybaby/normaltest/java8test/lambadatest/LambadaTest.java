@@ -8,10 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import com.fantasybaby.normaltest.java8test.change.ObjectFactory;
 import com.fantasybaby.normaltest.lombok.UserBean;
 
 /**
@@ -153,6 +156,7 @@ public class LambadaTest {
 
     /**
      * predicate使用
+     * 可以用来实现判断的逻辑
      */
     public void testPredicate(){
         Predicate<String> predicate  = (a)->a.substring(0,1).equals("a");
@@ -172,6 +176,23 @@ public class LambadaTest {
         Function<String, String> functionNew = function.andThen(function1);
         System.out.println(functionNew.apply("1231"));
     }
+
+    /**
+     * Consumer可以处理bean
+     */
+    public void testConsumer(){
+        Consumer<UserBean> consumer = (a) -> a.setAge(10);
+        UserBean userBean = ObjectFactory.create(UserBean::new);
+        consumer.accept(userBean);
+        System.out.println(userBean.getAge());
+    }
+
+    /**
+     * map可以将function的对象聚合
+     */
+    public void testMap(){
+        this.userBeans.stream().map((a) -> a.getAge());
+    }
     public static void main(String[] args) {
         LambadaTest lambadaTest = new LambadaTest();
         //lambadaTest.testGroupByChangeValue();
@@ -182,10 +203,7 @@ public class LambadaTest {
        // lambadaTest.testNotEmpty();
        // lambadaTest.testComparator();
        // lambadaTest.testPredicate();
-        lambadaTest.testFunction();
-        Random r = new Random();
-        for (int i = 0; i < 30; i++) {
-            System.out.println(r.nextInt(4));
-        }
+        // lambadaTest.testFunction();
+        lambadaTest.testConsumer();
     }
 }
