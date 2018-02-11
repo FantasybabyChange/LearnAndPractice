@@ -1,13 +1,6 @@
 package com.fantasybaby.normaltest.java8test.lambadatest;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -16,8 +9,9 @@ import java.util.stream.Stream;
 
 import com.fantasybaby.normaltest.java8test.change.ObjectFactory;
 import com.fantasybaby.normaltest.lombok.UserBean;
+import com.google.common.collect.Maps;
 
-/**
+/**lambada和jdk一些新的特性
  * @author liuxi
  * @date2017年12月21日 16:43
  */
@@ -188,10 +182,67 @@ public class LambadaTest {
     }
 
     /**
+     * reduce可以聚合当前流的元素,
+     * 生成一个新的对象
+     */
+    public void testReduce(){
+        Optional<UserBean> reduce = userBeans.stream().reduce((a,b) ->{
+            UserBean userBean = ObjectFactory.create(UserBean::new);
+            userBean.setAge(a.getAge()+b.getAge());
+            return userBean;
+        });
+        reduce.ifPresent(System.out::println);
+        userBeans.forEach(System.out::println );
+    }
+    /**
      * map可以将function的对象聚合
      */
     public void testMap(){
         this.userBeans.stream().map((a) -> a.getAge());
+    }
+
+    /**
+     * 并行流测试
+     * @param args
+     */
+    public void testParallStream(){
+        Optional<UserBean> reduce = userBeans.parallelStream().reduce((a,b) ->{
+            UserBean userBean = ObjectFactory.create(UserBean::new);
+            userBean.setAge(a.getAge()+b.getAge());
+            return userBean;
+        });
+        reduce.ifPresent(System.out::println);
+    }
+
+    /**
+     * java8 map的一些新特性
+     */
+    public void testNewMap(){
+        Map<String,String> newMap = Maps.newHashMap();
+        newMap.putIfAbsent("key1", "123");
+        /**
+         * 如果不存在则put value
+          */
+        newMap.putIfAbsent("key1","234");
+
+        /**
+         * 如果当前key有值则重新计算
+         */
+        newMap.computeIfPresent("key1",(a,b)->a+"--"+b);
+//        newMap.computeIfPresent("key1",(a,b)->null);
+        /**
+         * 与computeIfPresent相反
+         */
+//        newMap.computeIfAbsent()
+        /**
+         * 如果值相等再删除
+         */
+//        newMap.remove("key1","key1--123");
+        /**
+         * 合并两个值
+         */
+        newMap.merge("key1","key2",(a,b)->a+b);
+        newMap.forEach((a,b)-> System.out.println(a+"--"+b));
     }
     public static void main(String[] args) {
         LambadaTest lambadaTest = new LambadaTest();
@@ -203,7 +254,12 @@ public class LambadaTest {
        // lambadaTest.testNotEmpty();
        // lambadaTest.testComparator();
        // lambadaTest.testPredicate();
-        // lambadaTest.testFunction();
-        lambadaTest.testConsumer();
+        //lambadaTest.testFunction();
+//        lambadaTest.testConsumer();
+//        lambadaTest.testReduce();
+//        lambadaTest.testParallStream();
+           lambadaTest.testNewMap();
     }
+
+
 }
