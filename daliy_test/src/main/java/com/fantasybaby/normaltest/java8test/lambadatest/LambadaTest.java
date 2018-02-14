@@ -1,15 +1,14 @@
 package com.fantasybaby.normaltest.java8test.lambadatest;
 
+import com.fantasybaby.normaltest.java8test.change.ObjectFactory;
+import com.fantasybaby.normaltest.lombok.UserBean;
+import com.google.common.collect.Maps;
+
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import com.fantasybaby.normaltest.java8test.change.ObjectFactory;
-import com.fantasybaby.normaltest.lombok.UserBean;
-import com.google.common.collect.Maps;
 
 /**lambada和jdk一些新的特性
  * @author liuxi
@@ -203,7 +202,7 @@ public class LambadaTest {
 
     /**
      * 并行流测试
-     * @param args
+     * @param
      */
     public void testParallStream(){
         Optional<UserBean> reduce = userBeans.parallelStream().reduce((a,b) ->{

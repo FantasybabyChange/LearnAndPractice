@@ -12,6 +12,4 @@
   Stream是元素的集合，这点让Stream看起来用些类似Iterator；
   可以支持顺序和并行的对原Stream进行汇聚的操作
   http://ifeve.com/stream/
-   <ul>
-    <li></li>
-   </ul> 
+ 
