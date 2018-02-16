@@ -57,6 +57,8 @@ public class NewDateTest {
     public void testDateFormat(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime parsed = LocalDateTime.parse("2018-02-15 19:00:01", formatter);
+        Date date = new Date();
+
 //        System.out.println(parsed.g);
         String string = formatter.format(parsed);
         System.out.println(string);
