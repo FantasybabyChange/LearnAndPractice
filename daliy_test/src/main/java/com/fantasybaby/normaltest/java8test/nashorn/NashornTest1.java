@@ -17,6 +17,18 @@ public class NashornTest1 {
     private ScriptEngine se;
     public NashornTest1(){
          se = new ScriptEngineManager().getEngineByName(NASHORN_DEFAULT_NAME);
+        ClassLoader classLoader = getClass().getClassLoader();
+        String file = classLoader.getResource("nashorntest/test1.js").getFile();
+        FileReader fileReader = null;
+        try {
+            fileReader = new FileReader(file);
+            se.eval(fileReader);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (ScriptException e) {
+            e.printStackTrace();
+        }
+
     }
     /**
      * 通过nashorn引擎写javaScript
@@ -37,23 +49,34 @@ public class NashornTest1 {
      * 调用js的相关函数
      */
     public void testNashornFromJsFile(){
-        try {
-            ClassLoader classLoader = getClass().getClassLoader();
-            String file = classLoader.getResource("nashorntest/test1.js").getFile();
-            FileReader fileReader = new FileReader(file);
-            se.eval(fileReader);
             Invocable invocable = (Invocable) se;
-            Object o = invocable.invokeFunction("fun1", "fantasybaby");
-            System.out.println(o);
-        } catch (FileNotFoundException e) {
+        Object o = null;
+        try {
+            o = invocable.invokeFunction("fun1", "fantasybaby");
+        } catch (ScriptException e) {
             e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        System.out.println(o);
+    }
+
+    /**
+     * 通过javaScript文件来调用
+     * 转换成Invocable接口
+     * 调用js的相关函数
+     */
+    public void testNashornFromJsFileExtensions(){
+        try {
+            Invocable invocable = (Invocable) se;
+            Object o = invocable.invokeFunction("fun3");
+            System.out.println(o);
         } catch (ScriptException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
     }
-
     /**
      * 在js调用java方法 查看js和java类型对应关系
      * @param name
@@ -79,9 +102,12 @@ public class NashornTest1 {
         System.out.println(person.callMember("getFullName"));
 
     }
+
     public static void main(String[] args) {
         NashornTest1 nashornTest1 = ObjectFactory.create(NashornTest1::new);
 //        nashornTest1.sayHelloByNashorn();
-        nashornTest1.testNashornFromJsFile();
+//        nashornTest1.testNashornFromJsFile();
+        nashornTest1.testNashornFromJsFileExtensions();
     }
+
 }
