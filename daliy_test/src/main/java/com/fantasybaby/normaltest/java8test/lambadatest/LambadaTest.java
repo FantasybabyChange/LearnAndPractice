@@ -243,6 +243,10 @@ public class LambadaTest {
         newMap.merge("key1","key2",(a,b)->a+b);
         newMap.forEach((a,b)-> System.out.println(a+"--"+b));
     }
+    public void testSummer(){
+        long summer = userBeans.stream().collect(Collectors.summingInt(UserBean::getAge));
+        System.out.println(summer);
+    }
     public static void main(String[] args) {
         LambadaTest lambadaTest = new LambadaTest();
         //lambadaTest.testGroupByChangeValue();
@@ -257,7 +261,8 @@ public class LambadaTest {
 //        lambadaTest.testConsumer();
 //        lambadaTest.testReduce();
 //        lambadaTest.testParallStream();
-           lambadaTest.testNewMap();
+//           lambadaTest.testNewMap();
+        lambadaTest.testSummer();
     }
 
 
