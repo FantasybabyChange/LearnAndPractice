@@ -1,56 +1,77 @@
 package com.fantasybaby.basic.cas;
 
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicStampedReference;
 
-/**使用atomicReference保证在增加时的数据原子性
+/**使用AtomicStampedReference 重复设置值 通过stamp确保只设置一次
  * @author liuxi
  * @date2018年04月11日 19:54
  */
 public class AtomicReferenceStampedTest {
-    public AtomicStampedReference<Integer> atint = new AtomicStampedReference<>(30,0);
-
-    public class vendor implements Runnable{
+    public AtomicStampedReference<Integer> atint = new AtomicStampedReference<>(10,0);
+    public final int stamp = 0;
+    public class Vendor implements Runnable{
         @Override
         public void run() {
             while(true){
                 Integer reference = atint.getReference();
-                int stamp = atint.getStamp();
+                //int stamp = atint.getStamp();
+                System.out.println("vendor stamp:" + atint.getStamp());
                 if(reference < 20){
-                    if(atint.compareAndSet(reference, stamp + 20, reference, reference + 1)){
-                        System.out.println("充值成功,余额是:"+atint.getReference());
+                    /**
+                     *
+                     */
+                    if(atint.compareAndSet(reference, reference + 20, stamp, stamp + 1)){
+                        System.out.println("Vendor 充值成功,余额是:"+atint.getReference());
                     }else{
-                        System.out.println("充值失败,余额是:"+reference);
+                        System.out.println("Vendor充值失败,余额是:"+reference);
+                        //break;
                     }
+                }
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }
     }
-    public class customer implements Runnable{
+    Random ra = new Random();
+    public class Customer implements Runnable{
         @Override
         public void run() {
             while(true){
                 Integer reference = atint.getReference();
                 int stamp = atint.getStamp();
+                System.out.println("stamp :" + stamp);
                 if(reference > 10){
-                    if(atint.compareAndSet(reference,reference-10,stamp,stamp)){
-                        System.out.println("消费10元成功 "+atint.getReference());
+                    int i = ra.nextInt(10);
+                    if(atint.compareAndSet(reference,reference-i,stamp,stamp+1)){
+                        System.out.println("Customer 消费" + i + "元成功 "+atint.getReference());
                     }else{
-                        System.out.println("消费10元失败 "+reference );
+                        System.out.println("Customer 消费" + i + "元失败 "+reference );
                     }
                 }else{
-                    System.out.println("余额不足 :"+reference);
+                    System.out.println("Customer 余额不足 :"+reference);
+                }
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }
     }
 
     public void startLogic(){
-        Thread th = new Thread(new AtomicReferenceStampedTest.vendor());
+        Thread th = new Thread(new Vendor());
+        Thread th1 = new Thread(new Customer());
+        th1.start();
+        th.start();
     }
 
     public static void main(String[] args) throws InterruptedException {
-        //Thread th = new Thread(new AtomicReferenceStampedTest().)
-        //customer customer = new customer();
+        new AtomicReferenceStampedTest().startLogic();
     }
 
 }
