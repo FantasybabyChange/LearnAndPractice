@@ -24,6 +24,7 @@ public class DeadlockChecker {
                     for (Thread thread : threads) {
                         for (ThreadInfo threadInfo : threadInfos) {
                             if(threadInfo.getThreadId() == thread.getId()){
+                                System.out.println("检测到线程"+thread.getName()+"出现死锁");
                                 thread.interrupt();
                             }
                         }
