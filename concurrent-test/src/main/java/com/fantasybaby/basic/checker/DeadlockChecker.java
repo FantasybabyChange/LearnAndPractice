@@ -12,29 +12,26 @@ import java.util.Set;
  */
 public class DeadlockChecker {
     private static ThreadMXBean mBean =  ManagementFactory.getThreadMXBean();
-    final static Runnable deadlockCheck = new Runnable() {
-        @Override
-        public void run() {
-            while (true){
-                long[] deadlockedThreads = mBean.findDeadlockedThreads();
-                if(deadlockedThreads != null){
-                    ThreadInfo[] threadInfos = mBean.getThreadInfo(deadlockedThreads);
-                    Map<Thread, StackTraceElement[]> allStackTraces = Thread.getAllStackTraces();
-                    Set<Thread> threads = allStackTraces.keySet();
-                    for (Thread thread : threads) {
-                        for (ThreadInfo threadInfo : threadInfos) {
-                            if(threadInfo.getThreadId() == thread.getId()){
-                                System.out.println("检测到线程"+thread.getName()+"出现死锁");
-                                thread.interrupt();
-                            }
+    final static Runnable deadlockCheck = () -> {
+        while (true){
+            long[] deadlockedThreads = mBean.findDeadlockedThreads();
+            if(deadlockedThreads != null){
+                ThreadInfo[] threadInfos = mBean.getThreadInfo(deadlockedThreads);
+                Map<Thread, StackTraceElement[]> allStackTraces = Thread.getAllStackTraces();
+                Set<Thread> threads = allStackTraces.keySet();
+                for (Thread thread : threads) {
+                    for (ThreadInfo threadInfo : threadInfos) {
+                        if(threadInfo.getThreadId() == thread.getId()){
+                            System.out.println("检测到线程"+thread.getName()+"出现死锁");
+                            thread.interrupt();
                         }
                     }
                 }
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            }
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     };
