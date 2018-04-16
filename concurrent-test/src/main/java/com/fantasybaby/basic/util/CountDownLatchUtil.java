@@ -15,9 +15,10 @@ public class CountDownLatchUtil implements Runnable{
         try {
             Thread.sleep(random.nextInt(5)*1000);
             System.out.println(Thread.currentThread().getName()+"check Complete");
-            latch.countDown();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }finally {
+            latch.countDown();
         }
     }
     public static void main(String[] args) throws InterruptedException {
