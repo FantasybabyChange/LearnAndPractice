@@ -7,9 +7,4 @@
  * in the user guide at https://docs.gradle.org/4.7/userguide/multi_project_builds.html
  */
 
-rootProject.name = 'gradle-demo'
-
-println "In posdevice, gradle id is " +gradle.hashCode()  
-println "Home Dir:" + gradle.gradleHomeDir  
-println "User Home Dir:" + gradle.gradleUserHomeDir  
-println "Parent: " + gradle.parent
+rootProject.name = 'gradle-java-demo'

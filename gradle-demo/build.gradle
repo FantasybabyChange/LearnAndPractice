@@ -4,7 +4,7 @@
  * This is a general purpose Gradle build.
  * Learn how to create Gradle builds at https://guides.gradle.org/creating-new-gradle-builds/
  */
-task copy(type:Copy,group:"Custom",description:"copy file"){
-    from "src"
-    into "dest"
-}
+println "In posdevice, gradle id is " +gradle.hashCode()  
+println "Home Dir:" + gradle.gradleHomeDir  
+println "User Home Dir:" + gradle.gradleUserHomeDir  
+println "Parent: " + gradle.parent
