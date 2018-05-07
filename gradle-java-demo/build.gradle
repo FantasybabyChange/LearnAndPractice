@@ -1,7 +1,7 @@
 subprojects {
     apply plugin: 'java'
     // apply plugin: 'eclipse'
-    apply plugin: 'idea'
+//    apply plugin: 'idea'
 
     version = '1.0'
 
@@ -71,6 +71,8 @@ subprojects {
 }
 
 allprojects{
+    apply plugin: 'idea'
+    apply plugin: 'java'
     repositories {
         def REPOSITORY_URL = 'http://maven.aliyun.com/nexus/content/groups/public/'
         all { ArtifactRepository repo ->
