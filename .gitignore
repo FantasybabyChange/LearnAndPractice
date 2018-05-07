@@ -4,3 +4,4 @@ daliy_test/.*
 */*/*.iml
 target
 */build/*
+*/*/build/*
