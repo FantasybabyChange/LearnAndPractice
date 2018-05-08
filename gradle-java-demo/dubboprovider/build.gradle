@@ -1,9 +1,6 @@
 apply plugin: 'java'
 archivesBaseName = 'dubboprovider'
+
 dependencies{
     compile project(':dubboservice')
-    compile(
-        "com.github.sgroschupf:zkclient"
-    )
-
 }
