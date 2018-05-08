@@ -22,8 +22,8 @@ subprojects {
         dubboVersion='2.5.7'
     }
 
-    repositories {
-        mavenCentral()
+    repositories{
+     mavenLocal()
     }
 
     jar {
@@ -61,34 +61,11 @@ subprojects {
 
         // 测试依赖
         testCompile(
-                "org.springframework:spring-test:$springVersion",
+//                "org.springframework:spring-test:$springVersion",
                 "junit:junit:4.12"
         )
     }
-    repositories {
-        /*def REPOSITORY_URL = 'http://maven.aliyun.com/nexus/content/groups/public/'
-        all { ArtifactRepository repo ->
-            if(repo instanceof MavenArtifactRepository){
-                def url = repo.url.toString()
-                if (url.startsWith('https://repo1.maven.org/maven2') || url.startsWith('https://jcenter.bintray.com/')) {
-                    project.logger.lifecycle "Repository ${repo.url} replaced by $REPOSITORY_URL."
-                    remove repo
-                }
-            }
-        }
-        maven {
-            url REPOSITORY_URL
-        }*/
-        mavenLocal()
-        /*maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
-        mavenCentral()
-        jcenter()
-        maven { url "http://repo.spring.io/snapshot" }
-        maven { url "http://repo.spring.io/milestone" }
-        maven { url 'http://maven.springframework.org/release' }
-        maven { url 'http://maven.springframework.org/milestone' }*/
-    }
-
+    
     // 显示当前项目下所有用于 compile 的 jar.
     task listJars(description: 'Display all compile jars.') << {
         configurations.compile.each { File file -> println file.name }
