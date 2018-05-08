@@ -5,3 +5,5 @@ daliy_test/.*
 target
 */build/*
 */*/build/*
+*/out/*
+*/gradle
