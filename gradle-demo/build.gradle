@@ -53,12 +53,45 @@ zipFile.dependsOn copyFile
 depenceHelloWorld.dependsOn(helloWorld)
 repositories {
     mavenLocal()
+    maven{
+        name 'aliyun'
+        url 'http://maven.aliyun.com/nexus/content/groups/public'
+    }
 }
 ext{
     commonVersion = '3.1'
+    springVersion = '4.3.12.RELEASE'
 
 
 }
+/**
+ * 自定义配置
+ */
+configurations {
+    xige{
+       description='start xige'
+       visible = false
+    }
+
+}
+/**
+ * 查看 dependencies所在位置
+ */
+task printCompileDependencies(group: "help") <<{
+    configurations.getByName("compile").each {
+        dependency -> println dependency
+    }
+}
 dependencies {
     compile group:'org.apache.commons',name:'commons-lang3',version:commonVersion
+    /**
+     * 排除spring-bean的依赖
+     */
+    compile ("org.springframework:spring-context:$springVersion"){
+//        exclude group:"org.springframework",module:"spring-beans"
+        /**
+         * 关闭所有的依赖传递
+         */
+        transitive=false
+    }
 }
