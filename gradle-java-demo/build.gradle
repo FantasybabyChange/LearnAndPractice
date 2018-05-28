@@ -1,15 +1,17 @@
 version = '1.0'
+
 subprojects {
     apply plugin: 'idea'
     apply plugin: 'java'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
     // apply plugin: 'eclipse'
 //    apply plugin: 'idea'
 
 //    version = '1.0'
 
     // JVM 版本号要求
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+
 
     // java编译的时候缺省状态下会因为中文字符而失败
     [compileJava,compileTestJava,javadoc]*.options*.encoding = 'UTF-8'
@@ -23,7 +25,8 @@ subprojects {
     }
 
     repositories{
-     mavenLocal()
+//     mavenLocal()
+        mavenCentral()
     }
 
     jar {

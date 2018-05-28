@@ -7,7 +7,7 @@ class Library {
     }
 
     static void main(String[] args) {
-        Library a = new Library()
+        def a = new Library()
         print a.someLibraryMethod()
         def multiline ='''line1
                line2

@@ -1,0 +1,27 @@
+apply plugin:'java'
+apply plugin:'idea'
+[compileJava]*.options*.encoding="UTF-8"
+task hello <<{
+    print 'hello world!!'
+}
+task cleanFile(type:Delete,group:'build',dependsOn:hello){
+    delete 'dest'
+}
+
+task copyFile(type:Copy,group:'build',dependsOn:cleanFile)<<{
+    from 'src'
+    into 'dest'
+}
+
+
+task zipFile(type:Zip,group:'build',dependsOn:copyFile)<<{
+    from "src"
+    destinationDir file("dest")
+}
+//copyFile.dependsOn hello
+repositories{
+    mavenLocal()
+}
+dependencies{
+    compile(group:'com.google.guava',name:'guava',version:'24.0-jre')
+}

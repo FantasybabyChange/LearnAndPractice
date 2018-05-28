@@ -1,4 +1,5 @@
-apply plugin: 'java'
+apply plugin:'application'
+mainClassName='com.fantasybaby.gradle.customer.Consumer'
 archivesBaseName = 'dubbocustomer'
 
 dependencies{

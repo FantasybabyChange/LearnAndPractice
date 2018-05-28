@@ -6,10 +6,11 @@
  * user guide available at https://docs.gradle.org/4.7/userguide/tutorial_groovy_projects.html
  */
 
-plugins {
+/*plugins {
     // Apply the groovy plugin to add support for Groovy
     id 'groovy'
-}
+}*/
+apply plugin:'groovy'
 
 dependencies {
     // Use the latest Groovy version for building this library
