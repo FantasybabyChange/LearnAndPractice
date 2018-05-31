@@ -1,6 +1,9 @@
 apply plugin:'java'
 apply plugin:'idea'
-[compileJava]*.options*.encoding="UTF-8"
+//[compileJava,compileTestJava,javadoc]*.options*.encoding="UTF-8"
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
 task hello <<{
     print 'hello world!!'
 }
@@ -8,22 +11,37 @@ task cleanFile(type:Delete,group:'build',dependsOn:hello){
     delete 'dest'
 }
 
-task copyFile(type:Copy,group:'build',dependsOn:cleanFile)<<{
-    from 'src'
+task copyFile(type:Copy,group:'build',dependsOn:cleanFile){
+    from 'buildSrc'
     into 'dest'
 }
+//customer a task
+/*
+class GreetingTask extends DefaultTask {
+    @TaskAction
+    def greet() {
+        println 'hello from GreetingTask'
+    }
+}
+*/
 
+task tempTask(type:GreetingTask){
+    println 'what the fuck'
+}
 
-task zipFile(type:Zip,group:'build',dependsOn:copyFile)<<{
-    from "src"
+task zipFile(type:Zip,group:'build',dependsOn:copyFile){
+    from "buildSrc"
+    archiveName "hello.zip"
     destinationDir file("dest")
 }
+
 //copyFile.dependsOn hello
 repositories{
     mavenLocal()
 }
 dependencies{
     compile(group:'com.google.guava',name:'guava',version:'24.0-jre')
+
 }
 def createFolder ={
     path ->
@@ -34,6 +52,18 @@ def createFolder ={
 }
 task buildNormalProject(group:'build') {
     def paths =['src/main/java','src/main/resource','src/test/java','src/test/resource']
+    doLast{
+        paths.forEach(createFolder)
+    }
+}
+task buildWebProject(group:'build',dependsOn: buildNormalProject) {
+    def paths =['src/main/webapp','src/main/webapp/WEB-INF']
+    doLast{
+        paths.forEach(createFolder)
+    }
+}
+task buildBuildProject(group:'build'){
+    def paths =['buildSrc/src/main/groovy']
     doLast{
         paths.forEach(createFolder)
     }

@@ -14,7 +14,7 @@ class Library {
                line3
         '''
         println multiline
-        def ranga = 1..<5
-        print ranga.to
+        def range = 1..<5
+        print range.to
     }
 }

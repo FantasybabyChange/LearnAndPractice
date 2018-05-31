@@ -92,6 +92,6 @@ dependencies {
         /**
          * 关闭所有的依赖传递
          */
-        transitive=false
+//        transitive=false
     }
 }
