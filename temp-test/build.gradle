@@ -41,6 +41,7 @@ repositories{
 }
 dependencies{
     compile(group:'com.google.guava',name:'guava',version:'24.0-jre')
+    testCompile "junit:junit:4.12"
 
 }
 def createFolder ={
@@ -68,3 +69,43 @@ task buildBuildProject(group:'build'){
         paths.forEach(createFolder)
     }
 }
+task buildIntegerProject(group:'build'){
+    def paths =['src/integeTest/java','src/integeTest/resources']
+    doLast{
+        paths.forEach(createFolder)
+    }
+}
+test{
+    exclude '**/*IntegeTest.class'
+    reports.html.destination file("$reports.html.destination/unit")
+    forkEvery =5
+    maxParallelForks = Runtime.runtime.availableProcessors() /2
+}
+
+
+test.beforeSuite {
+    suite ->
+        println "before suite"
+
+}
+
+sourceSets{
+    integeTest{
+        java.srcDir file("src/integeTest/java")
+        resources.srcDir file("src/integeTest/java")
+        compileClasspath=sourceSets.main.output+configurations.testRuntime
+        runtimeClasspath=output+compileClasspath
+    }
+}
+println sourceSets.integeTest.runtimeClasspath.asPath
+println sourceSets.integeTest.compileClasspath.asPath
+//第一种方式
+//task integerTest(type:Test){
+  //include '**/*IntegeTest.class'
+    //reports.html.destination file("$reports.html.destination/intege")
+//}
+task integerTest(type:Test){
+    classpath = sourceSets.integeTest.runtimeClasspath
+    testClassesDirs = sourceSets.integeTest.output.classesDirs
+}
+check.dependsOn integerTest
