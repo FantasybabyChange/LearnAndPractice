@@ -91,7 +91,7 @@ test.beforeSuite {
 
 sourceSets{
     integeTest{
-        java.srcDir file("src/integeTest/java")
+        java.src    Dir file("src/integeTest/java")
         resources.srcDir file("src/integeTest/java")
         compileClasspath=sourceSets.main.output+configurations.testRuntime
         runtimeClasspath=output+compileClasspath
