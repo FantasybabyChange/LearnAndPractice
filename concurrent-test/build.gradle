@@ -3,7 +3,7 @@ apply plugin: 'java'
 group = 'com.fantasybaby'
 version = '1.0-SNAPSHOT'
 
-description = """concurrent-test"""
+description = "concurrent-test"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -13,6 +13,32 @@ targetCompatibility = 1.8
 repositories {
     mavenLocal()
 }
+ext{
+    junitVersion = '4.12'
+    springVersion ='5.0.4.RELEASE'
+    lombokVersion ='1.16.16'
+    logbackVersion = '1.1.1'
+}
 dependencies {
+    compile group: 'org.slf4j', name: 'slf4j-api', version:'1.7.10'
+    compile group: 'ch.qos.logback', name: 'logback-core', version:logbackVersion
+    compile group: 'ch.qos.logback', name: 'logback-classic', version:logbackVersion
+    compileOnly   "org.projectlombok:lombok:$lombokVersion"
+    testCompile   "org.projectlombok:lombok:$lombokVersion"
     testCompile group: 'junit', name: 'junit', version:'4.11'
+}
+
+def createFolder ={
+    path ->
+        def file = new File(path)
+        if(!file.exists()){
+            file.mkdirs()
+        }
+}
+
+task buildNormalProject(group:'build') {
+    def paths =['src/main/java','src/main/resource','src/test/java','src/test/resource']
+    doLast{
+        paths.forEach(createFolder)
+    }
 }
