@@ -42,3 +42,12 @@ task buildNormalProject(group:'build') {
         paths.forEach(createFolder)
     }
 }
+
+sourceSets {
+    main{
+        resources {
+            srcDir file('src/main/resource')
+        }
+    }
+
+}

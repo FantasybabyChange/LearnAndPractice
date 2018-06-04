@@ -11,10 +11,10 @@ import java.util.concurrent.*;
 public class ThreadDiscardPolicy {
     int corePoolSize = 1;
     int maxPoolSize = 1;
-    public void discardPolicy(){
+    public void discardPolicy(RejectedExecutionHandler rejectedExecutionHandler){
         BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue(1);
         ThreadPoolExecutor pool = new ThreadPoolExecutor(corePoolSize,maxPoolSize,0, TimeUnit.SECONDS,workQueue);
-        pool.setRejectedExecutionHandler(new ThreadPoolExecutor.DiscardPolicy());
+        pool.setRejectedExecutionHandler(rejectedExecutionHandler);
         for (int i = 0; i < 10; i++) {
             final int taskIndex = i;
              Thread th = new Thread(()->{
@@ -43,9 +43,5 @@ public class ThreadDiscardPolicy {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        new ThreadDiscardPolicy().discardPolicy();
     }
 }
