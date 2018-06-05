@@ -14,10 +14,24 @@ def dealMap(map){
 
     }
 }
-dealMap map
+dealMap (map)
 
 //list
 def list = ['abc','abcd','abcde']
 list.each {a->println a}
 def listSize = list*.size()
 listSize.each {b->println b }
+
+//Closures
+//        { [closureParameters -> ] statements }
+       /* {
+            ->
+            print "hello world"
+        }*/
+     def cl1 =   {
+            a ->
+                print "hello $a"
+        }
+cl1("ee")
+cl1.call("ee")
+

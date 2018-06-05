@@ -9,6 +9,9 @@ class Library {
     static void main(String[] args) {
         def a = new Library()
         print a.someLibraryMethod()
+        def str1 = 'str'
+        def str2 = "hello $str1"
+        println str2
         def multiline ='''line1
                line2
                line3

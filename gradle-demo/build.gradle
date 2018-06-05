@@ -82,6 +82,9 @@ task printCompileDependencies(group: "help") <<{
         dependency -> println dependency
     }
 }
+configurations.all {
+    resolutionStrategy {  failOnVersionConflict() }
+}
 dependencies {
     compile group:'org.apache.commons',name:'commons-lang3',version:commonVersion
     /**
@@ -89,6 +92,7 @@ dependencies {
      */
     compile ("org.springframework:spring-context:$springVersion"){
 //        exclude group:"org.springframework",module:"spring-beans"
+//        compile group:'b',name:'b',version:'1.1',force:true
         /**
          * 关闭所有的依赖传递
          */

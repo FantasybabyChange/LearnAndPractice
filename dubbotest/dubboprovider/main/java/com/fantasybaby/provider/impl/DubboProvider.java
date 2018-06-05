@@ -5,6 +5,6 @@ import com.fantasybaby.service.IDubboService;
 @Service(version = "1.0.0")
 public class DubboProvider implements IDubboService {
     public String getName() {
-        return "=== DubboProvider Name ===";
+        return "=== Hello customer ===";
     }
 }
