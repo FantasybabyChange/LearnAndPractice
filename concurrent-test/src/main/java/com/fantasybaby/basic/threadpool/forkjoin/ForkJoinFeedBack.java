@@ -1,5 +1,7 @@
 package com.fantasybaby.basic.threadpool.forkjoin;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.Callable;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
@@ -7,8 +9,9 @@ import java.util.concurrent.RecursiveTask;
 /**
  * fork join 有返回
  */
+@Slf4j
 public class ForkJoinFeedBack implements  ICalculator {
-    ForkJoinPool pool = new ForkJoinPool();
+    static ForkJoinPool pool = new ForkJoinPool();
     @Override
     public long sumUp(long[] numbers) {
          return pool.invoke(new SumTask(numbers,0,numbers.length -1 ));
@@ -30,6 +33,7 @@ public class ForkJoinFeedBack implements  ICalculator {
 
         @Override
         protected Long compute() {
+            log.info("poolSiz,{}",pool.getPoolSize());
             if(to - from < 6){
                 long total = 0;
                 for (int i = from; i <= to  ; i++) {
