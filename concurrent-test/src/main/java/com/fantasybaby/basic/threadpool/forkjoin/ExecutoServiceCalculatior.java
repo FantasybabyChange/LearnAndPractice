@@ -54,7 +54,7 @@ public class ExecutoServiceCalculatior implements  ICalculator{
         int part = numbers.length / parallism;
         for (int i = 0; i < parallism; i++) {
             int from = i * part;
-            int to = (i == parallism-1)?numbers.length -1 : (i+1)*part -1;
+            int to = (i == parallism-1)?numbers.length -1 : (i+1)*part-1;
             results.add(pool.submit(new SumTask(numbers,from,to)));
         }
         long sum  = 0;
