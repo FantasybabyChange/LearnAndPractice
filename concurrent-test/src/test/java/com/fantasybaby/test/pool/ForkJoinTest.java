@@ -21,5 +21,7 @@ public class ForkJoinTest {
     public void test2(){
         long sum = new ForkJoinFeedBack().sumUp(longStream.toArray());
         System.out.println(sum);
+        int a = 0x7fff;
+        System.out.println(a);
     }
 }

@@ -41,6 +41,6 @@ public class ThreadDiscardPolicyTest {
      */
     @Test
     public void testAbortPolicy(){
-        threadDiscard.discardPolicy(new ThreadPoolExecutor.AbortPolicy());
+//        threadDiscard.discardPolicy(new ThreadPoolExecutor.AbortPolicy());
     }
 }
