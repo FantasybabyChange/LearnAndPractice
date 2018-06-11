@@ -13,19 +13,23 @@ tasks.withType(JavaCompile) {
 }
 
 
-
 repositories {
         
      maven { url "http://localhost:8081/nexus/content/groups/public/" }
      maven { url "http://repo.maven.apache.org/maven2" }
 }
+ext{
+    junitVersion = '4.12'
+    springVersion ='5.0.4.RELEASE'
+    lombokVersion ='1.16.16'
+    logbackVersion = '1.1.1'
+}
 dependencies {
-    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version:'2.4.1'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version:'2.4.1'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-jcl', version:'2.4.1'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-web', version:'2.0.2'
-    compile group: 'org.slf4j', name: 'slf4j-api', version:'1.7.7'
+    compile group: 'org.slf4j', name: 'slf4j-api', version:'1.7.10'
+    compile group: 'ch.qos.logback', name: 'logback-core', version:logbackVersion
+    compile group: 'ch.qos.logback', name: 'logback-classic', version:logbackVersion
+    compileOnly   "org.projectlombok:lombok:$lombokVersion"
+    testCompile   "org.projectlombok:lombok:$lombokVersion"
+    testCompile group: 'junit', name: 'junit', version:'4.11'
     compile group: 'cglib', name: 'cglib', version:'3.1'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version:'2.1'
-    testCompile group: 'junit', name: 'junit', version:'4.10'
 }

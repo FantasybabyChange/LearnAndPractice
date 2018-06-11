@@ -1,4 +1,4 @@
-package singleton;
+package com.fantasybaby.singleton;
 
 /**
  * InnerSingleTon class

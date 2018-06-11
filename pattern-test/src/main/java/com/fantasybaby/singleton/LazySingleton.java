@@ -1,4 +1,4 @@
-package singleton;
+package com.fantasybaby.singleton;
 
 /**
  * 通过同步块懒加载单例实例
