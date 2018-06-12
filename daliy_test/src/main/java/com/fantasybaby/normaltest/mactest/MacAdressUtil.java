@@ -4,10 +4,7 @@ import com.fantasybaby.unicode.encrypt.MD5;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.net.UnknownHostException;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -27,11 +24,12 @@ public class MacAdressUtil {
             StringBuffer sb = new StringBuffer("");
             NetworkInterface networkInterface = networkInterfaces.nextElement();
             if(Objects.nonNull(networkInterface)){
-                Enumeration<InetAddress> inetAddresses = networkInterface.getInetAddresses();
+
+                List<InterfaceAddress> interfaceAddresses = networkInterface.getInterfaceAddresses();
                 StringBuffer ips = new StringBuffer("");
-                if(inetAddresses.hasMoreElements()){
-                    InetAddress inetAddress = inetAddresses.nextElement();
-                    String hostAddress = inetAddress.getHostAddress();
+                for (InterfaceAddress interfaceAddress : interfaceAddresses) {
+                    InetAddress address = interfaceAddress.getAddress();
+                    String hostAddress = address.getHostAddress();
                     if(StringUtils.isNotBlank(hostAddress)&&IpUtil.isIp(hostAddress)){
                         ips.append(hostAddress);
                     }
