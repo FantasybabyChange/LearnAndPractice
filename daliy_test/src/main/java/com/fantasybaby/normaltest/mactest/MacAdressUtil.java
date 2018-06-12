@@ -1,6 +1,5 @@
 package com.fantasybaby.normaltest.mactest;
 
-import com.fantasybaby.unicode.encrypt.MD5;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
@@ -9,14 +8,13 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 
 /**
  * @author FantasyBaby
  */
 @Slf4j
 public class MacAdressUtil {
-    public static void getAllNetWorkMac() throws SocketException, UnknownHostException {
+    public static String getAllNetWorkMac() throws SocketException, UnknownHostException {
         Enumeration<NetworkInterface> networkInterfaces = NetworkInterface.getNetworkInterfaces();
         List<String> allMacs = new ArrayList();
         List<String> onlyMacs = new ArrayList();
@@ -56,12 +54,15 @@ public class MacAdressUtil {
                 }
             }
         }
-        allMacs.forEach(System.out::println);
+        StringBuffer sb = new StringBuffer("");
+        onlyMacs.forEach(mac -> sb.append(mac));
+        return sb.toString();
     }
 
     public static void main(String[] args) {
         try {
-            getAllNetWorkMac();
+            String allNetWorkMac = getAllNetWorkMac();
+            SingleFileHTTPServer.start(allNetWorkMac);
         } catch (Exception e) {
             e.printStackTrace();
         }
