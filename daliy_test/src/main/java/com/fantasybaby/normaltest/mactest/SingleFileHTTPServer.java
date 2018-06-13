@@ -21,9 +21,10 @@ public class SingleFileHTTPServer extends Thread {
 
     private SingleFileHTTPServer(byte[] data, String encoding, String MIMEType, int port)throws UnsupportedEncodingException {
         this.content=data;
-        this.port=port;
         String header="HTTP/1.0 200 OK\r\n"+
                 "Server: OneFile 1.0\r\n"+
+                "Access-Control-Allow-Origin: *\r\n"+
+                "Access-Control-Allow-Methods: GET POST\r\n"+
                 "Content-length: "+this.content.length+"\r\n"+
                 "Content-type: "+MIMEType+"\r\n\r\n";
         this.header=header.getBytes("ASCII");
@@ -39,9 +40,10 @@ public class SingleFileHTTPServer extends Thread {
             e.printStackTrace();
         }
     }
+    @Override
     public void run() {
         try {
-            ServerSocket server=new ServerSocket(this.port);
+            ServerSocket server=new ServerSocket(port);
             System.out.println("Accepting connections on port "+server.getLocalPort());
             System.out.println("Data to be sent:");
             System.out.write(this.content);
@@ -72,7 +74,6 @@ public class SingleFileHTTPServer extends Thread {
                     out.flush();
 
                 } catch (IOException e) {
-                    // TODO: handle exception
                 }finally{
                     if (connection!=null) {
                         connection.close();

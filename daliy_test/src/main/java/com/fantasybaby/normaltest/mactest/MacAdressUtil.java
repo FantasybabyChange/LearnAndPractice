@@ -19,8 +19,11 @@ public class MacAdressUtil {
         List<String> allMacs = new ArrayList();
         List<String> onlyMacs = new ArrayList();
         while(networkInterfaces.hasMoreElements()){
-            StringBuffer sb = new StringBuffer("");
             NetworkInterface networkInterface = networkInterfaces.nextElement();
+            if(networkInterface.isVirtual()||networkInterface.isLoopback()||!networkInterface.isUp()){
+                continue;
+            }
+            StringBuffer sb = new StringBuffer("");
             if(Objects.nonNull(networkInterface)){
 
                 List<InterfaceAddress> interfaceAddresses = networkInterface.getInterfaceAddresses();
@@ -28,7 +31,7 @@ public class MacAdressUtil {
                 for (InterfaceAddress interfaceAddress : interfaceAddresses) {
                     InetAddress address = interfaceAddress.getAddress();
                     String hostAddress = address.getHostAddress();
-                    if(StringUtils.isNotBlank(hostAddress)&&IpUtil.isIp(hostAddress)){
+                    if(StringUtils.isNotBlank(hostAddress)&&!address.isLoopbackAddress()&&address.isSiteLocalAddress()&&!networkInterface.isVirtual()){
                         ips.append(hostAddress);
                     }
                 }
@@ -54,6 +57,7 @@ public class MacAdressUtil {
                 }
             }
         }
+        allMacs.forEach(System.out::println);
         StringBuffer sb = new StringBuffer("");
         onlyMacs.forEach(mac -> sb.append(mac));
         return sb.toString();
