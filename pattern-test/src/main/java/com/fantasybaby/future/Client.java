@@ -17,11 +17,13 @@ public class Client {
         Client cl = new Client();
         Data resultData = cl.request("hello future");
         log.info("request over");
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        log.info("real result " + resultData.getResult());
+//        try {
+//            Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+        log.info("start getResult");
+        String result = resultData.getResult();
+        log.info("real result " + result);
     }
 }
