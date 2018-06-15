@@ -14,8 +14,8 @@ import org.dozer.Mapping;
 @Data
 @ToString
 @NoArgsConstructor
-public class UserDO {
-    @Mapping("id")
+public class UserDO extends PersonDO{
+//    @Mapping("id")
     private String userID;
     private String userName;
 
