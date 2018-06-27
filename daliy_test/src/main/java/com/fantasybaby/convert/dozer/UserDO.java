@@ -1,11 +1,10 @@
 package com.fantasybaby.convert.dozer;
 
-import java.util.function.Consumer;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.dozer.Mapping;
+
+import java.util.Map;
 
 /**
  * @author liuxi
@@ -14,9 +13,10 @@ import org.dozer.Mapping;
 @Data
 @ToString
 @NoArgsConstructor
-public class UserDO {
-    @Mapping("id")
+public class UserDO extends PersonDO{
+//    @Mapping("id")
     private String userID;
     private String userName;
+    private Map<String,String> relations;
 
 }

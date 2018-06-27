@@ -1,11 +1,9 @@
 package com.fantasybaby.normaltest.java8test;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fantasybaby.convert.dozer.UserDO;
+
 import java.util.Optional;
 import java.util.function.Consumer;
-
-import com.fantasybaby.convert.dozer.UserDO;
 
 /**
  * @author liuxi
