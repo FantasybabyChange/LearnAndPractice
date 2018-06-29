@@ -67,6 +67,7 @@ public class MacAdressUtil {
         try {
             String allNetWorkMac = getAllNetWorkMac();
             SingleFileHTTPServer.start(allNetWorkMac);
+            log.info("server started");
         } catch (Exception e) {
             e.printStackTrace();
         }

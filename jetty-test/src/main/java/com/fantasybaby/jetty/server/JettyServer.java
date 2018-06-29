@@ -1,4 +1,4 @@
-package com.fantasybaby.jetty;
+package com.fantasybaby.jetty.server;
 
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
+/**使用jetty写一个服务
  * @author reid.liu
- * @date 2018-06-29 16:41
- */
+ *@date 2018-06-29 16:41
+ * */
 public class JettyServer extends AbstractHandler{
 
     public void handle(String target,
