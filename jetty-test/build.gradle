@@ -21,7 +21,7 @@ dependencies {
 // https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-server
     compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.8.v20171121'
     // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
-    compile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
+    compile group: 'javax.servlet', name: 'servlet-api', version: '3.0-alpha-1'
 
 
     // Use JUnit test framework
