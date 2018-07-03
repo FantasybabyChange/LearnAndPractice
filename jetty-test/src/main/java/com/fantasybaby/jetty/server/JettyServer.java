@@ -11,10 +11,9 @@ import java.io.IOException;
 
 /**使用jetty写一个服务
  * @author reid.liu
- *@date 2018-06-29 16:41
- * */
+1 * */
 public class JettyServer extends AbstractHandler{
-
+    @Override
     public void handle(String target,
                        Request baseRequest,
                        HttpServletRequest request,
