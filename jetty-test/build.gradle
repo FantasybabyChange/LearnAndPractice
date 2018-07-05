@@ -26,6 +26,13 @@ dependencies {
 //    // https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlet
 //    compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.11.v20180605'
 //    compile group: 'javax.servlet', name: 'servlet-api', version: '3.0-alpha-1'
+    compile group: 'javax.servlet', name: 'servlet-api', version: '3.0-alpha-1'
+// https://mvnrepository.com/artifact/commons-httpclient/commons-httpclient
+    // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+// https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.5'
+
+
 
     // https://mvnrepository.com/artifact/org.eclipse.jetty.aggregate/jetty-all
     compile group: 'org.eclipse.jetty.aggregate', name: 'jetty-all', version: '9.4.11.v20180605', ext: 'pom'
