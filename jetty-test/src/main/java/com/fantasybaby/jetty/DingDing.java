@@ -23,7 +23,7 @@ public class DingDing {
             HttpPost httppost = new HttpPost(WEBHOOK_TOKEN);
             httppost.addHeader("Content-Type", "application/json; charset=utf-8");
 
-            String textMsg = "{ \"msgtype\": \"markdown\", \"markdown\": {\"title\": \"刘波老师来晚了\",text:\"@刘波    大家都来了  \"}}";
+            String textMsg = "{ \"msgtype\": \"markdown\", \"markdown\": {\"title\": \"刘波老师来晚了\",text:\"@18701881724    大家都来了  \"},at:{\"atMobiles\":[\"18701881724\"]}}";
             StringEntity se = new StringEntity(textMsg, "utf-8");
             httppost.setEntity(se);
 
