@@ -1,6 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'idea'
-
+apply plugin: 'maven'
 group = 'com.fantasybaby'
 version = '1.0-SNAPSHOT'
 
@@ -46,6 +46,9 @@ task buildNormalProject(group:'build') {
 
 sourceSets {
     main{
+        java{
+            srcDir file('src/main/java')
+        }
         resources {
             srcDir file('src/main/resource')
         }
