@@ -1,0 +1,22 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'com.fantasybaby'
+version = '0.0.1-SNAPSHOT'
+
+description = """jvm-test"""
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+
+
+repositories {
+    mavenLocal()
+}
+dependencies {
+    compile group: 'junit', name: 'junit', version:'4.10'
+}
