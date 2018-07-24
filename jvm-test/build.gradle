@@ -16,7 +16,12 @@ tasks.withType(JavaCompile) {
 
 repositories {
     mavenLocal()
+    mavenCentral()
+    jcenter()
 }
 dependencies {
-    compile group: 'junit', name: 'junit', version:'4.10'
+    compile group: 'junit', name: 'junit', version:'4.12'
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+
 }
