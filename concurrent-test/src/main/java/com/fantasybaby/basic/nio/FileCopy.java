@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 @Slf4j
-public class FilleCopy {
+public class FileCopy {
     public static void copy(String from,String to ){
         log.info("start copy");
         try {
@@ -38,6 +38,6 @@ public class FilleCopy {
     }
 
     public static void main(String[] args) {
-        FilleCopy.copy("/home/fantasybaby/download/apache-tomcat-7.0.68.tar.gz","/home/fantasybaby/hehe.tar.gz");
+        FileCopy.copy("/home/fantasybaby/download/apache-tomcat-7.0.68.tar.gz","/home/fantasybaby/hehe.tar.gz");
     }
 }
