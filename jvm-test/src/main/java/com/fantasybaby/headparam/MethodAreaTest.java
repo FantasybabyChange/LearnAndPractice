@@ -54,13 +54,9 @@ public class MethodAreaTest extends  ClassLoader{
             Enhancer enhancer = new Enhancer();
             enhancer.setSuperclass(WordDO.class);
             enhancer.setUseCache(false);// 关闭CGLib缓存，否则总是生成同一个类
-            enhancer.setCallback(new MethodInterceptor() {
-                @Override
-                public Object intercept(Object obj, Method method, Object[] args,
-                                        MethodProxy methodproxy) throws Throwable {
-                    // TODO Auto-generated method stub
-                    return methodproxy.invokeSuper(obj,args);
-                }
+            enhancer.setCallback((MethodInterceptor) (obj, method, args, methodproxy) -> {
+                // TODO Auto-generated method stub
+                return methodproxy.invokeSuper(obj,args);
             });
             enhancer.create();
 
