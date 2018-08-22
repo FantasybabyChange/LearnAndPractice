@@ -1,17 +1,12 @@
 package com.fantasybaby.headparam;
 
 import com.fantasybaby.domain.WordDO;
-import jdk.internal.org.objectweb.asm.Opcodes;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-import org.objectweb.asm.ClassWriter;
-import org.objectweb.asm.MethodVisitor;
 
 import java.io.*;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
 
 /**-XX:MetaspaceSize
  * -XX:MaxMetaspaceSize
@@ -49,50 +44,6 @@ public class MethodAreaTest extends  ClassLoader{
             classes.add(exampleClass);
         }
     }*/
-
-    private static byte[] getClassData(String path) {
-
-        InputStream is = null;
-
-        try {
-//            URL url = new URL(path);
-
-            byte[] buff = new byte[1024*4];
-
-            int len = -1;
-
-            is = new FileInputStream(new File(path));
-
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-            while((len = is.read(buff)) != -1) {
-
-                baos.write(buff,0,len);
-
-            }
-
-            return baos.toByteArray();
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-
-        } finally {
-
-            if (is != null) {
-
-                try {
-                    is.close();
-                } catch(IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        return null;
-
-    }
-
     /**
      * 通过cgLib造成metaSpace溢出
      * @throws InterruptedException
