@@ -1,12 +1,8 @@
-package com.fantasybaby.headparam;
+package com.fantasybaby.heapparam;
 
 import com.fantasybaby.domain.WordDO;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
-import net.sf.cglib.proxy.MethodProxy;
-
-import java.io.*;
-import java.lang.reflect.Method;
 
 /**-XX:MetaspaceSize
  * -XX:MaxMetaspaceSize
