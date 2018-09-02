@@ -1,4 +1,4 @@
-package com.fantasybaby.headparam;
+package com.fantasybaby.heapparam;
 
 /**
  * -XX:+UseSerialGC 使用串型垃圾器

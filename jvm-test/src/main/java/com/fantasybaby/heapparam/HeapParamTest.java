@@ -1,4 +1,4 @@
-package com.fantasybaby.headparam;
+package com.fantasybaby.heapparam;
 
 /**
  * -XX:+PrintGCDetails -Xmx20m -Xms5m
