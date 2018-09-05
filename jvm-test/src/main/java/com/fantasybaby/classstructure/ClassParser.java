@@ -1,23 +1,12 @@
 package com.fantasybaby.classstructure;
 
+import com.fantasybaby.classstructure.constant.*;
+
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.DataInputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import lesson10.constant.ClassConstant;
-import lesson10.constant.Constant;
-import lesson10.constant.DoubleConstant;
-import lesson10.constant.FieldRefConstant;
-import lesson10.constant.FloatConstant;
-import lesson10.constant.IntegerConstant;
-import lesson10.constant.InterfaceMethodRefConstant;
-import lesson10.constant.LongConstant;
-import lesson10.constant.MethodRefConstant;
-import lesson10.constant.NameAndTypeConstant;
-import lesson10.constant.StringConstant;
-import lesson10.constant.Utf8Constant;
 
 @SuppressWarnings("unused")
 public class ClassParser {
