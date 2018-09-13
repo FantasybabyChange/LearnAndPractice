@@ -15,8 +15,9 @@ tasks.withType(JavaCompile) {
 
 
 repositories {
-        
-     maven { url "http://repo.maven.apache.org/maven2" }
+    mavenLocal()
+//     maven { url "http://repo.maven.apache.org/maven2" }
+    jcenter()
 }
 dependencies {
     compile group: 'javax.jms', name: 'javax.jms-api', version:'2.0.1'
