@@ -1,0 +1,8 @@
+rootProject.name = 'dubbo-test'
+include ':dubbo-service'
+include ':dubbo-provider'
+include ':dubbo-customer'
+
+project(':dubbo-service').projectDir = "$rootDir/dubboservice" as File
+project(':dubbo-provider').projectDir = "$rootDir/dubboprovider" as File
+project(':dubbo-customer').projectDir = "$rootDir/dubbocustomer" as File
