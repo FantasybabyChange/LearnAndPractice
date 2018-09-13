@@ -1,6 +1,0 @@
-apply plugin: 'application'
-archivesBaseName = 'dubboprovider'
-mainClassName='com.fantasybaby.gradle.provider.service.ProviderService'
-dependencies{
-    compile project(':dubboservice')
-}

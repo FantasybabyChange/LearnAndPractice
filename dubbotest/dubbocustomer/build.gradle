@@ -1,5 +1,10 @@
+apply plugin:'application'
+mainClassName='com.fantasybaby.gradle.customer.Consumer'
+archivesBaseName = 'dubbocustomer'
 
-description = ''
-dependencies {
-  compile project(':dubbo-service')
+dependencies{
+    compile project(':dubboservice')
+    compile(
+            "com.alibaba:dubbo"
+    )
 }
