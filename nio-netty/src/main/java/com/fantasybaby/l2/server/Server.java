@@ -31,18 +31,14 @@ public class Server {
 		bootstrap.setFactory(new NioServerSocketChannelFactory(boss, worker));
 		
 		//设置管道的工厂
-		bootstrap.setPipelineFactory(new ChannelPipelineFactory() {
-			
-			@Override
-			public ChannelPipeline getPipeline() throws Exception {
+		bootstrap.setPipelineFactory(() -> {
 
-				ChannelPipeline pipeline = Channels.pipeline();
-				pipeline.addLast("decoder", new StringDecoder());
-				pipeline.addLast("encoder", new StringEncoder());
-				pipeline.addLast("helloHandler", new HelloHandler());
-				return pipeline;
-			}
-		});
+            ChannelPipeline pipeline = Channels.pipeline();
+            pipeline.addLast("decoder", new StringDecoder());
+            pipeline.addLast("encoder", new StringEncoder());
+            pipeline.addLast("helloHandler", new HelloHandler());
+            return pipeline;
+        });
 		
 		bootstrap.bind(new InetSocketAddress(10101));
 		
