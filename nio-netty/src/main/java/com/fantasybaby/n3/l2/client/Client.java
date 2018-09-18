@@ -1,4 +1,4 @@
-package com.fantasybaby.l2.client;
+package com.fantasybaby.n3.l2.client;
 
 import java.net.InetSocketAddress;
 import java.util.Scanner;

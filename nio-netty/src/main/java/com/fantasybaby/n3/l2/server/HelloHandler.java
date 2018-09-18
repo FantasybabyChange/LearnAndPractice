@@ -1,14 +1,16 @@
-package com.fantasybaby.l2.client;
+package com.fantasybaby.n3.l2.server;
 
-
-import org.jboss.netty.channel.*;
-
+import org.jboss.netty.channel.ChannelHandlerContext;
+import org.jboss.netty.channel.ChannelStateEvent;
+import org.jboss.netty.channel.ExceptionEvent;
+import org.jboss.netty.channel.MessageEvent;
+import org.jboss.netty.channel.SimpleChannelHandler;
 /**
  * 消息接受处理类
- * @author --
+ * @author -琴兽-
  *
  */
-public class HiHandler extends SimpleChannelHandler {
+public class HelloHandler extends SimpleChannelHandler {
 
 	/**
 	 * 接收消息
@@ -19,6 +21,9 @@ public class HiHandler extends SimpleChannelHandler {
 		
 		String s = (String) e.getMessage();
 		System.out.println(s);
+		
+		//回写数据
+		ctx.getChannel().write("hi");
 		super.messageReceived(ctx, e);
 	}
 
