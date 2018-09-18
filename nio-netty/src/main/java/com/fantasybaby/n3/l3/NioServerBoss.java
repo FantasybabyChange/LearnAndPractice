@@ -48,17 +48,14 @@ public class NioServerBoss extends AbstractNioSelector implements Boss {
 	
 	public void registerAcceptChannelTask(final ServerSocketChannel serverChannel){
 		 final Selector selector = this.selector;
-		 registerTask(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					//注册serverChannel到selector
-					serverChannel.register(selector, SelectionKey.OP_ACCEPT);
-				} catch (ClosedChannelException e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		 registerTask(() -> {
+             try {
+                 //注册serverChannel到selector
+                 serverChannel.register(selector, SelectionKey.OP_ACCEPT);
+             } catch (ClosedChannelException e) {
+                 e.printStackTrace();
+             }
+         });
 	}
 	
 	@Override
