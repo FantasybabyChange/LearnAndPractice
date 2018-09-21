@@ -1,14 +1,27 @@
-{
-   "first-name" : "Jane",
-   "last-name" : "Doe",
-   "address" : {
-      "street" : "123 A Street"
-   },
-   "phone-number" : [ {
-      "type" : "work",
-      "value" : "555-1111"
-   }, {
-      "type" : "cell",
-      "value" : "555-2222"
-   } ]
-}
+[{
+    "first-name" : "Jane",
+    "last-name" : "Doe",
+    "address" : {
+       "street" : "123 A Street"
+    },
+    "phone-number" : [ {
+       "type" : "work",
+       "value" : "555-1111"
+    }, {
+       "type" : "cell",
+       "value" : "555-2222"
+    } ]
+ },{
+       "first-name" : "Jane1",
+       "last-name" : "Doe1",
+       "address" : {
+          "street" : "123 A Street"
+       },
+       "phone-number" : [ {
+          "type" : "work",
+          "value" : "555-1111"
+       }, {
+          "type" : "cell",
+          "value" : "555-2222"
+       } ]
+    }]

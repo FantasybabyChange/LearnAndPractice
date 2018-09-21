@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<xml-bindings
+        xmlns="http://www.eclipse.org/eclipselink/xsds/persistence/oxm"
+        package-name="com.fantasybaby.domain">
+    <xml-schema
+            namespace="http://www.example.com/customer"
+            element-form-default="QUALIFIED"/>
+    <java-types>
+        <java-type name="PhoneNumber">
+            <xml-root-element/>
+            <xml-type name="PhoneNumber" prop-order="type number" />
+            <java-attributes>
+                <!--<xml-attribute java-attribute="lastName" name="last-name" />-->
+                <xml-element java-attribute="type" name="type"/>
+                <xml-element java-attribute="number" name="value"/>
+                <!--<xml-value java-attribute="type"/>
+                <xml-value java-attribute="value"/>-->
+            </java-attributes>
+        </java-type>
+        <java-type name="Customer" >
+            <xml-type prop-order="firstName lastName address phoneNumbers" />
+            <java-attributes>
+                <xml-attribute java-attribute="firstName" name="first-name" xml-key="true"/>
+                <xml-attribute java-attribute="lastName" name="last-name" xml-key="true"/>
+                <xml-element   java-attribute="phoneNumbers" xml-path="" />
+                <!--<xml-element   java-attribute="phoneNumbers" />-->
+                <!--<xml-value java-attribute="value"  />-->
+
+                <!--<xml-elements xml-list="true">
+                    <xml-element java-attribute="firstName" name="first-name"/>
+                    <xml-element java-attribute="lastName" name="last-name"/>
+                </xml-elements>-->
+
+               <!-- <xml-element-refs java-attribute="phoneNumbers"   >
+                    <xml-element-ref       java-attribute="type" name="type" />
+                    <xml-element-ref     java-attribute="number" name="value" />
+                </xml-element-refs>-->
+                <!--<xml-element-ref     java-attribute="phoneNumbers" name="type" />-->
+            </java-attributes>
+        </java-type>
+
+    </java-types>
+</xml-bindings>

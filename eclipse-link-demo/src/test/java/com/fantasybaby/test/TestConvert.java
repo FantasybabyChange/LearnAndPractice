@@ -1,5 +1,6 @@
 package com.fantasybaby.test;
 
+import com.fantasybaby.context.ThreadLocalContext;
 import com.fantasybaby.convert.IConvert;
 import com.fantasybaby.convert.JsonConvert;
 import com.fantasybaby.convert.XMLConvert;
@@ -9,7 +10,7 @@ import com.fantasybaby.domain.PhoneNumber;
 import com.fantasybaby.file.FileLoader;
 import org.junit.Test;
 
-import java.io.File;
+import java.util.List;
 
 /**
  * @author reid.liu
@@ -23,9 +24,27 @@ public class TestConvert {
     }
     @Test
     public void convertToObject(){
-        String path = new FileLoader().getPath("json.txt");
-        IConvert convert = new JsonConvert();
-        convert.convert(new File(path));
+        ThreadLocalContext.set("bindlins.xml");
+        String s = new FileLoader().readFileToString("json.txt");
+        IConvert<Customer> convert = new JsonConvert();
+        List<Customer> customer = convert.convert(s, Customer.class);
+        for (Customer customer1 : customer) {
+            System.out.println(customer1);
+        }
+    }
+    @Test
+    public void convertToList(){
+        try {
+            ThreadLocalContext.set("bindlins1.xml");
+            String s = new FileLoader().readFileToString("json1.txt");
+            IConvert<Customer> convert = new JsonConvert();
+            List<Customer> customer = convert.convert(s, Customer.class);
+            for (Customer customer1 : customer) {
+                System.out.println(customer1);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     @Test
     public void convertToXmlStr(){

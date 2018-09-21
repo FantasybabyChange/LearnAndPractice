@@ -10,6 +10,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.namespace.QName;
 import java.io.File;
 import java.io.StringWriter;
+import java.util.List;
 
 /**
  * @author reid.liu
@@ -17,7 +18,8 @@ import java.io.StringWriter;
  */
 public class XMLConvert<T> implements IConvert<T>{
     @Override
-    public void convert(File param) {
+    public List<T> convert(String param, Class<T> cls) {
+        return null;
     }
 
     @Override

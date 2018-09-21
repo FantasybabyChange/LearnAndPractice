@@ -18,7 +18,8 @@
         <java-type name="PhoneNumber">
             <java-attributes>
                 <xml-attribute java-attribute="type"/>
-                <xml-value java-attribute="number"/>
+                <xml-attribute java-attribute="number" name="value"/>
+                <!--<xml-value java-attribute="number"/>-->
             </java-attributes>
         </java-type>
     </java-types>
