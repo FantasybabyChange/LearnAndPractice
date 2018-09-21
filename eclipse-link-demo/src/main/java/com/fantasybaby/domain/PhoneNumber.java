@@ -1,6 +1,7 @@
 package com.fantasybaby.domain;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -11,6 +12,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
  */
 @Data
 //@XmlAccessorType(XmlAccessType.FIELD)
+@ToString
 public class PhoneNumber {
     private String type;
     private String number;

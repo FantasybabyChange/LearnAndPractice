@@ -41,6 +41,8 @@ public class TestConvert {
             List<Customer> customer = convert.convert(s, Customer.class);
             for (Customer customer1 : customer) {
                 System.out.println(customer1);
+                List<PhoneNumber> phoneNumbers = customer1.getPhoneNumbers();
+                phoneNumbers.forEach(System.out::println);
             }
         }catch (Exception e){
             e.printStackTrace();

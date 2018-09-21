@@ -7,27 +7,27 @@
             element-form-default="QUALIFIED"/>
     <java-types>
         <java-type name="PhoneNumber">
-            <xml-root-element/>
             <xml-type name="PhoneNumber" prop-order="type number" />
             <java-attributes>
                 <!--<xml-attribute java-attribute="lastName" name="last-name" />-->
-                <xml-element java-attribute="type" name="type"/>
-                <xml-element java-attribute="number" name="value"/>
+                <xml-element java-attribute="type" name="type"  xml-path="/type/text()"/>
+                <xml-element java-attribute="number" name="value" xml-path="/value/text()"/>
                 <!--<xml-value java-attribute="type"/>
                 <xml-value java-attribute="value"/>-->
             </java-attributes>
         </java-type>
         <java-type name="Customer" >
+            <xml-root-element/>
             <xml-type prop-order="firstName lastName address phoneNumbers" />
             <java-attributes>
-                <xml-attribute java-attribute="firstName" name="first-name" xml-key="true"/>
-                <xml-attribute java-attribute="lastName" name="last-name" xml-key="true"/>
-                <xml-element   java-attribute="phoneNumbers" xml-path="" />
+                <xml-element java-attribute="firstName" name="first-name" xml-path="/first-name/text()"/>
+                <xml-attribute java-attribute="lastName" name="last-name" xml-path="/last-name/text()"/>
+                <xml-element-ref java-attribute="phoneNumbers" name="PhoneNumber" />
                 <!--<xml-element   java-attribute="phoneNumbers" />-->
                 <!--<xml-value java-attribute="value"  />-->
 
                 <!--<xml-elements xml-list="true">
-                    <xml-element java-attribute="firstName" name="first-name"/>
+
                     <xml-element java-attribute="lastName" name="last-name"/>
                 </xml-elements>-->
 
