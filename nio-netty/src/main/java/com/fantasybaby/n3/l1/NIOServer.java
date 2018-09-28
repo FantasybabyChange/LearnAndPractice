@@ -36,7 +36,8 @@ public class NIOServer {
 		this.selector = Selector.open();
 		// 将通道管理器和该通道绑定，并为该通道注册SelectionKey.OP_ACCEPT事件,注册该事件后，
 		// 当该事件到达时，selector.select()会返回，如果该事件没到达selector.select()会一直阻塞。
-		serverChannel.register(selector, SelectionKey.OP_ACCEPT);
+		String str = "haha";
+		serverChannel.register(selector, SelectionKey.OP_ACCEPT,str);
 	}
 
 	/**
@@ -87,6 +88,8 @@ public class NIOServer {
 	 */
 	public void handlerAccept(SelectionKey key) throws IOException {
 		ServerSocketChannel server = (ServerSocketChannel) key.channel();
+		Object attachment = key.attachment();
+
 		// 获得和客户端连接的通道
 		SocketChannel channel = server.accept();
 		// 设置成非阻塞
