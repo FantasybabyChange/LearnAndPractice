@@ -28,7 +28,8 @@ version = '1.0-SNAPSHOT'
 //mainClassName = 'App'
 ext{
 //    nettyVersion = '4.1.29.Final'
-    nettyVersion = '3.10.6.Final'
+//    nettyVersion = '3.10.6.Final'
+//    nettyVersion = '3.10.5.Final'
 }
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
@@ -36,7 +37,7 @@ dependencies {
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
-    compile group: 'io.netty', name: 'netty', version: nettyVersion
+//    compile group: 'io.netty', name: 'netty', version: nettyVersion
 //    compile group: 'io.netty', name: 'netty-all', version: nettyVersion
 }
 
