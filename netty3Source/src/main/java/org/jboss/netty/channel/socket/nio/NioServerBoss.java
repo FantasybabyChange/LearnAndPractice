@@ -187,6 +187,7 @@ public final class NioServerBoss extends AbstractNioSelector implements Boss {
         }
 
         public void run() {
+            System.out.println("register task run()");
             boolean bound = false;
             boolean registered = false;
             try {

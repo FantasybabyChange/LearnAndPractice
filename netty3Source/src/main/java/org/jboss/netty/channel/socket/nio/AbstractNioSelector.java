@@ -357,6 +357,7 @@ abstract class AbstractNioSelector implements NioSelector {
      */
     private void openSelector(ThreadNameDeterminer determiner) {
         try {
+            System.out.println(Thread.currentThread().getName()+"=== openSelector()");
             selector = SelectorUtil.open();
         } catch (Throwable t) {
             throw new ChannelException("Failed to create a selector.", t);
@@ -383,11 +384,14 @@ abstract class AbstractNioSelector implements NioSelector {
     }
 
     private void processTaskQueue() {
+//        System.out.println(Thread.currentThread().getName()+"===processTaskQueue()==");
         for (;;) {
             final Runnable task = taskQueue.poll();
             if (task == null) {
                 break;
             }
+            System.out.println(Thread.currentThread().getName()+"===processTaskQueue()==");
+            System.out.println(task.getClass());
             task.run();
             try {
                 cleanUpCancelledKeys();
