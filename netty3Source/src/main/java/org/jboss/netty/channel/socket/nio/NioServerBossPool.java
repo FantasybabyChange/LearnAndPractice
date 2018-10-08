@@ -53,6 +53,7 @@ public class NioServerBossPool extends AbstractNioBossPool<NioServerBoss> {
 
     @Override
     protected NioServerBoss newBoss(Executor executor) {
+        System.out.println(Thread.currentThread().getName() +" new Boss");
         return new NioServerBoss(executor, determiner);
     }
 }

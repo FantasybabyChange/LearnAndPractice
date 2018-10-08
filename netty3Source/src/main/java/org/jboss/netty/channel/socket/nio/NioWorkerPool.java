@@ -41,6 +41,7 @@ public class NioWorkerPool extends AbstractNioWorkerPool<NioWorker> {
 
     @Override
     protected NioWorker newWorker(Executor executor) {
+        System.out.println(Thread.currentThread().getName() +" new Worker()");
         return new NioWorker(executor, determiner);
     }
 }

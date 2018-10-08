@@ -114,6 +114,7 @@ public class NioWorker extends AbstractNioWorker {
 
     @Override
     protected Runnable createRegisterTask(Channel channel, ChannelFuture future) {
+        System.out.println(Thread.currentThread().getName()+"NioWorker createRegisterTask()");
         boolean server = !(channel instanceof NioClientSocketChannel);
         return new RegisterTask((NioSocketChannel) channel, future, server);
     }

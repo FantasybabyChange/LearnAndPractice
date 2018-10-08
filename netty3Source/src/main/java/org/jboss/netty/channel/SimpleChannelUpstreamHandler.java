@@ -65,7 +65,7 @@ public class SimpleChannelUpstreamHandler implements ChannelUpstreamHandler {
      */
     public void handleUpstream(
             ChannelHandlerContext ctx, ChannelEvent e) throws Exception {
-
+        System.out.println(Thread.currentThread().getName()+" handleUpstream"+this.getClass());
         if (e instanceof MessageEvent) {
             messageReceived(ctx, (MessageEvent) e);
         } else if (e instanceof WriteCompletionEvent) {

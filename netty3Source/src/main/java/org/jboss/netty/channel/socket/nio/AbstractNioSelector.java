@@ -112,6 +112,7 @@ abstract class AbstractNioSelector implements NioSelector {
 
         if (selector != null) {
             if (wakenUp.compareAndSet(false, true)) {
+                System.out.println(Thread.currentThread().getName()+" "+this.getClass()+ " wake up " + task.getClass());
                 selector.wakeup();
             }
         } else {
@@ -209,7 +210,9 @@ abstract class AbstractNioSelector implements NioSelector {
 
             try {
                 long beforeSelect = System.nanoTime();
+                System.out.println(Thread.currentThread().getName()+"start select");
                 int selected = select(selector);
+                System.out.println(Thread.currentThread().getName()+"end select");
                 if (selected == 0 && !wakenupFromLoop && !wakenUp.get()) {
                     long timeBlocked = System.nanoTime() - beforeSelect;
                     if (timeBlocked < minSelectTimeout) {
@@ -435,6 +438,7 @@ abstract class AbstractNioSelector implements NioSelector {
     protected abstract void process(Selector selector) throws IOException;
 
     protected int select(Selector selector) throws IOException {
+        System.out.println(Thread.currentThread().getName()+" "+this.getClass()+" Nio Selector start select");
         return SelectorUtil.select(selector);
     }
 

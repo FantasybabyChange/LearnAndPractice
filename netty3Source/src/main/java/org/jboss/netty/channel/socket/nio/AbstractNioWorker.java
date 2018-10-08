@@ -81,6 +81,7 @@ abstract class AbstractNioWorker extends AbstractNioSelector implements Worker {
 
     @Override
     protected ThreadRenamingRunnable newThreadRenamingRunnable(int id, ThreadNameDeterminer determiner) {
+        System.out.println(Thread.currentThread().getName()+" AbstractNIO Worker newThreadRenamingRunnable()");
         return new ThreadRenamingRunnable(this, "New I/O worker #" + id, determiner);
     }
 
@@ -93,6 +94,7 @@ abstract class AbstractNioWorker extends AbstractNioSelector implements Worker {
 
     @Override
     protected void process(Selector selector) throws IOException {
+        System.out.println(Thread.currentThread().getName()+ "process abstractNioWorker");
         Set<SelectionKey> selectedKeys = selector.selectedKeys();
         // check if the set is empty and if so just return to not create garbage by
         // creating a new Iterator every time even if there is nothing to process.
