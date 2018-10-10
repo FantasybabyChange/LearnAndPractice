@@ -52,6 +52,7 @@ public class RandomAccessFileChannelTest {
 //                }
 
                 buffer.clear();
+                cb.clear();
                 read = channel.read(buffer);
             }
         } catch (FileNotFoundException e) {

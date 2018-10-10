@@ -6,9 +6,9 @@ import com.fantasybaby.unicode.gytest.enumGY.UniCodeEnum;
 
 public class UnicodeConvertUtil {
 	/**
-	 * ½«×Ö·û´®×ª³Éunicode
-	 * @param str ´ı×ª×Ö·û´®
-	 * @return unicode×Ö·û´®
+	 * å°†å­—ç¬¦ä¸²è½¬æˆunicode
+	 * @param str å¾…è½¬å­—ç¬¦ä¸²
+	 * @return unicodeå­—ç¬¦ä¸²
 	 */
 	public static String convert(String str)
 	{
@@ -22,12 +22,12 @@ public class UnicodeConvertUtil {
 		{
 			c = str.charAt(i);
 			sb.append("\\u");
-			j = (c >>>8); //È¡³ö¸ß8Î»
+			j = (c >>>8); //å–å‡ºé«˜8ä½
 			tmp = Integer.toHexString(j);
 			if (tmp.length() == 1)
 				sb.append("0");
 			sb.append(tmp);
-			j = (c & 0xFF); //È¡³öµÍ8Î»
+			j = (c & 0xFF); //å–å‡ºä½8ä½
 			tmp = Integer.toHexString(j);
 			if (tmp.length() == 1)
 				sb.append("0");
@@ -38,14 +38,14 @@ public class UnicodeConvertUtil {
 	}
 
 	/**
-	 * ½«unicode ×Ö·û´®
-	 * @param str ´ı×ª×Ö·û´®
-	 * @return ÆÕÍ¨×Ö·û´®
+	 * å°†unicode å­—ç¬¦ä¸²
+	 * @param str å¾…è½¬å­—ç¬¦ä¸²
+	 * @return æ™®é€šå­—ç¬¦ä¸²
 	 */
 	public static String revert(String str)
 	{
 		str = (str == null ? "" : str);
-		if (str.indexOf("\\u") == -1)//Èç¹û²»ÊÇunicodeÂëÔòÔ­Ñù·µ»Ø
+		if (str.indexOf("\\u") == -1)//å¦‚æœä¸æ˜¯unicodeç åˆ™åŸæ ·è¿”å›
 			return str;
 
 		StringBuffer sb = new StringBuffer(1000);
@@ -93,7 +93,7 @@ public class UnicodeConvertUtil {
 	}
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		String convert = new UnicodeConvertUtil().convert("|");
-		char a1 = '¡õ';
+		char a1 = 'â–¡';
 		char convert1 = '\u25a1';
 //		byte[] bytes = convert1.getBytes();
 		String str1 = "\u25a1";
@@ -102,7 +102,7 @@ public class UnicodeConvertUtil {
 		byte[] bytes = str1.getBytes();
 		System.out.println(new String(bytes,"UTF-8"));
 		System.out.println("--------------");
-		char a = '¡õ';
+		char a = 'â–¡';
 		char b = '\u25a1';
 		System.out.println(b);
 		System.out.println(a);
