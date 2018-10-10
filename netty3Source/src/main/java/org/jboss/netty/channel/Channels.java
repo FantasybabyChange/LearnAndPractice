@@ -166,7 +166,7 @@ public final class Channels {
         if (channel.getParent() != null) {
             fireChildChannelStateChanged(channel.getParent(), channel);
         }
-
+        System.out.println(Thread.currentThread().getName()+" fireChannelOpen() Channels");
         channel.getPipeline().sendUpstream(
                 new UpstreamChannelStateEvent(
                         channel, ChannelState.OPEN, Boolean.TRUE));

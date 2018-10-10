@@ -36,6 +36,7 @@ public class NioServerBossPool extends AbstractNioBossPool<NioServerBoss> {
      */
     public NioServerBossPool(Executor bossExecutor, int bossCount, ThreadNameDeterminer determiner) {
         super(bossExecutor, bossCount, false);
+        System.out.println("create NioServerBossPool===");
         this.determiner = determiner;
         init();
     }
@@ -52,6 +53,7 @@ public class NioServerBossPool extends AbstractNioBossPool<NioServerBoss> {
 
     @Override
     protected NioServerBoss newBoss(Executor executor) {
+        System.out.println(Thread.currentThread().getName() +" new Boss");
         return new NioServerBoss(executor, determiner);
     }
 }

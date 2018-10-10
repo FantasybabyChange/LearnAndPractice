@@ -51,6 +51,7 @@ public final class NioServerBoss extends AbstractNioSelector implements Boss {
 
     void bind(final NioServerSocketChannel channel, final ChannelFuture future,
               final SocketAddress localAddress) {
+        System.out.println(Thread.currentThread().getName()+" bind()" + this.getClass());
         registerTask(new RegisterTask(channel, future, localAddress));
     }
 
@@ -85,6 +86,7 @@ public final class NioServerBoss extends AbstractNioSelector implements Boss {
 
     @Override
     protected void process(Selector selector) {
+        System.out.println(Thread.currentThread().getName()+ "process NioServerBoss");
         Set<SelectionKey> selectedKeys = selector.selectedKeys();
         if (selectedKeys.isEmpty()) {
             return;
@@ -125,15 +127,18 @@ public final class NioServerBoss extends AbstractNioSelector implements Boss {
                 }
             }
         }
+        System.out.println(Thread.currentThread().getName()+ "process NioServerBoss end");
     }
 
     private static void registerAcceptedChannel(NioServerSocketChannel parent, SocketChannel acceptedSocket,
                                          Thread currentThread) {
         try {
+            System.out.println(Thread.currentThread().getName()+" NioServerBoss registerAcceptedChannel()");
             ChannelSink sink = parent.getPipeline().getSink();
             ChannelPipeline pipeline =
                     parent.getConfig().getPipelineFactory().getPipeline();
             NioWorker worker = parent.workerPool.nextWorker();
+
             worker.register(new NioAcceptedSocketChannel(
                     parent.getFactory(), pipeline, parent, sink
                     , acceptedSocket,
@@ -160,7 +165,10 @@ public final class NioServerBoss extends AbstractNioSelector implements Boss {
     protected int select(Selector selector) throws IOException {
         // Just do a blocking select without any timeout
         // as this thread does not execute anything else.
-        return selector.select();
+        System.out.println(Thread.currentThread().getName() + " nioBoss start Select()");
+        int select = selector.select();
+        System.out.println(Thread.currentThread().getName() + " nioBoss end Select() select Number:"+select);
+        return select;
     }
 
     @Override
@@ -171,6 +179,7 @@ public final class NioServerBoss extends AbstractNioSelector implements Boss {
 
     @Override
     protected Runnable createRegisterTask(Channel channel, ChannelFuture future) {
+        System.out.println(Thread.currentThread().getName()+" "+this.getClass()+" createRegisterTask()");
         return new RegisterTask((NioServerSocketChannel) channel, future, null);
     }
 
@@ -187,6 +196,7 @@ public final class NioServerBoss extends AbstractNioSelector implements Boss {
         }
 
         public void run() {
+            System.out.println(Thread.currentThread().getName() + "register task run()");
             boolean bound = false;
             boolean registered = false;
             try {

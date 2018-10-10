@@ -112,7 +112,8 @@ public class NioServerSocketChannelFactory implements ServerSocketChannelFactory
      */
     public NioServerSocketChannelFactory(
             Executor bossExecutor, Executor workerExecutor) {
-        this(bossExecutor, workerExecutor, getMaxThreads(workerExecutor));
+//        this(bossExecutor, workerExecutor, getMaxThreads(workerExecutor));
+        this(bossExecutor, workerExecutor, 1);
     }
 
     /**

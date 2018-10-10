@@ -112,6 +112,7 @@ abstract class AbstractNioSelector implements NioSelector {
 
         if (selector != null) {
             if (wakenUp.compareAndSet(false, true)) {
+                System.out.println(Thread.currentThread().getName()+" "+this.getClass()+ " wake up " + task.getClass());
                 selector.wakeup();
             }
         } else {
@@ -209,7 +210,9 @@ abstract class AbstractNioSelector implements NioSelector {
 
             try {
                 long beforeSelect = System.nanoTime();
+                System.out.println(Thread.currentThread().getName()+"start select");
                 int selected = select(selector);
+                System.out.println(Thread.currentThread().getName()+"end select");
                 if (selected == 0 && !wakenupFromLoop && !wakenUp.get()) {
                     long timeBlocked = System.nanoTime() - beforeSelect;
                     if (timeBlocked < minSelectTimeout) {
@@ -357,6 +360,7 @@ abstract class AbstractNioSelector implements NioSelector {
      */
     private void openSelector(ThreadNameDeterminer determiner) {
         try {
+            System.out.println(Thread.currentThread().getName()+"=== openSelector()");
             selector = SelectorUtil.open();
         } catch (Throwable t) {
             throw new ChannelException("Failed to create a selector.", t);
@@ -383,11 +387,14 @@ abstract class AbstractNioSelector implements NioSelector {
     }
 
     private void processTaskQueue() {
+//        System.out.println(Thread.currentThread().getName()+"===processTaskQueue()==");
         for (;;) {
             final Runnable task = taskQueue.poll();
             if (task == null) {
                 break;
             }
+            System.out.println(Thread.currentThread().getName()+"===processTaskQueue()==");
+            System.out.println(task.getClass());
             task.run();
             try {
                 cleanUpCancelledKeys();
@@ -431,6 +438,7 @@ abstract class AbstractNioSelector implements NioSelector {
     protected abstract void process(Selector selector) throws IOException;
 
     protected int select(Selector selector) throws IOException {
+        System.out.println(Thread.currentThread().getName()+" "+this.getClass()+" Nio Selector start select");
         return SelectorUtil.select(selector);
     }
 
