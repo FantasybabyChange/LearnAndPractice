@@ -4,6 +4,7 @@ import gui.ava.html.Html2Image;
 import gui.ava.html.image.generator.HtmlImageGenerator;
 import gui.ava.html.renderer.ImageRenderer;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.MemoryImageSource;
@@ -24,17 +25,22 @@ public class ConvertHtml2ImageNew {
         System.out.println(path);
         return path;
     }
-    public static void  convertToImageNew(){
+    public static OutputStream  convertToImageNew(String htmlContent){
         final Html2Image html2Image;
-        String htmlContent = ConvertHtml2Image.getHtmlContent("print.html", "GBK");
+//        String htmlContent = ConvertHtml2Image.getHtmlContent("print2.html", "UTF-8");
+        System.out.println(htmlContent);
         html2Image = Html2Image.fromHtml(htmlContent);
+
         ImageRenderer imageRenderer = html2Image.getImageRenderer();
-        imageRenderer.setHeight(1000);
-        imageRenderer.setWidth(1000);
-        imageRenderer.setAutoHeight(false);
-        imageRenderer.saveImage("d:/1.png");
+//        imageRenderer.setHeight(1000);
+//        imageRenderer.setWidth(1000);
+//        imageRenderer.setAutoHeight(false);
+//        imageRenderer.saveImage("d:/1.png");
+        OutputStream outputStream = new ByteArrayOutputStream();
+        imageRenderer.saveImage(outputStream,true);
+        return outputStream;
     }
     public static void main(String[] args) {
-        ConvertHtml2ImageNew.convertToImageNew();
+//        ConvertHtml2ImageNew.convertToImageNew();
     }
 }
