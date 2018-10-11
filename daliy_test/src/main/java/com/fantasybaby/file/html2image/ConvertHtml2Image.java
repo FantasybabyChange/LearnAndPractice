@@ -1,5 +1,6 @@
 package com.fantasybaby.file.html2image;
 
+import gui.ava.html.Html2Image;
 import gui.ava.html.image.generator.HtmlImageGenerator;
 
 import java.awt.*;
@@ -7,50 +8,32 @@ import java.awt.image.BufferedImage;
 import java.awt.image.MemoryImageSource;
 import java.awt.image.PixelGrabber;
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-/**https://code.google.com/archive/p/java-html2image/wikis
+/**
+ * https://code.google.com/archive/p/java-html2image/wikis
+ *
  * @author: liuxi
  * @time: 2018/10/10 20:00
  */
 public class ConvertHtml2Image {
     public static String getFilePath(String htmlFile) {
-            String path1 = ConvertHtml2Image.class.getClassLoader().getResource("").getPath();
-            File file1 = new File(path1).getParentFile();
-            String path = file1.getAbsolutePath() + File.separator +"resources"+File.separator + "html"+File.separator+htmlFile;
-            System.out.println(path);
-            /*RandomAccessFile file = new RandomAccessFile(new File(path), "rw");
-            FileChannel channel = file.getChannel();
-            ByteBuffer buffer = ByteBuffer.allocate(48);
-            CharBuffer cb = CharBuffer.allocate(512);
-            int read = channel.read(buffer);
-            StringBuffer sb = new StringBuffer();
-            while (read != -1) {
-                System.out.println("Read " + read);
-                buffer.flip();
-                decoder.decode(buffer, cb, false);
-                cb.flip();
-                while (cb.hasRemaining()) {
-//                    System.out.println(String.valueOf(cb.get()));
-                    sb.append(String.valueOf(cb.get()));
-                }
-
-                buffer.clear();
-                cb.clear();
-                read = channel.read(buffer);
-            }
-            String html = sb.toString();
-            System.out.println(html);
-            return html;*/
-            return path;
+        String path1 = ConvertHtml2Image.class.getClassLoader().getResource("").getPath();
+        File file1 = new File(path1).getParentFile();
+        String path = file1.getAbsolutePath() + File.separator + "resources" + File.separator + "html" + File.separator + htmlFile;
+        System.out.println(path);
+        return path;
     }
-    public static String getHtmlContent(String fileName, String charset){
+
+    public static String getHtmlContent(String fileName, String charset) {
 
         String line = null;
         StringBuilder sb = new StringBuilder();
         BufferedReader reader = null;
         String filePath = getFilePath(fileName);
         try {
-            reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(filePath)),charset));
+            reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(filePath)), charset));
             while ((line = reader.readLine()) != null) {
                 sb.append(line + "\n");
             }
@@ -67,7 +50,8 @@ public class ConvertHtml2Image {
         }
         return sb.toString();
     }
-    public static String html2Img(String htmText, String saveImageLocation){
+
+    public static String html2Img(String htmText, String saveImageLocation) {
 
         HtmlImageGenerator imageGenerator = new HtmlImageGenerator();
         try {
@@ -89,7 +73,7 @@ public class ConvertHtml2Image {
     }
 
 
-    public static BufferedImage transform_Gray24BitMap(BufferedImage image){
+    public static BufferedImage transform_Gray24BitMap(BufferedImage image) {
 
         int h = image.getHeight();
         int w = image.getWidth();
@@ -102,7 +86,7 @@ public class ConvertHtml2Image {
             throw new RuntimeException("转换成24位图的BMP时，处理像素值异常");
         }
 
-        for (int j = 0; j < h; j++){ // 扫描列
+        for (int j = 0; j < h; j++) { // 扫描列
             for (int i = 0; i < w; i++) { // 扫描行
                 // 由红，绿，蓝值得到灰度值
                 gray = (int) (((pixels[w * j + i] >> 16) & 0xff) * 0.8);
@@ -112,14 +96,14 @@ public class ConvertHtml2Image {
             }
         }
 
-        MemoryImageSource s= new MemoryImageSource(w,h,pixels,0,w);
+        MemoryImageSource s = new MemoryImageSource(w, h, pixels, 0, w);
         Image img = Toolkit.getDefaultToolkit().createImage(s);
         BufferedImage buf = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);//如果要转换成别的位图，改这个常量即可
         buf.createGraphics().drawImage(img, 0, 0, null);
         return buf;
     }
 
-    public void convertToImage(){
+    public void convertToImage() {
         HtmlImageGenerator imageGenerator = new HtmlImageGenerator();
 //        String html = "<div style=\"width: 500px; height: 500px;\"><img src=\"http://pic1.zhimg.com/80/v2-e60a4cab4c6cdbd634df7246023cf580_hd.jpg\" width=\"350\" height=\"233\"><a href=\"#\" style=\"color: blue;\">沙雕</a></div>";
 //        File f = new File("C:\\workspace\\javaSeWorkspace\\daliy_test\\src\\main\\resources\\html\\print.html");
@@ -139,8 +123,12 @@ public class ConvertHtml2Image {
     public static void main(String[] args) {
 //        new ConvertHtml2Image().convertToImage();
 //        new ConvertHtml2Image().getHtmlFromFile("print.html");
-        String htmlContent = ConvertHtml2Image.getHtmlContent("print.html", "UTF-8");
-        ConvertHtml2Image.html2Img(htmlContent,"D://a.jpg");
+//        String htmlContent = ConvertHtml2Image.getHtmlContent("print.html", "UTF-8");
+//        ConvertHtml2Image.html2Img(htmlContent,"D://a.jpg");
 //        System.out.println(htmlContent);
+        final Html2Image html2Image;
+            String htmlContent = ConvertHtml2Image.getHtmlContent("print.html", "UTF-8");
+            html2Image = Html2Image.fromHtml(htmlContent);
+            html2Image.getImageRenderer().saveImage("d:/1.png");
     }
 }
