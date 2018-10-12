@@ -1,19 +1,6 @@
 package com.fantasybaby.file.html2image;
 
-import org.lobobrowser.html.UserAgentContext;
-import org.lobobrowser.html.domimpl.HTMLDocumentImpl;
-import org.lobobrowser.html.parser.DocumentBuilderImpl;
-import org.lobobrowser.html.parser.InputSourceImpl;
-import org.lobobrowser.html.test.SimpleUserAgentContext;
-import org.w3c.dom.Document;
-import org.w3c.dom.html2.HTMLCollection;
-
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.URL;
-
-/**
+/**毫无卵用 等待更新
  * @author fantasybaby
  * @date 2018/10/11
  */
@@ -21,7 +8,7 @@ public class ConvertHtmlCorba {
     private static final String TEST_URI = "http://baidu.com";
 
     public static void main(String[] args) throws Exception {
-        UserAgentContext uacontext = new SimpleUserAgentContext();
+      /*  UserAgentContext uacontext = new SimpleUserAgentContext();
         DocumentBuilderImpl builder = new DocumentBuilderImpl(uacontext);
         URL url = new URL(TEST_URI);
         InputStream in = url.openConnection().getInputStream();
@@ -37,7 +24,7 @@ public class ConvertHtmlCorba {
             }
         } finally {
             in.close();
-        }
+        }*/
     }
 
 }

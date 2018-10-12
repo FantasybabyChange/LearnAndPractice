@@ -50,13 +50,13 @@ dependencies {
     // https://mvnrepository.com/artifact/com.github.xuwei-k/html2image
     compile group: 'com.github.xuwei-k', name: 'html2image', version: '0.1.0'
     // https://mvnrepository.com/artifact/org.lobobrowser/cobra
-    compile group: 'com.cobra', name: 'cobra', version: '1.0.1'
+//    compile group: 'com.cobra', name: 'cobra', version: '1.0.1'
     compile 'org.freemarker:freemarker:2.3.28'
 
     compile  group:'gui.ava' ,name:'html2image',version:'2.0.1'
-//    compile group: 'org.eclipse.swt', name: 'org.eclipse.swt.win32.win32.x86_64', version:'4.3'
+    compile group: 'org.eclipse.swt', name: 'org.eclipse.swt.win32.win32.x86_64', version:'4.3'
 
-//    compile group: 'org.eclipse', name: 'jface', version: '3.3.0-I20070606-0010'
+
 //    compile group: 'org.eclipse.core', name: 'commands', version:'3.3.0-I20070605-0010'
 //    compile group: 'org.eclipse.equinox', name: 'org.eclipse.equinox.common', version:'3.6.0.v20100503'
     compile group: 'com.fasterxml.jackson.cor' +

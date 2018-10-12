@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<style media="print">
+.no_print,.top_btn {
+	display: none;
+}
+</style>
+
+<style type="text/css">
+body {
+	font-family:'宋体';
+	font-size: 12px;
+	color: #000000;
+	border-color: #000;
+	table-layout: fixed;
+	margin-top: 0mm;
+	margin-bottom: 0mm;
+}
+
+@page {
+	size: 200mm 297mm;
+	margin-left: 10mm;
+	margin-right: 2mm;
+	margin-top: 0mm;
+	margin-bottom: 0mm;
+}
+
+.box{
+	width: 200mm;
+	height: 297mm;
+	border: solid 0px black !important;
+}
+
+.simple , .table-list , .row {
+	width: 210mm !important;
+}
+.simple {
+	margin-left: 7px;
+	margin-right: 6px;
+	margin-bottom: 5px;
+	border-collapse: collapse;
+	table-layout: fixed;
+	background-color: #FFFFFF;
+	border: solid 0px black !important;
+}
+
+.simple td,.simple th {
+	font-family:'宋体';
+	font-size: 12px;
+	height: 18px;
+	line-height:18px;
+	border: solid 0px black !important;
+}
+
+.table-list {
+	margin-left: 7px;
+	margin-right: 6px;
+	border-collapse: collapse;
+	table-layout: fixed;
+	background-color: #FFFFFF;
+	border: solid 1px black !important;
+}
+
+.table-list p {
+	line-height: 14px !important;
+	margin: 2px 0px;
+}
+
+.table-list td, .table-list th {
+	font-family:'宋体';
+	font-size: 12px;
+	border: solid 1px black !important;
+	height: 20px;
+	line-height: 20px;
+	padding-left: 1mm;
+	padding-right: 1mm;
+}
+
+.caption {
+	font-family:'宋体';
+	font-size: 40px;
+	font-weight: bold;
+	text-align:  left;
+	border: solid 0px black !important;
+	height: 18mm;
+	margin-top: 7mm;
+	line-height: 18mm;
+	position: relative;
+}
+
+.barcode {
+	width: 66mm ;
+	heigth: 17mm;
+	 float: right; 
+	/*position: absolute;
+	right: 0mm;
+	top: 0mm;*/
+}
+
+.box , .page_next {
+	page-break-after: always;
+}
+
+.sku-number {
+	width:5%
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.sku-name {
+	width:5%;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.address {
+	overflow: hidden;
+	white-space: nowrap;
+}
+</style>
+</head>
+
+<body>
+	<div class="box">
+		<div class="caption row">
+			盘点单
+		</div>
+			
+		<table class="simple" style="font-weight: normal;">
+			 <tr>
+				<td style="text-align: left" width="30%"><b>盘点单号:</b>1231231</td>
+			 	<td style="text-align: left" width="15%"><b>客户：</b>快仓</td>
+				<td style="text-align: left" width="15%"><b>所属区：</b>拣选区</td>
+				<td style="text-align: left" width="20%"><b>货架号：</b>101</td>
+				<td style="text-align: left" width="25%"><b>打印时间：</b>2018-10-12</td>
+				<td style="text-align: right" width="5%">2</td>
+			</tr>
+		</table>
+		
+		<table class="table-list">
+			<thead>
+				<tr>
+					<th style="width:5%;">货位面</th>
+					<th style="width:5%;">货位号</th>
+					<th style="width:5%;">商品编号</th>
+					<th style="width:5%;">商品名称</th>
+					<th style="width:5%;">批次号</th>
+					<th style="width:5%;">库存快照</th>
+					<th style="width:width:5%;">盘点数量</th>
+				</tr>
+			</thead>
+			<tbody>
+			       <tr class="odd">
+						<td align="center">1</td>
+						<td align="center">101</td>
+						<td><div class="sku-number">a1231</div></td>
+						<td><div class="sku-name">中国田园犬</div></td>
+						<td align="left" class="sku-number">aasdasda</td>
+						<td align="right">3</td>
+						<td align="right"></td>
+					</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+</html>

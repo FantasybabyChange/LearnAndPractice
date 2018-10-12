@@ -4,6 +4,7 @@ import com.fantasybaby.file.html2image.ConvertHtml2ImageNew;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import gui.ava.html.Html2Image;
 
 import javax.imageio.ImageIO;
 import javax.imageio.stream.ImageOutputStream;
@@ -40,9 +41,10 @@ public class FreeMarkerGenerate {
     public static void main(String[] args) {
         try {
             String freeMarker = FreeMarkerGenerate.testFreeMarker();
-            OutputStream outputStream = ConvertHtml2ImageNew.convertToImageNew(freeMarker);
-
-            ImageOutputStream imageOutputStream = ImageIO.createImageOutputStream(outputStream);
+            ConvertHtml2ImageNew.convertToImageNew(freeMarker,"D://hello.png");
+//            ConvertHtml2ImageNew.convertToImageNew(freeMarker,"D://hello.jpg");
+//            ConvertHtml2ImageNew.convertToPdf(freeMarker,"D://hello.pdf");
+//            ImageOutputStream imageOutputStream = ImageIO.createImageOutputStream(outputStream);
 //            ImageIO
         } catch (IOException e) {
             e.printStackTrace();

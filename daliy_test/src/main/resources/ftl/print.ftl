@@ -17,7 +17,7 @@
             border: 1px solid #cad9ea;
             color: #666;
             height: 30px;
-            font-size: 10px;
+            font-size: 20px;
         }
         table thead th
         {

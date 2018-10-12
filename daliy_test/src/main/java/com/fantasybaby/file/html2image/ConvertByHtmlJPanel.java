@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public class ConvertByHtmlJPanel {
     public void convertToImage(){
-        String html = ConvertHtml2Image.getHtmlContent("print.html","UTF-8");
+        String html = ConvertHtml2Image.getHtmlContent("print3.html","UTF-8");
         System.out.println(html);
         JEditorPane pane = new JEditorPane();
         pane.setEditable(false);
@@ -22,22 +22,21 @@ public class ConvertByHtmlJPanel {
         pane.setText(html);
         pane.setSize(pane.getPreferredSize());
         pane.setBackground(Color.WHITE);
-        BufferedImage image = new BufferedImage(pane.getWidth(), pane
-                .getHeight(), BufferedImage.TYPE_INT_ARGB);
+        BufferedImage image = new BufferedImage(1000, 1000, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = image.createGraphics();
         /*
          * Have the image painted by SwingUtilities
          */
         JPanel container = new JPanel();
-        container.setBackground(Color.WHITE);
-        SwingUtilities.paintComponent(g, pane, container, 0, 0, image.getWidth(), image.getHeight());
+//        container.setBackground(Color.WHITE);
+        SwingUtilities.paintComponent(g, pane, container, 0, 0, 1000, image.getHeight());
         g.dispose();
         // get the byte array of the image (as jpeg)
         /*ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(image, "jpg", baos);
         byte[] bytes = baos.toByteArray();*/
         try {
-            ImageIO.write(image, "jpg", new File("D://test.jpg"));
+            ImageIO.write(image, "png", new File("D://test.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
