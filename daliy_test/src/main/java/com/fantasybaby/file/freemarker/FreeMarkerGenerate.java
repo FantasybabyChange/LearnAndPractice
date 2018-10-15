@@ -1,15 +1,15 @@
 package com.fantasybaby.file.freemarker;
 
-import com.fantasybaby.file.html2image.ConvertHtml2ImageNew;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import gui.ava.html.Html2Image;
 
-import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageOutputStream;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -22,11 +22,13 @@ public class FreeMarkerGenerate {
         File file1 = new File(path1).getParentFile();
         return  file1.getAbsolutePath() + File.separator + "resources" + File.separator + "ftl";
     }
-    public static String testFreeMarker() throws IOException, TemplateException {
+    public static String testFreeMarker(String path) throws IOException, TemplateException {
         Configuration config = new Configuration(Configuration.VERSION_2_3_27);
-        config.setDefaultEncoding("GBK");
+        config.setDefaultEncoding("UTF-8");
+        config.setOutputEncoding("UTF-8");
+        config.setEncoding(Locale.CHINA,"UTF-8");
         config.setDirectoryForTemplateLoading(new File(getTemplatePath()));
-        Template template = config.getTemplate("print.ftl");
+        Template template = config.getTemplate(path);
         Map<String,Object> map = new HashMap<>();
         UserBean userBean = new UserBean();
         userBean.setAddress("上海虹桥");
@@ -40,8 +42,8 @@ public class FreeMarkerGenerate {
 
     public static void main(String[] args) {
         try {
-            String freeMarker = FreeMarkerGenerate.testFreeMarker();
-            ConvertHtml2ImageNew.convertToImageNew(freeMarker,"D://hello.png");
+            String freeMarker = FreeMarkerGenerate.testFreeMarker("print.ftl");
+//            ConvertHtml2ImageNew.convertToImageNew(freeMarker,"D://hello.png");
 //            ConvertHtml2ImageNew.convertToImageNew(freeMarker,"D://hello.jpg");
 //            ConvertHtml2ImageNew.convertToPdf(freeMarker,"D://hello.pdf");
 //            ImageOutputStream imageOutputStream = ImageIO.createImageOutputStream(outputStream);

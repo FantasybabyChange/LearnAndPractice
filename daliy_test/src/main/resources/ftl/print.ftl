@@ -1,7 +1,15 @@
 <html>
 <head>
-    <title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
     <style type="text/css">
+        @page {
+            size: 210mm 297mm;
+            margin-left: 10mm;
+            margin-right: 2mm;
+            margin-top: 0mm;
+            margin-bottom: 0mm;
+        }
         body{
             height: 300px;
             /*font-size: 26px;*/
@@ -10,19 +18,22 @@
         {
             border-collapse: collapse;
             margin: 0 auto;
-            text-align: center;
+            text-align: left;
+            width: 190mm;
         }
         table td, table th
         {
             border: 1px solid #cad9ea;
             color: #666;
             height: 30px;
-            font-size: 20px;
+            font-size: 16px;
+            word-break: keep-all;
+            width: 20mm; 
         }
         table thead th
         {
-            background-color: #CCE8EB;
-            width: 100px;
+            <#--  background-color: #CCE8EB;  -->
+            width: 20mm;
         }
         table tr:nth-child(odd)
         {
@@ -35,24 +46,24 @@
     </style>
 </head>
 <body >
-<table width="90%" class="table">
+<table  class="table">
     <caption>
         <h2>
-            ³µ¼äÄÜÔ´ÏûºÄ±ÈÀı</h2>
+            è½¦é—´èƒ½æºæ¶ˆè€—æ¯”ä¾‹</h2>
     </caption>
     <thead>
     <tr>
         <th>
-            ³µ¼ä
+            è½¦é—´
         </th>
         <th>
-            ²úÁ¿
+            äº§é‡
         </th>
         <th>
-            µçÁ¿
+            ç”µé‡
         </th>
         <th>
-            µ¥ºÄ
+            å•è€—
         </th>
     </tr>
     </thead>

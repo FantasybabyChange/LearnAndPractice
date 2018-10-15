@@ -14,7 +14,7 @@ import java.util.Map;
 @ToString
 @NoArgsConstructor
 public class UserDO extends PersonDO{
-//    @Mapping("id")
+    //    @Mapping("id")
     private String userID;
     private String userName;
     private Map<String,String> relations;

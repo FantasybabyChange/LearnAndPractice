@@ -26,12 +26,18 @@ public class PrintImage {
     private static final int A4_HEIGHT = 210;
     public static void printControl(Composite root, Printer printer, Point location) {
         root.getParent().layout();
+        root.getChildren();
+        /*try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
         GC gc1 = new GC(printer);
         if (printer.startJob("Walle Printing")) {
             for (int i = 0; i < root.getChildren().length; i++) {
                 Control control = root.getChildren()[i];
                 Image image = new Image(root.getDisplay(), control.getBounds());
-//                Image image = new Image(root.getDisplay(), 900,400);
+//                Image image = new Image(root.getDisplay(), 480,480);
                 GC gc = new GC(image);
                 boolean success = control.print(gc);
                 if (success) {
@@ -42,10 +48,10 @@ public class PrintImage {
                 Point printerDPI = printer.getDPI();
 
                 // Rectangle trim = printer.computeTrim(100, 200, 300, 400);
-                /*int w = control.getBounds().width;
-                int h = control.getBounds().height;*/
-                int w=100;
-                int h =100;
+                int w = control.getBounds().width;
+                int h = control.getBounds().height;
+                /*int w=480;
+                int h =480;*/
 
                 if (printer.startPage()) {
                     gc1.drawImage(image, 0, 0, w, h, location.x * printerDPI.x / screenDPI.x, location.y * printerDPI.y
@@ -83,16 +89,16 @@ public class PrintImage {
 //            }
             PrintService pservice  = PrintServiceLookup.lookupDefaultPrintService();
 
-            //´òÓ¡ÊôÐÔ
+            //æ‰“å°å±žæ€§
             PrintRequestAttributeSet pras = new HashPrintRequestAttributeSet();
 
             pras.add(OrientationRequested.PORTRAIT);
             pras.add(new Copies(count));
             pras.add(PrintQuality.HIGH);
             pras.add(Chromaticity.MONOCHROME);
-            //ÎÄµµÊôÐÔ
+            //æ–‡æ¡£å±žæ€§
             DocAttributeSet das = new HashDocAttributeSet();
-            // ÉèÖÃ´òÓ¡Ö½ÕÅµÄ´óÐ¡£¨½«ÏñËØ×ª»¯Îªmm£©
+            // è®¾ç½®æ‰“å°çº¸å¼ çš„å¤§å°ï¼ˆå°†åƒç´ è½¬åŒ–ä¸ºmmï¼‰
             das.add(new MediaPrintableArea(0, 0, A4_WIDTH, A4_HEIGHT, MediaPrintableArea.MM));
             Doc doc = new SimpleDoc(inputStream, dof, das);
             DocPrintJob job = pservice.createPrintJob();
