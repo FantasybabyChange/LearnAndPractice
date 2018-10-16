@@ -38,6 +38,8 @@ dependencies {
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
     compile group: 'io.netty', name: 'netty', version: nettyVersion
+//    compile 'com.google.protobuf:protobuf-java:3.3.0'
+    compile 'com.google.protobuf:protobuf-java:2.4.1'
 //    compile group: 'io.netty', name: 'netty-all', version: nettyVersion
 }
 
