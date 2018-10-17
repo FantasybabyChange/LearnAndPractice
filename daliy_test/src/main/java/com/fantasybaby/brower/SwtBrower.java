@@ -2,6 +2,8 @@ package com.fantasybaby.brower;
 
 import com.fantasybaby.file.freemarker.FreeMarkerGenerate;
 import com.fantasybaby.file.html2image.ConvertHtml2Image;
+import com.fantasybaby.file.html2image.ConvertHtml2ImageNew;
+import com.fantasybaby.file.html2pdf.Html2Pdf;
 import com.fantasybaby.file.print.PrintImage;
 import freemarker.template.TemplateException;
 import org.eclipse.swt.SWT;
@@ -16,7 +18,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
-import java.io.IOException;
+import java.io.*;
 
 /**
  * @author reid.liu
@@ -27,24 +29,31 @@ public class SwtBrower {
     public void openBrowser(){
         String renderHtml=null;
         try {
-            renderHtml = FreeMarkerGenerate.testFreeMarker("print.ftl");
+            renderHtml = FreeMarkerGenerate.testFreeMarker("ybpick-express.ftl");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (TemplateException e) {
             e.printStackTrace();
         }
-        renderHtml += ConvertHtml2Image.getHtmlContent("scriptDemo.html","UTF-8");
+        System.out.println(renderHtml);
+//        renderHtml += ConvertHtml2Image.getHtmlContent("scriptDemo.html","UTF-8");
+        try {
+            OutputStream out = new FileOutputStream(new File("D://hello.pdf"));
+            Html2Pdf.generate(renderHtml,out);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+//        ConvertHtml2ImageNew.convertToImageNew(renderHtml, "d://hello.png");
         Display display = new Display();
         Shell shell = new Shell(SWT.None);
         shell.setLayout(new FillLayout());
-//        shell.setBounds(Display.getDefault().getPrimaryMonitor().getBounds());
+        shell.setBounds(Display.getDefault().getPrimaryMonitor().getBounds());
         try {
             browser = new Browser(shell, SWT.NONE);
             /*GridData dataRoot = new GridData(SWT.LEFT, SWT.TOP, false, false, 1, 1);
             dataRoot.widthHint = 480;
             dataRoot.heightHint = 480;*/
 //            browser.setLayoutData(dataRoot);
-//            browser.setBounds(Display.getDefault().getPrimaryMonitor().getBounds());
         } catch (SWTError e) {
             System.out.println("Could not instantiate Browser: " + e.getMessage());
             display.dispose();
@@ -56,7 +65,7 @@ public class SwtBrower {
             @Override
 
             public Object function(Object[] arguments) {
-                SwtBrower.pirntBrowser(browser);
+//                SwtBrower.pirntBrowser(browser);
 //                display.dispose();
                 return super.function(arguments);
             }
@@ -80,8 +89,8 @@ public class SwtBrower {
         new SwtBrower().openBrowser();
     }
     public static void pirntBrowser(Composite shell){
-//        PrinterData printerData = new PrinterData("", "Microsoft Print to PDF");
-        PrinterData printerData = new PrinterData("", "FX DocuCentre-IV C2260 PCL 6");
+        PrinterData printerData = new PrinterData("", "Microsoft Print to PDF");
+//        PrinterData printerData = new PrinterData("", "FX DocuCentre-IV C2260 PCL 6");
 //        PrinterData printerData = new PrinterData("", "Send To OneNote 2016");
         Printer printer = new Printer(printerData);
         Point point = new Point(0,0);

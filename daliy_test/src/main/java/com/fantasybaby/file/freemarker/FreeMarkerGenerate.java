@@ -1,5 +1,6 @@
 package com.fantasybaby.file.freemarker;
 
+import com.google.common.collect.Lists;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -9,6 +10,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -34,7 +36,22 @@ public class FreeMarkerGenerate {
         userBean.setAddress("上海虹桥");
         userBean.setUserAge(13);
         userBean.setUserName("中华田园犬");
-        map.put("user",userBean);
+        List<OrderDetail> lists = Lists.newArrayList();
+        OrderDetail o = new OrderDetail();
+        o.setQuantity(1);
+        o.setUserBean(userBean);
+        lists.add(o);
+        OrderDetail o1 = new OrderDetail();
+        o1.setQuantity(2);
+        UserBean userBean1 = new UserBean();
+        userBean1.setAddress("上海虹桥1");
+        userBean1.setUserAge(13);
+        userBean1.setUserName("中华田园犬1");
+        o1.setUserBean(userBean1);
+        lists.add(o1);
+        map.put("items",lists);
+        map.put("sos",false);
+        map.put("startIndex",1);
         Writer out = new StringWriter();
         template.process(map, out);
         return out.toString();

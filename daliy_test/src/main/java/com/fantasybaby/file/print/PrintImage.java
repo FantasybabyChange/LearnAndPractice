@@ -1,20 +1,19 @@
 package com.fantasybaby.file.print;
 
-import org.eclipse.swt.graphics.GC;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.printing.Printer;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Display;
 
+import javax.imageio.ImageIO;
 import javax.print.*;
 import javax.print.attribute.DocAttributeSet;
 import javax.print.attribute.HashDocAttributeSet;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 import javax.print.attribute.standard.*;
+import java.awt.image.RenderedImage;
 import java.io.*;
 
 /**
@@ -37,13 +36,16 @@ public class PrintImage {
             for (int i = 0; i < root.getChildren().length; i++) {
                 Control control = root.getChildren()[i];
                 Image image = new Image(root.getDisplay(), control.getBounds());
+
 //                Image image = new Image(root.getDisplay(), 480,480);
                 GC gc = new GC(image);
-                boolean success = control.print(gc);
+                gc.setAdvanced(true);
+                gc.setAntialias(SWT.DEFAULT);
+                /*boolean success = control.print(gc);
                 if (success) {
                     System.out.println("control print success()");
-                }
-
+                }*/
+                root.print(gc);
                 Point screenDPI = control.getDisplay().getDPI();
                 Point printerDPI = printer.getDPI();
 
@@ -52,16 +54,24 @@ public class PrintImage {
                 int h = control.getBounds().height;
                 /*int w=480;
                 int h =480;*/
+                /*ImageLoader loader = new ImageLoader();
+                loader.data = new ImageData[] {image.getImageData()};
+                loader.save("D://swt.png", SWT.IMAGE_PNG);*/
 
                 if (printer.startPage()) {
+                    gc1.setAdvanced(true);
+                    gc1.setAntialias(SWT.ON);// 设置消除锯齿
+    //                    gc1.setInterpolation(SWT.HIGH); // 设置插值
                     gc1.drawImage(image, 0, 0, w, h, location.x * printerDPI.x / screenDPI.x, location.y * printerDPI.y
-                            / screenDPI.y, w * printerDPI.x / screenDPI.x, h * printerDPI.y / screenDPI.y);
-                    // gc1.drawImage(image, 0, 0, w, h, trim.x, trim.y, w *
-                    // printerDPI.x / screenDPI.x, h * printerDPI.y
-                    // / screenDPI.y);
-                    printer.endPage();
+                                / screenDPI.y, w * printerDPI.x / screenDPI.x, h * printerDPI.y / screenDPI.y);
+
+    //                    gc1.drawImage(image,0,0);
+                        // gc1.drawImage(image, 0, 0, w, h, trim.x, trim.y, w *
+                        // printerDPI.x / screenDPI.x, h * printerDPI.y
+                        // / screenDPI.y);
+                        printer.endPage();
                 }
-                gc.dispose();
+//                gc.dispose();
                 image.dispose();
             }
             printer.endJob();
