@@ -69,19 +69,19 @@ public class Html2Pdf {
 
         @Override
         public Font getFont(final String fontname, String encoding, float size, final int style) {
-
+            String       fontname1 = fontname;
             if (fontname == null) {
                 // 操作系统需要有该字体, 没有则需要安装; 当然也可以将字体放到项目中， 再从项目中读取
-//                            fontname = "SimSun";
-                try {
+                       fontname1 = "SimSun";
+                /*try {
                     final BaseFont baseFont = BaseFont.createFont("STSongStd-Light",
                             "UniGB-UCS2-H", BaseFont.NOT_EMBEDDED);
                     return new Font(baseFont, size, style);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
-                }
+                }*/
             }
-            return super.getFont(fontname, encoding, size, style);
+            return super.getFont(fontname1, encoding, size, style);
         }
 
     }

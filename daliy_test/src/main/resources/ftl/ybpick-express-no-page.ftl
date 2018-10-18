@@ -32,8 +32,17 @@
         .box , .page_next {
             page-break-after: always;
         }
-        td ,th{
+        td{
             <#--  font-family:'宋体';  -->
+            font-size: 12px;
+            border: black 1px solid;
+            height: 20px;
+            line-height: 20px;
+            padding-left: 1mm;
+            padding-right: 1mm;
+        }
+        th{
+            font-weight: bold;
             font-size: 12px;
             border: black 1px solid;
             height: 20px;
@@ -60,7 +69,7 @@
         交付指示单
     </div>
 
-    <table class="table-list" style="font-weight:bold;">
+    <table class="table-list" style="font-weight:bold;font-size=13px;">
         <tr>
             <td style="text-align: left;"  ><b>收货道口:</b></td>
             <td style="text-align: left;" ><b>1231231</b></td>
@@ -90,10 +99,10 @@
     
      <thead>
                  <tr>
-                    <td align="center" >序号</td>
-                    <td align="center" >零件件号</td>
-                    <td align="center" >零件名称</td>
-                    <td align="center" >需求箱数</td>
+                    <th align="center" >序号</th>
+                    <th align="center" >零件件号</th>
+                    <th align="center" >零件名称</th>
+                    <th align="center" >需求箱数</th>
                 </tr>
      </thead>
      <#assign s1=1>

@@ -50,7 +50,7 @@ public class FreeMarkerGenerate {
 
     private static List<OrderDetail> generateNoPage() {
         List<OrderDetail> lists = Lists.newArrayList();
-        for (int j = 0; j < 100; j++) {
+        for (int j = 0; j < 2000; j++) {
             OrderDetail o2 = new OrderDetail();
             o2.setQuantity((j+1));
             UserBean userBean2 = new UserBean();
