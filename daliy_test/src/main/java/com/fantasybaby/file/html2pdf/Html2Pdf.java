@@ -7,6 +7,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import com.fantasybaby.file.freemarker.FreeMarkerGenerate;
+import com.itextpdf.text.pdf.BaseFont;
 import freemarker.template.TemplateException;
 import org.apache.commons.lang3.StringUtils;
 import org.xhtmlrenderer.pdf.ITextRenderer;
@@ -58,7 +59,32 @@ public class Html2Pdf {
         renderer.createPDF(out);
         out.close();
     }
+    /**
+     * 找不到的字体一律改为宋体
+     */
+    protected static class SongFontsProvider extends XMLWorkerFontProvider {
+        public SongFontsProvider() {
+            super(null, null);
+        }
 
+        @Override
+        public Font getFont(final String fontname, String encoding, float size, final int style) {
+
+            if (fontname == null) {
+                // 操作系统需要有该字体, 没有则需要安装; 当然也可以将字体放到项目中， 再从项目中读取
+//                            fontname = "SimSun";
+                try {
+                    final BaseFont baseFont = BaseFont.createFont("STSongStd-Light",
+                            "UniGB-UCS2-H", BaseFont.NOT_EMBEDDED);
+                    return new Font(baseFont, size, style);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            return super.getFont(fontname, encoding, size, style);
+        }
+
+    }
     public static void generatePlus(String htmlStr, OutputStream out) throws IOException, DocumentException {
         final String charsetName = "UTF-8";
 
@@ -66,21 +92,8 @@ public class Html2Pdf {
         document.setMargins(30, 30, 30, 30);
         PdfWriter writer = PdfWriter.getInstance(document, out);
         document.open();
-
-        // html内容解析
-        HtmlPipelineContext htmlContext = new HtmlPipelineContext(
-                new CssAppliersImpl(new XMLWorkerFontProvider() {
-                    @Override
-                    public Font getFont(String fontname, String encoding,
-                                        float size, final int style) {
-                        if (fontname == null) {
-                            // 操作系统需要有该字体, 没有则需要安装; 当然也可以将字体放到项目中， 再从项目中读取
-                            fontname = "SimSun";
-                        }
-                        return super.getFont(fontname, encoding, size,
-                                style);
-                    }
-                })) {
+        HtmlPipelineContext htmlContext = new HtmlPipelineContext(new CssAppliersImpl(
+                new SongFontsProvider(){})){
             @Override
             public HtmlPipelineContext clone()
                     throws CloneNotSupportedException {
@@ -93,7 +106,6 @@ public class Html2Pdf {
                 return context;
             }
         };
-
         // 图片解析
         htmlContext.setImageProvider(new AbstractImageProvider() {
 
@@ -170,8 +182,9 @@ public class Html2Pdf {
 
     public static void main(String[] args) {
         try {
-            String renderHtml = FreeMarkerGenerate.testFreeMarker("ybpick-express.ftl");
-            OutputStream out = new FileOutputStream(new File("D://hello.pdf"));
+            String renderHtml = FreeMarkerGenerate.testFreeMarker("ybpick-express-no-page.ftl");
+            System.out.println(renderHtml);
+            OutputStream out = new FileOutputStream(new File("D://hello1.pdf"));
             Html2Pdf.generatePlus(renderHtml,out);
         } catch (IOException e) {
             e.printStackTrace();

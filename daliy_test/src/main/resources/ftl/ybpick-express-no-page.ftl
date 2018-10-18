@@ -83,9 +83,7 @@
         </tr>
                 
     </table>
- <#assign s=1>
-        <#list items as item>
-        <#assign s1=1>
+
 <div class="box" style="page-break-after: always;">
     
     <table class="table-list ">
@@ -98,9 +96,10 @@
                     <td align="center" >需求箱数</td>
                 </tr>
      </thead>
-               <#list item as sitem>
+     <#assign s1=1>
+               <#list items as sitem>
                 <tr >
-                    <td align="center">${s*s1}</td>
+                    <td align="center">${s1}</td>
                     <td align="center">101</td>
                     <td align="center">${sitem.userBean.userName}</td>
                     <td align="center">1</td>
@@ -110,7 +109,6 @@
     </table>
     
 </div>
- <#assign s +=1 >
-                </#list>
+
 </body>
 </html>

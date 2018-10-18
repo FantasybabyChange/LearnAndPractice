@@ -36,25 +36,48 @@ public class FreeMarkerGenerate {
         userBean.setAddress("上海虹桥");
         userBean.setUserAge(13);
         userBean.setUserName("中华田园犬");
-        List<OrderDetail> lists = Lists.newArrayList();
-        OrderDetail o = new OrderDetail();
-        o.setQuantity(1);
-        o.setUserBean(userBean);
-        lists.add(o);
-        OrderDetail o1 = new OrderDetail();
-        o1.setQuantity(2);
-        UserBean userBean1 = new UserBean();
-        userBean1.setAddress("上海虹桥1");
-        userBean1.setUserAge(13);
-        userBean1.setUserName("中华田园犬1");
-        o1.setUserBean(userBean1);
-        lists.add(o1);
+        List<List<OrderDetail>> allList = Lists.newArrayList();
+
+//        generatePage(allList);
+        List<OrderDetail> lists = generateNoPage();
         map.put("items",lists);
         map.put("sos",false);
         map.put("startIndex",1);
         Writer out = new StringWriter();
         template.process(map, out);
         return out.toString();
+    }
+
+    private static List<OrderDetail> generateNoPage() {
+        List<OrderDetail> lists = Lists.newArrayList();
+        for (int j = 0; j < 100; j++) {
+            OrderDetail o2 = new OrderDetail();
+            o2.setQuantity((j+1));
+            UserBean userBean2 = new UserBean();
+            userBean2.setAddress("上海虹桥"+j);
+            userBean2.setUserAge(13);
+            userBean2.setUserName("中华田园犬"+j);
+            o2.setUserBean(userBean2);
+            lists.add(o2);
+        }
+        return lists;
+    }
+
+    private static void generatePage(List<List<OrderDetail>> allList) {
+        for (int i = 0; i < 3; i++) {
+            List<OrderDetail> lists = Lists.newArrayList();
+            for (int j = 0; j < 44; j++) {
+                OrderDetail o2 = new OrderDetail();
+                o2.setQuantity((i+1)*j);
+                UserBean userBean2 = new UserBean();
+                userBean2.setAddress("上海虹桥"+(i+1)*j);
+                userBean2.setUserAge(13);
+                userBean2.setUserName("中华田园犬"+(i+1)*j);
+                o2.setUserBean(userBean2);
+                lists.add(o2);
+            }
+            allList.add(lists);
+        }
     }
 
     public static void main(String[] args) {
