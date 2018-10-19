@@ -61,6 +61,18 @@
             line-height: 18mm;
             position: relative;
         }
+        .whitestone{
+            width: 10%;
+                height: 10%;
+            border-size: 2px;
+                background: gray;
+                border:1px solid red;
+        }
+        .blackstone{
+                          width: 20px;
+                          height: 20px;
+                          background: black;
+                   }
     </style>
 </head>
 
@@ -78,11 +90,11 @@
             </td>
         </tr>
         <tr>
-            <td style="text-align: left;"  ><b><#if sos=true>
+            <td style="text-align: left;"  ><span class="whitestone">&nbsp;</span><#if sos=true>
             &diams;
             <#else>
-            &loz; </#if> 紧急</b></td>
-            <td style="text-align: left;" ><b><#if (sos=true)>
+            &loz; </#if> 紧急</td>
+            <td style="text-align: left;" ><span class="blackstone" >&nbsp;</span><b><#if (sos=true)>
             &loz;
             <#else>
             &diams;
@@ -90,13 +102,13 @@
             <td style="text-align: left"  colspan=2 ><b>单号：1231231</b>
             </td>
         </tr>
-                
+
     </table>
 
 <div class="box" style="page-break-after: always;">
-    
+
     <table class="table-list ">
-    
+
      <thead>
                  <tr>
                     <th align="center" >序号</th>
@@ -110,13 +122,13 @@
                 <tr >
                     <td align="center">${s1}</td>
                     <td align="center">101</td>
-                    <td align="center">${sitem.userBean.userName}</td>
+                    <td align="center">${sitem.userBean.userName?substring(sitem.userBean.userName?index_of("田")+1)}</td>
                     <td align="center">1</td>
                 </tr>
                 <#assign s1 +=1 >
-                </#list>           
+                </#list>
     </table>
-    
+
 </div>
 
 </body>
