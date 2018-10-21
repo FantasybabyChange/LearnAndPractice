@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 多连接客户端
- * @author -琴兽-
+ * @author -fantasybaby-
  *
  */
 public class MultClient {

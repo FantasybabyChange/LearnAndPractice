@@ -1,6 +1,5 @@
-package com.fantasybaby.n3.l8.java;
+package com.fantasybaby.n3.l8.serial;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,13 +8,11 @@ import java.util.List;
  * @author -fantasybaby-
  *
  */
-public class Player implements Serializable{
+public class Player extends Serializer{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5248069984631225347L;
-
+	public Player() {
+	}
+	
 	public Player(long playerId,  int age, String name) {
 		this.playerId = playerId;
 		this.age = age;
@@ -60,5 +57,21 @@ public class Player implements Serializable{
 
 	public void setSkills(List<Integer> skills) {
 		this.skills = skills;
+	}
+
+	@Override
+	protected void read() {
+		this.playerId = readLong();
+		this.age = readInt();
+		this.name = readString();
+		this.skills = readList(Integer.class);
+	}
+
+	@Override
+	protected void write() {
+		writeLong(playerId);
+		writeInt(age);
+		writeString(name);
+		writeList(skills);
 	}
 }

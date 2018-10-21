@@ -4,7 +4,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 /**
  * 服务端消息处理
- * @author -琴兽-
+ * @author -fantasybaby-
  *
  */
 public class ServerHandler extends SimpleChannelInboundHandler<String> {

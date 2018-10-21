@@ -15,7 +15,7 @@ import java.util.concurrent.Executor;
 
 /**
  * worker实现类
- * @author -琴兽-
+ * @author -fantasybaby-
  *
  */
 public class NioServerWorker extends AbstractNioSelector implements Worker {

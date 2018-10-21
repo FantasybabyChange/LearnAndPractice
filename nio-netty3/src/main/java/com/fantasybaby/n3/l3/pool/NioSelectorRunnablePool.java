@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * selector线程管理者
- * @author -琴兽-
+ * @author -fantasybaby-
  *
  */
 public class NioSelectorRunnablePool {

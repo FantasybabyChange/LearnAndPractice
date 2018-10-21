@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * 抽象selector线程类
  * 
- * @author -琴兽-
+ * @author -fantasybaby-
  * 
  */
 public abstract class AbstractNioSelector implements Runnable {

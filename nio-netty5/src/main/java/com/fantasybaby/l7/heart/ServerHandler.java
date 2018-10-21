@@ -8,7 +8,7 @@ import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 /**
  * 服务端消息处理
- * @author -琴兽-
+ * @author -fantasybaby-
  *
  */
 public class ServerHandler extends SimpleChannelInboundHandler<String> {

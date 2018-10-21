@@ -7,7 +7,7 @@ import org.jboss.netty.channel.MessageEvent;
 import org.jboss.netty.channel.SimpleChannelHandler;
 /**
  * 消息接受处理类
- * @author -琴兽-
+ * @author -fantasybaby-
  *
  */
 public class HelloHandler extends SimpleChannelHandler {

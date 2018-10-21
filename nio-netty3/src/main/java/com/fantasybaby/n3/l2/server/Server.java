@@ -12,7 +12,7 @@ import org.jboss.netty.handler.codec.string.StringDecoder;
 import org.jboss.netty.handler.codec.string.StringEncoder;
 /**
  * netty服务端入门
- * @author -琴兽-
+ * @author -fantasybaby-
  *
  */
 public class Server {

@@ -12,7 +12,7 @@ import java.util.concurrent.Executor;
 
 /**
  * boss实现类
- * @author -琴兽-
+ * @author -fantasybaby-
  *
  */
 public class NioServerBoss extends AbstractNioSelector implements Boss {

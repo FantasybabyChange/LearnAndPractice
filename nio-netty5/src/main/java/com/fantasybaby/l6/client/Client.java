@@ -15,7 +15,7 @@ import java.io.InputStreamReader;
 
 /**
  * netty5的客户端
- * @author -琴兽-
+ * @author -fantasybaby-
  *
  */
 public class Client {

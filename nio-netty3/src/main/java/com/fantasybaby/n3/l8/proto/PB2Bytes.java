@@ -4,7 +4,7 @@ package com.fantasybaby.n3.l8.proto;
 import java.util.Arrays;
 /**
  * protobuf学习
- * @author -琴兽-
+ * @author -fantasybaby-
  *
  */
 public class PB2Bytes {

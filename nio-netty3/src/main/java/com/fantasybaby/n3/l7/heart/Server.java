@@ -15,7 +15,7 @@ import org.jboss.netty.handler.timeout.IdleStateHandler;
 import org.jboss.netty.util.HashedWheelTimer;
 /**
  * netty服务端入门
- * @author -琴兽-
+ * @author -fantasybaby-
  *
  */
 public class Server {
