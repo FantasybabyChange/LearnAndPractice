@@ -1,7 +1,7 @@
 package com.fantasybaby.n3.l10.common.model;
 /**
  * 请求对象
- * @author -琴兽-
+ * @author -fantasybaby-
  *
  */
 public class Request {

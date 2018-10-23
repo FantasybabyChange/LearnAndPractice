@@ -1,12 +1,13 @@
 package com.fantasybaby.n3.l10.common.serial;
 
 
-import java.nio.ByteOrder;
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.buffer.ChannelBuffers;
+
+import java.nio.ByteOrder;
 /**
  * buff工厂
- * @author -琴兽-
+ * @author -fantasybaby-
  *
  */
 public class BufferFactory {

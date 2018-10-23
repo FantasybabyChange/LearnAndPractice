@@ -7,7 +7,7 @@ import java.util.*;
 import java.util.Map.Entry;
 /**
  * 自定义序列化接口
- * @author -琴兽-
+ * @author -fantasybaby-
  *
  */
 public abstract class Serializer {

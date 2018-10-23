@@ -1,13 +1,12 @@
 package com.fantasybaby.n3.l10.common.codc;
 
+import com.fantasybaby.n3.l10.common.constant.ConstantValue;
+import com.fantasybaby.n3.l10.common.model.Request;
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.buffer.ChannelBuffers;
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelHandlerContext;
 import org.jboss.netty.handler.codec.oneone.OneToOneEncoder;
-
-import com.cn.constant.ConstantValue;
-import com.cn.model.Request;
 
 /**
  * 请求编码器
@@ -22,7 +21,7 @@ import com.cn.model.Request;
  * 命令号2字节short
  * 长度4字节(描述数据部分字节长度)
  * 
- * @author -琴兽-
+ * @author -fantasybaby-
  *
  */
 public class RequestEncoder extends OneToOneEncoder{

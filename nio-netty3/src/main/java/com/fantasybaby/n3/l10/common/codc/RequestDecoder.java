@@ -20,7 +20,7 @@ import org.jboss.netty.handler.codec.frame.FrameDecoder;
  * 命令号2字节short
  * 长度4字节(描述数据部分字节长度)
  * 
- * @author -琴兽-
+ * @author -fantasybaby-
  *
  */
 public class RequestDecoder extends FrameDecoder{

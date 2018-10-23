@@ -1,19 +1,14 @@
 package com.fantasybaby.n3.l10.server;
 
-import org.jboss.netty.channel.ChannelHandlerContext;
-import org.jboss.netty.channel.ChannelStateEvent;
-import org.jboss.netty.channel.ExceptionEvent;
-import org.jboss.netty.channel.MessageEvent;
-import org.jboss.netty.channel.SimpleChannelHandler;
-
-import com.cn.model.Request;
-import com.cn.model.Response;
-import com.cn.model.StateCode;
-import com.cn.module.fuben.request.FightRequest;
-import com.cn.module.fuben.response.FightResponse;
+import com.fantasybaby.n3.l10.common.model.Request;
+import com.fantasybaby.n3.l10.common.model.Response;
+import com.fantasybaby.n3.l10.common.model.StateCode;
+import com.fantasybaby.n3.l10.common.module.fuben.request.FightRequest;
+import com.fantasybaby.n3.l10.common.module.fuben.response.FightResponse;
+import org.jboss.netty.channel.*;
 /**
  * 消息接受处理类
- * @author -琴兽-
+ * @author -fantasybaby-
  *
  */
 public class HelloHandler extends SimpleChannelHandler {
