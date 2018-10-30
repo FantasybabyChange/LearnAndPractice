@@ -57,11 +57,11 @@ public class PlaygroundPart {
         browser.setText(html,true);
         shell.open();
 //       new Thread(()->SwtBrower.pirntBrowser(browser)).start();
-        Display.getDefault().asyncExec(() -> {
-            SwtBrower.pirntBrowser(browser);
-//           shell.layout();
-//            display.dispose();
-        });
+//        Display.getDefault().asyncExec(() -> {
+//            SwtBrower.pirntBrowser(browser);
+////           shell.layout();
+////            display.dispose();
+//        });
         while (!shell.isDisposed()) {
 
             if (!display.readAndDispatch())

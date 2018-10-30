@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="first" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0936a616-b1d6-48b4-bc2c-0b8a29543fda">
+	<property name="ireport.zoom" value="1.2100000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="51"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="dataset1" uuid="7cd47218-8b90-4e5d-b9db-3a79bdf38cd8"/>
+	<subDataset name="New Dataset 1" uuid="d71343da-9c1c-467b-9998-ab37c02c1cf2"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="barCode" class="java.lang.String">
+		<fieldDescription><![CDATA[barCode]]></fieldDescription>
+	</field>
+	<field name="code1" class="java.lang.String">
+		<fieldDescription><![CDATA[code1]]></fieldDescription>
+	</field>
+	<field name="code2" class="java.lang.String">
+		<fieldDescription><![CDATA[code2]]></fieldDescription>
+	</field>
+	<field name="code3" class="java.lang.String">
+		<fieldDescription><![CDATA[code3]]></fieldDescription>
+	</field>
+	<field name="items" class="java.util.List">
+		<fieldDescription><![CDATA[items]]></fieldDescription>
+	</field>
+	<field name="state" class="java.lang.String">
+		<fieldDescription><![CDATA[state]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="16" width="162" height="43" uuid="dbbd0a1d-856b-4c8d-8d9f-30906bef0286"/>
+				<textElement>
+					<font fontName="宋体" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[交付指示单]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="59" width="555" height="37" uuid="b1af0f35-09ca-4c54-ac53-ae3549b54bd9"/>
+			</rectangle>
+			<line>
+				<reportElement x="86" y="59" width="1" height="37" uuid="2c2462f1-9309-48b8-9f6d-b4044b626643"/>
+			</line>
+			<line>
+				<reportElement x="189" y="59" width="1" height="37" uuid="d24644d4-8f4d-4e40-9d9f-ec83146354d4"/>
+			</line>
+			<staticText>
+				<reportElement x="2" y="73" width="84" height="20" uuid="d92ff2ae-2803-40d4-8cbe-195b0f0c4d36"/>
+				<textElement>
+					<font fontName="宋体" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[收货道口:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="64" width="51" height="14" uuid="3ee9011e-0f65-4404-896a-766b77eb940b"/>
+				<textElement>
+					<font fontName="宋体" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[需求车间:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="192" y="81" width="50" height="15" uuid="081b262a-77e5-40c0-9379-bacc63fea475"/>
+				<textElement>
+					<font fontName="宋体" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[需求产线:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="360" y="59" width="1" height="37" uuid="8b1017a5-60eb-4e77-b67e-9acb5c732998"/>
+			</line>
+			<componentElement>
+				<reportElement x="360" y="59" width="194" height="34" uuid="a582158c-7724-4ea3-b386-88f281ad4ccf"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="true" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{barCode}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<textField>
+				<reportElement x="111" y="75" width="100" height="20" uuid="0691dc0b-fc97-45f8-b98e-1003c30a7011"/>
+				<textFieldExpression><![CDATA[$F{code1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="242" y="64" width="100" height="14" uuid="d8c8907c-14b9-45d4-978f-02b947aeb7ca"/>
+				<textFieldExpression><![CDATA[$F{code2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="242" y="78" width="100" height="16" uuid="ff2a7f4c-1ccf-4bb9-9c5c-f5c8cc12f70f"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{code3}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" uuid="1172ecf3-9ff3-4ec0-8a5e-eb42126bdecc"/>
+			</rectangle>
+			<line>
+				<reportElement x="86" y="0" width="1" height="20" uuid="d4d8e7c5-2eb9-4c3a-882e-ff4a76df5009"/>
+			</line>
+			<line>
+				<reportElement x="189" y="0" width="1" height="20" uuid="43844e79-b9f9-4bef-88a2-edf5d64ff966"/>
+			</line>
+			<staticText>
+				<reportElement x="192" y="1" width="50" height="20" uuid="f673f654-fc98-42c5-a8cf-f94981b60257"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[单号:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement x="11" y="0" width="65" height="20" uuid="c6af415d-c504-45f1-b9fb-d663e18b48dc"/>
+				<textFieldExpression><![CDATA[$F{state}.equals("true")?"紧急":""]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement x="101" y="3" width="100" height="17" uuid="2b137c02-37c4-4e8d-ae7c-5131a358b2e9"/>
+				<textFieldExpression><![CDATA[$F{state}.equals("false")?"紧急":""]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

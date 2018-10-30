@@ -82,7 +82,8 @@ public class FreeMarkerGenerate {
 
     public static void main(String[] args) {
         try {
-            String freeMarker = FreeMarkerGenerate.testFreeMarker("print.ftl");
+            String freeMarker = FreeMarkerGenerate.testFreeMarker("ybpick-express-no-page.ftl");
+            System.out.println(freeMarker);
 //            ConvertHtml2ImageNew.convertToImageNew(freeMarker,"D://hello.png");
 //            ConvertHtml2ImageNew.convertToImageNew(freeMarker,"D://hello.jpg");
 //            ConvertHtml2ImageNew.convertToPdf(freeMarker,"D://hello.pdf");
