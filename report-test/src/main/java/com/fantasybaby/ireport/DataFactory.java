@@ -43,4 +43,27 @@ public class DataFactory {
         return lists2;
     }
 
+    public static Collection<BoxData>genereateBoxDate(){
+        List<BoxData> lists = new ArrayList<>();
+        BoxData bd = new BoxData();
+        bd.setBoxID("1234");
+        bd.setCustomerID(12);
+        bd.setState(123);
+        bd.setDetails(generateBoxDetails());
+        lists.add(bd);
+        return lists;
+    }
+    public static Collection<BoxDetails> generateBoxDetails() {
+        List<BoxDetails> lists2 = new ArrayList<>();
+        for (int j = 0; j < 20; j++) {
+            BoxDetails userBean2 = new BoxDetails();
+            userBean2.setBatchNumber("123123123123"+j);
+            userBean2.setIsBox(j%2==0);
+            userBean2.setSkuID("1231"+j);
+            userBean2.setBoxDetailID("aaaa"+j);
+            lists2.add(userBean2);
+        }
+        return lists2;
+    }
+
 }

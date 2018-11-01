@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportdb" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="431b7bc9-9e42-455b-96f3-64d47f1ef3a6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="details" uuid="6d02c736-cd0a-4f65-8c2a-47ad7748ab81">
+		<parameter name="detail" class="net.sf.jasperreports.engine.JREmptyDataSource"/>
+		<queryString>
+			<![CDATA[SELECT boxDetailID, skuID,batchNumber,isBox FROM walle_erp.`box_details` LIMIT 100;]]>
+		</queryString>
+		<field name="boxDetailID" class="java.lang.String">
+			<fieldDescription><![CDATA[boxDetailID]]></fieldDescription>
+		</field>
+		<field name="skuID" class="java.lang.String">
+			<fieldDescription><![CDATA[skuID]]></fieldDescription>
+		</field>
+		<field name="batchNumber" class="java.lang.String">
+			<fieldDescription><![CDATA[batchNumber]]></fieldDescription>
+		</field>
+		<field name="isBox" class="java.lang.Boolean">
+			<fieldDescription><![CDATA[isBox]]></fieldDescription>
+		</field>
+	</subDataset>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="boxID" class="java.lang.String">
+		<fieldDescription><![CDATA[boxID]]></fieldDescription>
+	</field>
+	<field name="customerID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[customerID]]></fieldDescription>
+	</field>
+	<field name="state" class="java.lang.String">
+		<fieldDescription><![CDATA[state]]></fieldDescription>
+	</field>
+	<field name="details" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource">
+		<fieldDescription><![CDATA[details]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="87" y="30" width="100" height="20" uuid="a99dc8f5-7d2f-43f5-b327-7f754e1c6492"/>
+				<textFieldExpression><![CDATA[$F{boxID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="411" y="36" width="100" height="20" uuid="b937934e-45b8-4c15-85a4-444e13e95bb3"/>
+				<textFieldExpression><![CDATA[$F{state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="351" y="10" width="100" height="20" uuid="69902a39-43d2-4864-9f27-4c276dd8e293"/>
+				<textFieldExpression><![CDATA[$F{customerID}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="0" width="555" height="125" uuid="c54aff3e-f158-4c36-aecf-80594e86a565"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="details" uuid="34810c01-0eac-4870-a7ed-5fcda5d4e792">
+						<datasetParameter name="detail">
+							<datasetParameterExpression><![CDATA[$F{details}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[$F{details}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="0f442bc3-0703-46b4-879a-898159f6bfb7">
+						<jr:tableHeader height="31" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="b90896ce-8293-4a53-aaf4-f21c7e59d4ea"/>
+								<text><![CDATA[1]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="30" uuid="a8f4bf27-1c2d-4ec4-8d70-3f41544f7722"/>
+								<textFieldExpression><![CDATA[$F{boxDetailID}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="b886a220-164e-443a-9fbf-9c170d2bca1f">
+						<jr:tableHeader height="31" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="c69f4cae-4e34-4ddb-991f-13f20bad8c9a"/>
+								<text><![CDATA[2]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="30" uuid="de68b09d-ec31-49f4-abb5-b2c852083e0e"/>
+								<textFieldExpression><![CDATA[$F{skuID}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="9ec29736-6dfd-4ec9-b409-7341fa6ef419">
+						<jr:tableHeader height="31" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="eaf5fd55-4e93-426e-8ac8-9dc0d7e306d8"/>
+								<text><![CDATA[3]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="30" uuid="8c170769-cbc4-457e-b0a1-7eebb050220b"/>
+								<textFieldExpression><![CDATA[$F{isBox}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="8973dff5-d196-4ef6-ad1b-0199f1b7381c">
+						<jr:tableHeader height="31" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="73f7ae83-035a-4ec9-aaba-91cc72c4c5ae"/>
+								<text><![CDATA[4]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="30" uuid="dae35a8e-43fc-40d7-8646-b28a7c52be7c"/>
+								<textFieldExpression><![CDATA[$F{batchNumber}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="90" uuid="2b7b7c17-7813-4fee-989e-3012b5d932c1">
+						<jr:tableHeader height="31" rowSpan="1"/>
+						<jr:detailCell height="30" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="30" uuid="0391ad83-8cfd-4dcf-a6d2-ee56b784bfb2"/>
+								<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
