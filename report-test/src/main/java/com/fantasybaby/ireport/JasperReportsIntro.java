@@ -37,7 +37,7 @@ public class JasperReportsIntro {
 
             jasperPrint = JasperFillManager.fillReport(
                     jasperReport, hashMap, new JRBeanCollectionDataSource(DataFactory.generateIreportData()));
-            PrintService myPrintService = PrintPDF2.findPrintService("FX DocuCentre-IV C2260 PCL 6");
+            PrintService myPrintService = PrintPDF2.findPrintService("Send To OneNote 2016");
             JRPrintServiceExporter je = new JRPrintServiceExporter();
             SimplePrintServiceExporterConfiguration configuration = new SimplePrintServiceExporterConfiguration();
             configuration.setDisplayPageDialog(false);

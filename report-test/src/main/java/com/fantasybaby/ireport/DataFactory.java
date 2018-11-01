@@ -19,7 +19,7 @@ public class DataFactory {
         o2.setCode1("1231a");
         o2.setCode2("1231b");
         List<UserBean> lists2 = new ArrayList<>();
-        for (int j = 0; j < 20; j++) {
+        for (int j = 0; j < 100; j++) {
             UserBean userBean2 = new UserBean();
             userBean2.setAddress("上海虹桥"+j);
             userBean2.setUserAge(13);
