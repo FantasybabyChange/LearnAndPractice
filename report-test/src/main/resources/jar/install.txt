@@ -1,0 +1,4 @@
+ mvn install:install-file -Dfile=jasperreports-fonts-6.3.0.jar -DgroupId=net.sf.jasperreports -DartifactId=jasperreports-fonts -Dversion=6.3.0 -Dpackaging=jar
+ mvn install:install-file -Dfile=jasperreports-functions-6.3.0.jar -DgroupId=net.sf.jasperreports -DartifactId=jasperreports-functions -Dversion=6.3.0 -Dpackaging=jar
+ mvn install:install-file -Dfile=jasperreports-javaflow-6.3.0.jar -DgroupId=net.sf.jasperreports -DartifactId=jasperreports-javaflow -Dversion=6.3.0 -Dpackaging=jar
+ mvn install:install-file -Dfile=jasperreports-6.3.0.jar -DgroupId=net.sf.jasperreports -DartifactId=jasperreports -Dversion=6.3.0 -Dpackaging=jar

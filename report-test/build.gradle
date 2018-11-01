@@ -7,8 +7,8 @@ version = '0.0.1-SNAPSHOT'
 
 description = """daliy_test"""
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
@@ -18,8 +18,9 @@ tasks.withType(JavaCompile) {
 repositories {
     mavenLocal()
     maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+    /*maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
     mavenCentral()
-    jcenter()
+    jcenter()*/
 }
 sourceSets {
     main{
@@ -59,5 +60,26 @@ dependencies {
     compile group: 'commons-net', name: 'commons-net', version:'3.3'
     compile group: 'com.google.guava', name: 'guava', version:'24.0-jre'
 
+    // https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports
+    compile group: 'net.sf.jasperreports', name: 'jasperreports', version: '6.3.0'
+    compile group: 'net.sf.jasperreports', name: 'jasperreports-fonts', version: '6.3.0'
+    compile group: 'net.sf.jasperreports', name: 'jasperreports-functions', version: '6.3.0'
+    compile group: 'net.sf.jasperreports', name: 'jasperreports-javaflow', version: '6.3.0'
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-digester3
+    // https://mvnrepository.com/artifact/commons-digester/commons-digester
+    compile group: 'commons-digester', name: 'commons-digester', version: '2.1'
+    // https://mvnrepository.com/artifact/commons-collections/commons-collections
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2.2'
+    // https://mvnrepository.com/artifact/com.lowagie/itext
+    compile group: 'com.lowagie', name: 'itext', version: '2.1.7'
+
+    // https://mvnrepository.com/artifact/joda-time/joda-time
+    compile group: 'joda-time', name: 'joda-time', version: '2.10'
+    // https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all
+    compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.3.10'
+// https://mvnrepository.com/artifact/com.itextpdf/itext-asian
+
+    // https://mvnrepository.com/artifact/net.sourceforge.barbecue/barbecue
+    compile group: 'net.sourceforge.barbecue', name: 'barbecue', version: '1.5-beta1'
 
 }

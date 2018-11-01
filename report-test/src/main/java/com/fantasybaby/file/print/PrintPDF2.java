@@ -40,7 +40,7 @@ public class PrintPDF2 {
         System.out.println(System.currentTimeMillis() - l);
     }
 
-    private static PrintService findPrintService(String printerName) {
+    public static PrintService findPrintService(String printerName) {
         PrintService[] printServices = PrintServiceLookup.lookupPrintServices(null, null);
         for (PrintService printService : printServices) {
             if (printService.getName().trim().equals(printerName)) {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="first" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0936a616-b1d6-48b4-bc2c-0b8a29543fda">
-	<property name="ireport.zoom" value="1.2100000000000004"/>
+	<property name="ireport.zoom" value="1.1000000000000012"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="51"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -23,41 +23,78 @@
 			<pen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<subDataset name="dataset1" uuid="7cd47218-8b90-4e5d-b9db-3a79bdf38cd8"/>
-	<subDataset name="New Dataset 1" uuid="d71343da-9c1c-467b-9998-ab37c02c1cf2"/>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="tabledata" uuid="ba0046c9-8b0a-4d5f-91d0-5e74c2d5fd9e">
+		<parameter name="item" class="net.sf.jasperreports.engine.JREmptyDataSource"/>
+		<field name="userName" class="java.lang.String"/>
+		<field name="userAge" class="java.lang.String"/>
+		<field name="address" class="java.lang.String"/>
+	</subDataset>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
+	<field name="code2" class="java.lang.String">
+		<fieldDescription><![CDATA[code2]]></fieldDescription>
+	</field>
+	<field name="state" class="java.lang.String">
+		<fieldDescription><![CDATA[state]]></fieldDescription>
+	</field>
 	<field name="barCode" class="java.lang.String">
 		<fieldDescription><![CDATA[barCode]]></fieldDescription>
+	</field>
+	<field name="items" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource">
+		<fieldDescription><![CDATA[items]]></fieldDescription>
 	</field>
 	<field name="code1" class="java.lang.String">
 		<fieldDescription><![CDATA[code1]]></fieldDescription>
 	</field>
-	<field name="code2" class="java.lang.String">
-		<fieldDescription><![CDATA[code2]]></fieldDescription>
-	</field>
 	<field name="code3" class="java.lang.String">
 		<fieldDescription><![CDATA[code3]]></fieldDescription>
-	</field>
-	<field name="items" class="java.util.List">
-		<fieldDescription><![CDATA[items]]></fieldDescription>
-	</field>
-	<field name="state" class="java.lang.String">
-		<fieldDescription><![CDATA[state]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="96" splitType="Stretch">
-			<staticText>
-				<reportElement x="0" y="16" width="162" height="43" uuid="dbbd0a1d-856b-4c8d-8d9f-30906bef0286"/>
-				<textElement>
-					<font fontName="宋体" size="18" isBold="true"/>
-				</textElement>
-				<text><![CDATA[交付指示单]]></text>
-			</staticText>
 			<rectangle>
 				<reportElement x="0" y="59" width="555" height="37" uuid="b1af0f35-09ca-4c54-ac53-ae3549b54bd9"/>
 			</rectangle>
@@ -77,7 +114,7 @@
 			<staticText>
 				<reportElement x="191" y="64" width="51" height="14" uuid="3ee9011e-0f65-4404-896a-766b77eb940b"/>
 				<textElement>
-					<font fontName="宋体" size="10" isBold="true"/>
+					<font fontName="宋体" size="10" isBold="true" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[需求车间:]]></text>
 			</staticText>
@@ -92,7 +129,7 @@
 				<reportElement x="360" y="59" width="1" height="37" uuid="8b1017a5-60eb-4e77-b67e-9acb5c732998"/>
 			</line>
 			<componentElement>
-				<reportElement x="360" y="59" width="194" height="34" uuid="a582158c-7724-4ea3-b386-88f281ad4ccf"/>
+				<reportElement mode="Opaque" x="362" y="65" width="193" height="29" uuid="a582158c-7724-4ea3-b386-88f281ad4ccf"/>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="true" checksumRequired="false">
 					<jr:codeExpression><![CDATA[$F{barCode}]]></jr:codeExpression>
 				</jr:barbecue>
@@ -112,6 +149,13 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{code3}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="2" y="24" width="190" height="35" uuid="1ad5b0f8-ac72-4db8-bf60-603f48b9a183"/>
+				<textElement>
+					<font fontName="宋体" size="18" isBold="true" pdfFontName="SimSun" pdfEncoding="UniGB-UCS2-H"/>
+				</textElement>
+				<text><![CDATA[交付指示单]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
@@ -134,6 +178,9 @@
 			</staticText>
 			<textField isBlankWhenNull="false">
 				<reportElement x="11" y="0" width="65" height="20" uuid="c6af415d-c504-45f1-b9fb-d663e18b48dc"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{state}.equals("true")?"紧急":""]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
@@ -146,7 +193,76 @@
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="146" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 2" style="table" positionType="Float" x="0" y="-15" width="552" height="160" uuid="8ddc9717-285a-4184-81c3-dfce9bba4f63"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="tabledata" uuid="a8719d9f-ca64-4245-99fe-8aa4ffd9abd2">
+						<datasetParameter name="item">
+							<datasetParameterExpression><![CDATA[$F{items}]]></datasetParameterExpression>
+						</datasetParameter>
+						<dataSourceExpression><![CDATA[$F{items}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="102" uuid="9d80f5c8-601c-44d6-9c3d-9b3bd3fdc67f">
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="102" height="30" uuid="b8f81969-cad3-4924-b135-d51bb13b9ee5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[序号]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="f34219e6-4e26-491a-9984-b756354d82b0"/>
+								<textFieldExpression><![CDATA[$F{userName}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="189" uuid="9365c6d0-bff8-4127-aa3d-35c93ca2093e">
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="189" height="30" uuid="ebd870a9-9409-4710-a79e-6ecf99d59b74"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[零件件号]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="12e9c147-4756-4bab-9f57-65d163ac0c58"/>
+								<textFieldExpression><![CDATA[$F{userAge}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="265" uuid="c499fe1a-71a3-401f-97ee-631f4c477cfa">
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="265" height="30" uuid="18815568-8085-4b82-bb53-851c4aeacef7"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[零件名称]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="55db07f3-679f-48cc-8404-8649cd72615f"/>
+								<textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
