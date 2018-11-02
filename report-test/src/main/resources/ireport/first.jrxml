@@ -123,7 +123,7 @@
 				<reportElement x="361" y="59" width="1" height="35" uuid="8b1017a5-60eb-4e77-b67e-9acb5c732998"/>
 			</line>
 			<componentElement>
-				<reportElement mode="Opaque" x="362" y="65" width="180" height="29" uuid="a582158c-7724-4ea3-b386-88f281ad4ccf"/>
+				<reportElement mode="Opaque" x="362" y="65" width="168" height="29" uuid="a582158c-7724-4ea3-b386-88f281ad4ccf"/>
 				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="true" checksumRequired="false">
 					<jr:codeExpression><![CDATA[$F{barCode}]]></jr:codeExpression>
 				</jr:barbecue>

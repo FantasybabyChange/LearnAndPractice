@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'idea'
+//apply plugin: 'maven'
 apply plugin: 'application'
 mainClassName='com.fantasybaby.normaltest.mactest.MacAdressUtil'
 group = 'com.fantasybaby'
@@ -8,12 +9,9 @@ version = '0.0.1-SNAPSHOT'
 description = """daliy_test"""
 
 sourceCompatibility = 1.8
-targetCompatibility = 1.8
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
-
-
 
 repositories {
     mavenLocal()

@@ -2,6 +2,7 @@ package com.fantasybaby.ireport;
 
 import com.fantasybaby.file.freemarker.FreeMarkerGenerate;
 import com.fantasybaby.file.print.PrintPDF2;
+import com.fantasybaby.ireport.walle.PrintFactory;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.export.JRPrintServiceExporter;
@@ -30,14 +31,14 @@ public class JasperReportsIntro {
         JasperPrint jasperPrint;
         try
         {
-            String reportPath = getReportPath("ireport"+ File.separator+"first.jrxml");
+            String reportPath = getReportPath("ireport"+ File.separator+"sg.jrxml");
             System.out.println(reportPath);
             jasperReport = JasperCompileManager.compileReport(reportPath);
             HashMap hashMap = new HashMap();
 
             jasperPrint = JasperFillManager.fillReport(
-                    jasperReport, hashMap, new JRBeanCollectionDataSource(DataFactory.generateIreportData()));
-            PrintService myPrintService = PrintPDF2.findPrintService("Send To OneNote 2016");
+                    jasperReport, hashMap, new JRBeanCollectionDataSource(PrintFactory.print()));
+            PrintService myPrintService = PrintPDF2.findPrintService("FX DocuCentre-IV C2260 PCL 6");
             JRPrintServiceExporter je = new JRPrintServiceExporter();
             SimplePrintServiceExporterConfiguration configuration = new SimplePrintServiceExporterConfiguration();
             configuration.setDisplayPageDialog(false);
