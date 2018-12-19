@@ -2,6 +2,7 @@ package com.fantasybaby.normaltest.java8test.lambadatest;
 
 import com.fantasybaby.normaltest.java8test.change.ObjectFactory;
 import com.fantasybaby.normaltest.lombok.UserBean;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 import java.util.*;
@@ -247,6 +248,15 @@ public class LambadaTest {
         long summer = userBeans.stream().collect(Collectors.summingInt(UserBean::getAge));
         System.out.println(summer);
     }
+    public void convertToMap(){
+        Map<Integer, UserBean> collect = userBeans.stream().distinct().collect(Collectors.toMap(UserBean::getId, p -> p));
+        ArrayList<Integer> ids = Lists.newArrayList(collect.keySet());
+        ids.forEach(id ->{
+            UserBean userBean = collect.get(id);
+            System.out.println(userBean.getAge());
+            System.out.println(userBean.getUserName());
+        });
+    }
     public static void main(String[] args) {
         LambadaTest lambadaTest = new LambadaTest();
         //lambadaTest.testGroupByChangeValue();
@@ -262,8 +272,10 @@ public class LambadaTest {
 //        lambadaTest.testReduce();
 //        lambadaTest.testParallStream();
 //           lambadaTest.testNewMap();
-        lambadaTest.testSummer();
+//        lambadaTest.testSummer();
+        lambadaTest.convertToMap();
     }
+
 
 
 }
