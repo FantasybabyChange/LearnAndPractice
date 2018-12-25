@@ -257,6 +257,15 @@ public class LambadaTest {
             System.out.println(userBean.getUserName());
         });
     }
+
+    public void testSortWithMany(){
+        userBeans.sort(Comparator.comparing(UserBean::getAge).thenComparing(UserBean::getId));
+        userBeans.forEach(u -> {
+            System.out.println(u.getUserName());
+            System.out.println("age:"+u.getAge());
+            System.out.println("id:"+u.getId());
+        });
+    }
     public static void main(String[] args) {
         LambadaTest lambadaTest = new LambadaTest();
         //lambadaTest.testGroupByChangeValue();
@@ -273,7 +282,8 @@ public class LambadaTest {
 //        lambadaTest.testParallStream();
 //           lambadaTest.testNewMap();
 //        lambadaTest.testSummer();
-        lambadaTest.convertToMap();
+//        lambadaTest.convertToMap();
+        lambadaTest.testSortWithMany();
     }
 
 
