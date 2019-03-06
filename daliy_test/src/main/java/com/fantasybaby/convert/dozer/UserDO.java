@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,5 +19,6 @@ public class UserDO extends PersonDO{
     private String userID;
     private String userName;
     private Map<String,String> relations;
+    private List<PersonDO> persons;
 
 }
