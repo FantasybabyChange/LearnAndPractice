@@ -35,6 +35,23 @@ public class FiledValueHelper {
         return null;
     }
     /**
+     * 根据属性名获取属性值
+     *
+     * @param fieldName
+     * @param object
+     * @return
+     *
+     */
+    public static void setFieldValueByFieldName(String fieldName, String value,Object object) {
+        try {
+            Field field = object.getClass().getDeclaredField(fieldName);
+            //设置对象的访问权限，保证对private的属性的访问
+            field.setAccessible(true);
+            field.set(object,value);
+        } catch (Exception e) {
+        }
+    }
+    /**
      * 根据属性名获取属性元素，包括各种安全范围和所有父类
      *
      * @param fieldName
@@ -56,12 +73,7 @@ public class FiledValueHelper {
         return null;
     }
 
-    /**
-     * 根据属性名获取属性元素，包括各种安全范围和所有父类
-     *
-     * @param fuzzyName
-     * @param object
-     * @return
-     */
+    public static void main(String[] args) {
 
+    }
 }

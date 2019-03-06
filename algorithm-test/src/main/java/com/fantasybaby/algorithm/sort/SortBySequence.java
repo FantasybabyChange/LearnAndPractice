@@ -6,6 +6,7 @@
  *****************************************************************************/
 package com.fantasybaby.algorithm.sort;
 
+import com.fantasybaby.algorithm.util.FiledValueHelper;
 import com.google.common.collect.Lists;
 import lombok.*;
 
@@ -36,7 +37,7 @@ public class SortBySequence {
     @AllArgsConstructor
     @NoArgsConstructor
     @ToString
-    private  class SequenceBean{
+    private static class SequenceBean{
         private String name;
         private String type;
     }
@@ -60,6 +61,10 @@ public class SortBySequence {
         sequenceBeans.forEach(System.out::println);*/
         int a =-53 >> 1 ;
         System.out.println(a +"");
+        SequenceBean sb = new SequenceBean(null,null);
+        FiledValueHelper.setFieldValueByFieldName("name","123",sb);
+        System.out.println(sb);
+
 
     }
 
