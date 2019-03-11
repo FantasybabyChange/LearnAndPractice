@@ -1,10 +1,9 @@
 package com.fantasybaby.ireport;
 
 import com.fantasybaby.file.freemarker.UserBean;
+import com.google.common.collect.Maps;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author reid.liu
@@ -14,6 +13,10 @@ public class DataFactory {
     public static Collection<MainData> generateIreportData() {
         List<MainData> lists = new ArrayList<>();
         MainData o2 = new MainData();
+        Map<String,String> map = new HashMap<>();
+        map.put("key1","123");
+        map.put("key2","123");
+        o2.setMap(map);
         o2.setBarCode("12S20190907010039$4000020-BN19");
         o2.setState("true");
         o2.setCode1("1231a");

@@ -72,23 +72,29 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="code2" class="java.lang.String">
-		<fieldDescription><![CDATA[code2]]></fieldDescription>
-	</field>
-	<field name="state" class="java.lang.String">
-		<fieldDescription><![CDATA[state]]></fieldDescription>
-	</field>
 	<field name="barCode" class="java.lang.String">
 		<fieldDescription><![CDATA[barCode]]></fieldDescription>
 	</field>
-	<field name="items" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource">
-		<fieldDescription><![CDATA[items]]></fieldDescription>
+	<field name="class" class="java.lang.Class">
+		<fieldDescription><![CDATA[class]]></fieldDescription>
 	</field>
 	<field name="code1" class="java.lang.String">
 		<fieldDescription><![CDATA[code1]]></fieldDescription>
 	</field>
+	<field name="code2" class="java.lang.String">
+		<fieldDescription><![CDATA[code2]]></fieldDescription>
+	</field>
 	<field name="code3" class="java.lang.String">
 		<fieldDescription><![CDATA[code3]]></fieldDescription>
+	</field>
+	<field name="items" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource">
+		<fieldDescription><![CDATA[items]]></fieldDescription>
+	</field>
+	<field name="map" class="java.util.Map">
+		<fieldDescription><![CDATA[map]]></fieldDescription>
+	</field>
+	<field name="state" class="java.lang.String">
+		<fieldDescription><![CDATA[state]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -180,6 +186,10 @@
 			<line>
 				<reportElement x="191" y="59" width="1" height="70" uuid="43844e79-b9f9-4bef-88a2-edf5d64ff966"/>
 			</line>
+			<textField>
+				<reportElement x="359" y="109" width="100" height="20" uuid="50ebb4e5-3e22-4561-a2b6-be1270b5be7f"/>
+				<textFieldExpression><![CDATA[""+$F{map}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>

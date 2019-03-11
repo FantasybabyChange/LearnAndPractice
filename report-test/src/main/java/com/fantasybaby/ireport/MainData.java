@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author reid.liu
@@ -21,5 +22,6 @@ public class MainData implements Serializable {
     private String code2;
     private String code3;
     private String state;
+    private Map<String,String> map;
     private List<UserBean> items;
 }
