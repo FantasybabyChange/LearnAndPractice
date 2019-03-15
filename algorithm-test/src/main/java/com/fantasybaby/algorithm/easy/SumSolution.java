@@ -1,10 +1,12 @@
 package com.fantasybaby.algorithm.easy;
 
+import com.fantasybaby.algorithm.interative.SquareRoot;
+
 /** a+b
  * @author reid.liu
  * @date 2019-01-11 14:38
  */
-public class SumSolution {
+public class SumSolution extends SquareRoot {
     // 主要利用异或运算来完成
     // 异或运算有一个别名叫做：不进位加法
     // 那么a ^ b就是a和b相加之后，该进位的地方不进位的结果
@@ -23,5 +25,23 @@ public class SumSolution {
             b = _b;
         }
         return a;
+    }
+    public int aplusb(int a, int b) {
+        // write your code here
+        int m_ay = a & b;
+        int m_yh = a ^ b;
+
+        while(m_ay > 0) {
+            int t_a = m_yh;
+            int t_b = m_ay << 1;
+
+            m_ay = t_a & t_b;
+            m_yh = t_a ^ t_b;
+        }
+        return m_yh;
+    }
+    public static void main(String[] args) {
+        int sum = new SumSolution().sum(1, -2);
+        System.out.println(sum);
     }
 }
