@@ -67,7 +67,7 @@ public class GeometricalSequence {
     }
     /**
      * 给定数字n 列举出 它所有的因数组合
-     * 特殊判断%1的情况 不然会堆溢出
+     * 特殊判断%1的情况 不然会stack溢出
      * @param n
      * @param results
      */
