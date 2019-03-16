@@ -1,6 +1,10 @@
 package com.fantasybaby.algorithm.induction;
 
+import com.google.common.collect.Lists;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**使用数学归纳法 用递归替代迭代法证明
  * 2^0+2^1+2^2+...+2^n = 2^n - 1
@@ -40,12 +44,59 @@ public class GeometricalSequence {
         }
     }
 
+    /**
+     * 求出1 2 5 10 等数据 能有多少种形式拼接成给定数字
+     */
+    List<Integer> moneyType = Lists.newArrayList(1,2,5,10);
+
+    public void listReward(int reward,ArrayList<Integer> results){
+        if(reward == 0){
+            System.out.println(results);
+            return;
+        }else if(reward < 0){
+            return;
+        }else{
+            for (Integer money : moneyType) {
+                int reset = reward - money;
+                ArrayList clone = (ArrayList) results.clone();
+                clone.add(money);
+                listReward(reset,clone);
+            }
+        }
+
+    }
+    /**
+     * 给定数字n 列举出 它所有的因数组合
+     * 特殊判断%1的情况 不然会堆溢出
+     * @param n
+     * @param results
+     */
+    public void listFactorization(int n, ArrayList<Integer> results){
+        if(n == 1){
+            results.add(1);
+            System.out.println(results);
+            return;
+        }
+        for (int i = 1; i < n+1; i++) {
+            if(i == 1 && results.contains(1)) {
+                continue;
+            }
+            ArrayList<Integer> newList = (ArrayList<Integer>) results.clone();
+            newList.add(i);
+            if(n%i!=0)continue;
+            listFactorization(n/i, newList);
+        }
+    }
     public static void main(String[] args) {
-        Result result = new Result();
+        /*Result result = new Result();
         new GeometricalSequence().prove(63,result);
         System.out.println(result.getResultNum()+":"+result.getWhiteNum());
         double v = Math.pow(2, 63) - 1L;
-        System.out.println(v);
+        System.out.println(v);*/
+        ArrayList list = new ArrayList();
+        new GeometricalSequence().listFactorization(10,list);
+        System.out.println(list);
+//        new GeometricalSequence().listReward(10,list);
     }
 }
     @Data
