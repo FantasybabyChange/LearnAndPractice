@@ -2,6 +2,9 @@ package com.fantasybaby.algorithm.easy;
 
 import com.fantasybaby.algorithm.interative.SquareRoot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /** a+b
  * @author reid.liu
  * @date 2019-01-11 14:38
@@ -40,8 +43,10 @@ public class SumSolution extends SquareRoot {
         }
         return m_yh;
     }
+
+
     public static void main(String[] args) {
-        int sum = new SumSolution().sum(1, -2);
-        System.out.println(sum);
+
+
     }
 }
