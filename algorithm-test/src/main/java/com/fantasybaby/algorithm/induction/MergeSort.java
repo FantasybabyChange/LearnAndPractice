@@ -38,14 +38,14 @@ public class MergeSort {
             }
             newSortIndex++;
         }
-        if(firstIndex < first.length -1){
-            while (newSortIndex <  newSort.length - 1){
+        if(firstIndex < first.length){
+            while (newSortIndex <  newSort.length ){
                 newSort[newSortIndex] = first[firstIndex];
                 newSortIndex++;
                 firstIndex++;
             }
-        }else if(secondIndex < second.length -1){
-            while (newSortIndex <  newSort.length -1){
+        }else if(secondIndex < second.length){
+            while (newSortIndex <  newSort.length ){
                 newSort[newSortIndex] = second[secondIndex];
                 newSortIndex++;
                 secondIndex++;
