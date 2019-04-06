@@ -1,4 +1,4 @@
-package com.fantasybaby.algorithm.easy;
+package com.fantasybaby.algorithm.logicop;
 /**
  * 使用取模和按位与
  * @author: liuxi
