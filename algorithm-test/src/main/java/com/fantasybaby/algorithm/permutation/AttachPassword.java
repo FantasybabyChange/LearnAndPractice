@@ -3,8 +3,6 @@ package com.fantasybaby.algorithm.permutation;
 import com.google.common.collect.Lists;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * 假设有一个 4 位字母密码，每位密码是 a～e 之间的小写字母。你能否编写一段代码，
