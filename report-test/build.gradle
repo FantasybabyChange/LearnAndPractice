@@ -38,7 +38,7 @@ dependencies {
     compile group: 'org.slf4j', name: 'slf4j-api', version:'1.7.7'
     compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version:'2.1'
     compile group: 'org.projectlombok', name: 'lombok', version:'1.16.16'
-//    compile group: 'org.eclipse', name: 'swt', version:'3.2.1-v3235e'
+    compile group: 'org.eclipse', name: 'swt', version:'3.2.1-v3235e'
     // https://mvnrepository.com/artifact/com.github.xuwei-k/html2image
     compile group: 'com.github.xuwei-k', name: 'html2image', version: '0.1.0'
     // https://mvnrepository.com/artifact/org.lobobrowser/cobra
