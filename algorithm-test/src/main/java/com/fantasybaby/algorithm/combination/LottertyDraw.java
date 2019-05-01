@@ -15,6 +15,7 @@ import java.util.*;
  * 数字结果太大了
  * 变成10个里面
  * 抽1  2 3
+ * C(5,1)*C(4,2)*C(2,2)=30
  * 2019/4/30
  * fantasybaby
  **/
@@ -44,31 +45,62 @@ public class LottertyDraw {
 //        add("小10");
     }};
     public void startGenerate(){
-        Set<String> keys = rewards.keySet();
-        Iterator<String> iterator = keys.iterator();
-        while(iterator.hasNext()){
-            String key1 = iterator.next();
-            Integer integer = rewards.get(key1);
-            ArrayList<String> results = Lists.newArrayList();
-//            combine(people,results,integer,key1);
+        ArrayList<ArrayList<String>> allResults = Lists.newArrayList();
+        String key = keys.get(0);
+        System.out.println(key);
+        Integer m = rewards.get(key);
+        combine(people,allResults,new ArrayList<>(),m,keys);
+        ArrayList<ArrayList<String>> lastResult = Lists.newArrayList();
+        for (ArrayList<String> allResult : allResults) {
+            ArrayList newPeople = (ArrayList) people.clone();
+            for (String s : allResult) {
+                newPeople.remove(s);
+            }
+            String key1 = keys.get(1);
+            System.out.println(key1);
+            Integer m1 = rewards.get(key1);
+            ArrayList<ArrayList<String>> secondeResults = Lists.newArrayList();
+            combine(newPeople,secondeResults,new ArrayList<>(),m1,keys);
+            for (ArrayList<String> secondResult : secondeResults) {
+                ArrayList<String> newPeople2 = (ArrayList) newPeople.clone();
+                for (String s2 : secondResult) {
+                    newPeople2.remove(s2);
+                }
+                String key2 = keys.get(2);
+                System.out.println(key2);
+                Integer m2 = rewards.get(key2);
+                ArrayList<ArrayList<String>> thirdResults = Lists.newArrayList();
+                combine(newPeople2,thirdResults,new ArrayList<>(),m2,keys);
+                for (ArrayList<String> thirdResult : thirdResults) {
+                    ArrayList<String> result = new ArrayList<>();
+                    result.addAll(allResult);
+                    result.addAll(secondResult);
+                    result.addAll(thirdResult);
+                    lastResult.add(result);
+                }
+            }
+
         }
+        System.out.println(lastResult.size());
+        lastResult.forEach(System.out::println);
     }
-    Integer count = 0;
     /**
      *
      * @param teams
      * @param result
      * @param m
      */
-    public  void combine(ArrayList<String> teams, ArrayList<String> allResult,ArrayList<String> result, int m,ArrayList<String> keys) {
+    public  void combine(ArrayList<String> teams, ArrayList<ArrayList<String>> allResult,ArrayList<String> result, int m,ArrayList<String> keys) {
             if (result.size() == m){
-                allResult.addAll(result);
-                ArrayList<String> clone = (ArrayList<String>) allResult.clone();
-                if(keys.size() == 0){
+                allResult.add(result);
+//                allResult.addAll(result);
+//                ArrayList<String> clone = (ArrayList<String>) allResult.clone();
+                return;
+                /*if(keys.size() == 0){
                     count++;
                     System.out.println(clone.toString());
                     System.out.println(count);
-                    return;
+                    return result;
                 }else{
                     String next = keys.get(0);
                     clone.add(next);
@@ -78,23 +110,23 @@ public class LottertyDraw {
                     newKeys.remove(0);
                     combine(teams,clone,new ArrayList(),integer,newKeys);
                     return;
-                }
+                }*/
             }
         for (int i = 0; i < teams.size(); i++) {
 //            System.out.println(teams.get(i)+"---");
-
             ArrayList<String> newArray = (ArrayList<String>) result.clone();
             newArray.add(teams.get(i));
-
-            ArrayList<String> newArrayLists = (ArrayList<String>) teams.clone();
-            newArrayLists.remove(i);
-//            ArrayList<String> newArrayLists = Lists.newArrayList(teams.subList(i + 1, teams.size()));
-            combine(newArrayLists, (ArrayList<String>) allResult.clone(),newArray,m, keys);
+//            ArrayList<String> newArrayLists = (ArrayList<String>) teams.clone();
+//            newArrayLists.remove(i);
+            ArrayList<String> newArrayLists = Lists.newArrayList(teams.subList(i + 1, teams.size()));
+            combine(newArrayLists, allResult,newArray,m, keys);
         }
+
     }
 
     public static void main(String[] args) {
         System.out.println(keys.get(0));
-        new LottertyDraw().combine(people,new ArrayList<>(),new ArrayList<>(),0,keys);
+//        new LottertyDraw().combine(people,new ArrayList<>(),new ArrayList<>(),0,keys);
+        new LottertyDraw().startGenerate();
     }
 }
