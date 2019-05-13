@@ -1,9 +1,57 @@
 package com.fantasybaby.algorithm.dp;
+
+import java.util.Objects;
+
 /**
+ *
+ * 		B empty	  m	            o	           u	            s               	e
+ * empty 0	      1	            2	          3	                4	                5
+ * 	m	 1	Min(2,2,0)=0	Min(3,1,2)=1	Min(4,2,3)=2	Min(5,3,4)=3	Min(6,4,5)=4
+ * 	o	 2	Min(1,3,2)=1	Min(2,2,0)=0	Min(3,1,2)=1	Min(4,2,3)=2	Min(5,3,4)=3
+ * 	u	 3	Min(2,4,3)=2	Min(1,3,2)=1	Min(2,2,0)=0	Min(3,1,2)=1	Min(4,2,3)=2
+ * 	u	 4	Min(3,5,4)=3	Min(2,4,3)=2	Min(1,3,1)=1	Min(2,2,1)=1	Min(3,2,2)=2
+ * 	s	 5	Min(4,6,5)=4	Min(3,5,4)=3	Min(2,4,3)=2	Min(2,3,1)=1	Min(3,2,2)=2
+ * 	e	 6	Min(5,7,6)=5	Min(4,6,5)=4	Min(3,5,4)=3	Min(2,4,3)=2	Min(3,3,1)=1
+ * 	状态方程 min(m[i-1][j]+1,m[i][j-1]+1,m[i-1][j-1]+r(i,j))
  * @author: liuxi
  * @time: 2019/5/7 23:59
  */
 public class EditDistance {
+    int getStrByDP(String source,String target){
+        if(Objects.isNull(source) || Objects.isNull(target)){
+            return -1;
+        }
+        int i = source.length();
+        int j = target.length();
+        int[][] distances = new int[i][j];
+        distances[0][0] = 0;
+        /**
+         * 初始化二维数组的0位置
+         */
+        for (int start = 0; start < j; start++) {
+            distances[0][start] = j;
+        }
+        for (int start = 0; start < i; start++) {
+            distances[start][0] = i;
+        }
+        for (int ai = 1; ai < i; ai++) {
+            for (int bj = 1; bj < j; bj++) {
+                int result = 0;
+                char c1 = source.charAt(ai-1);
+                char c = target.charAt(bj-1);
+                if(c1 != c){
+                    //不相等编辑距离加1
+                    result = 1;
+                }
+                int rb2a = distances[ai-1][bj]+1;
+                int ra2b = distances[ai][bj-1]+1;
+                int min = Math.min(rb2a, ra2b);
+                int replate = distances[ai-1][bj-1] +result;
+                distances[ai][bj] = Math.min(min,replate);
+            }
+        }
+        return distances[i][j];
+    }
 
     /**
      * @param a- 第一个字符串，b- 第二个字符串
@@ -51,8 +99,11 @@ public class EditDistance {
     }
 
     public static void main(String[] args) {
-        int strDistance = EditDistance.getStrDistance("mo", "mo");
-        System.out.println(strDistance);
+        int strDistance = EditDistance.getStrDistance("mous", "mouus");
+        System.out.println(strDistance+"--------");
+        int strDistance1 = EditDistance.getStrDistance("mous", "mouus");
+        System.out.println(strDistance1);
+
     }
 }
 
