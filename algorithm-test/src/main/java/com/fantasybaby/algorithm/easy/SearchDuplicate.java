@@ -27,7 +27,7 @@ public class SearchDuplicate {
     }
     public static void main(String[] args) {
         int[] a = {1,2,3,4,5,5,6};
-        int specialNum = new SearchDuplicate().getSpecialNum(a, 6);
+        int specialNum = SearchDuplicate.getSpecialNum(a, 6);
         System.out.println(specialNum);
     }
 }

@@ -17,37 +17,38 @@ import java.util.Objects;
  * @time: 2019/5/7 23:59
  */
 public class EditDistance {
-    int getStrByDP(String source,String target){
+    static  int getStrByDP(String source,String target){
         if(Objects.isNull(source) || Objects.isNull(target)){
             return -1;
         }
         int i = source.length();
         int j = target.length();
-        int[][] distances = new int[i][j];
+        int[][] distances = new int[i+1][j+1];
         distances[0][0] = 0;
         /**
          * 初始化二维数组的0位置
          */
-        for (int start = 0; start < j; start++) {
-            distances[0][start] = j;
+        for (int start = 0; start <= j; start++) {
+            distances[0][start] = start;
         }
-        for (int start = 0; start < i; start++) {
-            distances[start][0] = i;
+        for (int start = 0; start <= i; start++) {
+            distances[start][0] = start;
         }
-        for (int ai = 1; ai < i; ai++) {
-            for (int bj = 1; bj < j; bj++) {
+        for (int ai = 0; ai < i ; ai++) {
+            for (int bj = 0; bj < j ; bj++) {
                 int result = 0;
-                char c1 = source.charAt(ai-1);
-                char c = target.charAt(bj-1);
+                char c1 = source.charAt(ai);
+                char c = target.charAt(bj);
                 if(c1 != c){
                     //不相等编辑距离加1
                     result = 1;
                 }
-                int rb2a = distances[ai-1][bj]+1;
-                int ra2b = distances[ai][bj-1]+1;
+                int rb2a = distances[ai][bj+1]+1;
+                int ra2b = distances[ai+1][bj]+1;
                 int min = Math.min(rb2a, ra2b);
-                int replate = distances[ai-1][bj-1] +result;
-                distances[ai][bj] = Math.min(min,replate);
+                int replace = distances[ai][bj] +result;
+                System.out.println(rb2a + "--" + ra2b + "--" + replace);
+                distances[ai+1][bj+1] = Math.min(min,replace);
             }
         }
         return distances[i][j];
@@ -101,7 +102,7 @@ public class EditDistance {
     public static void main(String[] args) {
         int strDistance = EditDistance.getStrDistance("mous", "mouus");
         System.out.println(strDistance+"--------");
-        int strDistance1 = EditDistance.getStrDistance("mous", "mouus");
+        int strDistance1 = EditDistance.getStrByDP("mous", "mouus");
         System.out.println(strDistance1);
 
     }
