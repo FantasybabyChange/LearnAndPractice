@@ -33,6 +33,9 @@ public class RewardWithLessMoneyPaper {
             int best = 0;
             for (Integer typeValue : moneyType) {
                 if(i - typeValue >= 0){
+                    /**
+                     * 当前无解
+                     */
                     if(c[i - typeValue] == 0 && i - typeValue > 0){
                         continue;
                     }
@@ -46,6 +49,30 @@ public class RewardWithLessMoneyPaper {
         }
         System.out.println(Arrays.toString(c));
         return c[c.length - 1];
+    }
+    public static int userDelie(List<Integer> types,int totalMoney){
+        types.sort((a,b)->{if(a >b)return -1;else return 0;});
+        int lessResult = 0;
+        while (types.size() != 0){
+            int result = 0;
+            int mod = totalMoney;
+            for (Integer type : types) {
+                result += mod/type;
+                mod = mod % type;
+                if(mod == 0){
+                    break;
+                }
+            }
+            if(mod == 0){
+                if(lessResult == 0){
+                    lessResult = result;
+                }else{
+                    lessResult = Math.min(lessResult,result);
+                }
+            }
+            types.remove(0);
+        }
+        return lessResult;
     }
 
 
@@ -76,5 +103,11 @@ public class RewardWithLessMoneyPaper {
         int [] array1 = new int[10];
         int an = RewardWithLessMoneyPaper.getMinMoney(array1, array);
         System.out.println(an + 1);
+        List types = Lists.newArrayList();
+        types.add(7);
+        types.add(2);
+        types.add(3);
+        int i1 = userDelie(types, 100);
+        System.out.println(i1);
     }
 }
