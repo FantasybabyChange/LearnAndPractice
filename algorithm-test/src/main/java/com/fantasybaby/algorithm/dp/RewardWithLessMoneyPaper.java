@@ -8,9 +8,7 @@ package com.fantasybaby.algorithm.dp;
 
 import com.google.common.collect.Lists;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**给定总金额
  * 和货币总数
@@ -50,13 +48,28 @@ public class RewardWithLessMoneyPaper {
         System.out.println(Arrays.toString(c));
         return c[c.length - 1];
     }
-    public static int userDelie(List<Integer> types,int totalMoney){
-        types.sort((a,b)->{if(a >b)return -1;else return 0;});
-        int lessResult = 0;
-        while (types.size() != 0){
+
+    /**
+     * 这个方法有问题
+     * @param coins
+     * @param amount
+     * @return
+     */
+    public static int userDelie(int[] coins, int amount){
+        List<Integer> ints = new ArrayList();
+        for (int coin : coins) {
+            ints.add(coin);
+        }
+
+        ints.sort((a,b)->{if(a >b)return -1;else return 0;});
+        int lessResult = -1;
+        while (ints.size() != 0){
             int result = 0;
-            int mod = totalMoney;
-            for (Integer type : types) {
+            int mod = amount;
+            for (Integer type : ints) {
+                if(mod < type){
+                    continue;
+                }
                 result += mod/type;
                 mod = mod % type;
                 if(mod == 0){
@@ -64,13 +77,13 @@ public class RewardWithLessMoneyPaper {
                 }
             }
             if(mod == 0){
-                if(lessResult == 0){
+                if(lessResult == -1){
                     lessResult = result;
                 }else{
                     lessResult = Math.min(lessResult,result);
                 }
             }
-            types.remove(0);
+            ints.remove(0);
         }
         return lessResult;
     }
@@ -94,20 +107,23 @@ public class RewardWithLessMoneyPaper {
 
     public static void main(String[] args) {
         List<Integer> lists = Lists.newArrayList();
-        lists.add(2);
-        lists.add(3);
-        lists.add(7);
-        int i = RewardWithLessMoneyPaper.lasetMoneyCalculateDP(10, lists);
+        lists.add(186);
+        lists.add(419);
+        lists.add(83);
+        lists.add(408);
+        int i = RewardWithLessMoneyPaper.lasetMoneyCalculateDP(6249, lists);
         System.out.println(i);
         int [] array = new int[]{2,3,7};
         int [] array1 = new int[10];
         int an = RewardWithLessMoneyPaper.getMinMoney(array1, array);
         System.out.println(an + 1);
-        List types = Lists.newArrayList();
-        types.add(7);
-        types.add(2);
-        types.add(3);
-        int i1 = userDelie(types, 100);
+//        List types = Lists.newArrayList();
+//        types.add(7);
+//        types.add(2);
+//        types.add(3);
+        //当前数有问题
+        int [] array2 = new int[]{186,419,83,408};
+        int i1 = userDelie(array2, 6249);
         System.out.println(i1);
     }
 }
