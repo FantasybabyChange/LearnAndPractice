@@ -20,25 +20,29 @@ import java.util.*;
  */
 public class RewardWithLessMoneyPaper {
 
-    public static int lasetMoneyCalculateDP(int totalMoney, List<Integer> moneyType){
-        if(Objects.isNull(moneyType) || moneyType.size()==0){
+    public static int lasetMoneyCalculateDP(int amount, int[] coins){
+        if(amount < 0|| coins.length == 0){
+            return -1;
+        }
+        if(amount == 0){
             return 0;
         }
-        totalMoney += 1;
-        int[] c = new int[totalMoney];
+        amount += 1;
+        int[] c = new int[amount];
 
-        for (int i = 0; i < totalMoney; i++) {
-            int best = 0;
-            for (Integer typeValue : moneyType) {
+        for (int i = 0; i < amount; i++) {
+            int best = -1;
+            for (Integer typeValue : coins) {
                 if(i - typeValue >= 0){
                     /**
                      * 当前无解
                      */
-                    if(c[i - typeValue] == 0 && i - typeValue > 0){
+                    if(c[i - typeValue] == -1 && i - typeValue > 0){
                         continue;
                     }
-                    int anser = c[i - typeValue]+1;
-                    if(best == 0) best=anser;
+                    int anser = c[i - typeValue];
+                    if(i - typeValue ==0)anser=1;else anser+=1;
+                    if(best == -1) best=anser;
                     else  best = Math.min(anser,best);
 
                 }
@@ -87,7 +91,24 @@ public class RewardWithLessMoneyPaper {
         }
         return lessResult;
     }
-
+    public static int coinChange(int[] coins, int amount) {
+//        Arrays.sort(coins);
+        int[] ans = new int[amount + 1];
+        ans[0] = 0;
+        for (int i = 1; i <= amount; i++) {
+            int min = Integer.MAX_VALUE;
+            for (int j = 0; j < coins.length; j++) {
+                int v = i - coins[j];
+                if (v < 0) break;
+                if (ans[v] != -1 && min > ans[v]) min = ans[v];
+            }
+            if (min == Integer.MAX_VALUE)
+                ans[i] = -1;
+            else
+                ans[i] = min + 1;
+        }
+        return ans[amount];
+    }
 
     public static int getMinMoney(int[] c, int[] value) {
         int[] t = new int[3];
@@ -106,12 +127,8 @@ public class RewardWithLessMoneyPaper {
     }
 
     public static void main(String[] args) {
-        List<Integer> lists = Lists.newArrayList();
-        lists.add(186);
-        lists.add(419);
-        lists.add(83);
-        lists.add(408);
-        int i = RewardWithLessMoneyPaper.lasetMoneyCalculateDP(6249, lists);
+        int [] lists = new int[]{1};
+        int i = RewardWithLessMoneyPaper.lasetMoneyCalculateDP(0, lists);
         System.out.println(i);
         int [] array = new int[]{2,3,7};
         int [] array1 = new int[10];
@@ -125,5 +142,8 @@ public class RewardWithLessMoneyPaper {
         int [] array2 = new int[]{186,419,83,408};
         int i1 = userDelie(array2, 6249);
         System.out.println(i1);
+        int i2 = coinChange(array2, 6249);
+        System.out.println(i2);
+
     }
 }
