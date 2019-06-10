@@ -25,6 +25,7 @@ public class PrefixTreeBuild {
 
     public void buildPrefixTree(PrefixTreeNode parentNode,String lastStr){
         if(lastStr.length() == 0){
+            parentNode.setLastNode(true);
 //            System.out.println("this word not exist");
             return;
         }
@@ -70,7 +71,11 @@ public class PrefixTreeBuild {
 
     private void searchWord(PrefixTreeNode node,String str){
         if(str.length() == 0){
-            System.out.println("单词存在");
+            if(node.getLastNode()){
+                System.out.println("单词存在");
+            }else{
+                System.out.println("单词不存在");
+            }
             return;
         }
         PrefixTreeNode[] childNodes = node.getChildNodes();
@@ -103,6 +108,7 @@ public class PrefixTreeBuild {
     private class PrefixTreeNode{
         private String nodeName;
         private String nodeValue;
+        private Boolean lastNode = false;
         private PrefixTreeNode[] childNodes;
     }
 
@@ -141,7 +147,7 @@ public class PrefixTreeBuild {
         PrefixTreeBuild prefixTreeBuild = new PrefixTreeBuild();
         PrefixTreeNode prefixTreeNode = prefixTreeBuild.buildByDictionary();
         prefixTreeBuild.printTree(prefixTreeNode);
-        prefixTreeBuild.searchWord(prefixTreeNode,"apple");
+        prefixTreeBuild.searchWord(prefixTreeNode,"ap");
     }
 
 }
