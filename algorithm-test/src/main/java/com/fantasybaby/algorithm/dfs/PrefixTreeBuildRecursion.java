@@ -8,14 +8,16 @@ package com.fantasybaby.algorithm.dfs;
 
 import lombok.Data;
 
-import java.util.Arrays;
+import java.util.Map;
 import java.util.Objects;
 
-/**根据字典构建前缀树
+/**
+ * 使用递归
+ * 根据字典构建前缀树
  * @author reid.liu
  * @date 2019-06-10 18:41
  */
-public class PrefixTreeBuild {
+public class PrefixTreeBuildRecursion {
     /**
      * 字典
      */
@@ -33,6 +35,9 @@ public class PrefixTreeBuild {
         char strValue = lastStr.charAt(0);
         String resetStr = lastStr.substring(1);
         if(Objects.isNull(childNodes) || childNodes.length == 0){
+            /**
+             * 这么实现深度遍历会很麻烦
+             */
             childNodes = new PrefixTreeNode[26];
             int index = calcIndex(strValue);
             generateNewChild(childNodes, strValue, index);
@@ -105,11 +110,18 @@ public class PrefixTreeBuild {
      * 前缀树构建
      */
     @Data
-    private class PrefixTreeNode{
+    public class PrefixTreeNode{
         private String nodeName;
         private String nodeValue;
         private Boolean lastNode = false;
+        /**
+         * 这个数据结构的问题在于查询很快,遍历很慢
+         */
         private PrefixTreeNode[] childNodes;
+        /**
+         * 使用map更符合前缀树的特点
+         */
+        private Map<String,PrefixTreeNode> sons;
     }
 
     public PrefixTreeNode buildByDictionary(){
@@ -144,10 +156,10 @@ public class PrefixTreeBuild {
     }
 
     public static void main(String[] args) {
-        PrefixTreeBuild prefixTreeBuild = new PrefixTreeBuild();
-        PrefixTreeNode prefixTreeNode = prefixTreeBuild.buildByDictionary();
-        prefixTreeBuild.printTree(prefixTreeNode);
-        prefixTreeBuild.searchWord(prefixTreeNode,"ap");
+        PrefixTreeBuildRecursion prefixTreeBuildRecursion = new PrefixTreeBuildRecursion();
+        PrefixTreeNode prefixTreeNode = prefixTreeBuildRecursion.buildByDictionary();
+        prefixTreeBuildRecursion.printTree(prefixTreeNode);
+        prefixTreeBuildRecursion.searchWord(prefixTreeNode,"ap");
     }
 
 }
