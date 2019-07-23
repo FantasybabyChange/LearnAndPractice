@@ -1,4 +1,4 @@
-package com.fantasybaby.basic.checker;
+package com.fantasybaby.basic.deadlock;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadInfo;
