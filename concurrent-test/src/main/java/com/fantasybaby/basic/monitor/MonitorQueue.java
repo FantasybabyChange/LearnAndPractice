@@ -2,12 +2,12 @@ package com.fantasybaby.basic.monitor;
 
 import com.google.common.collect.Lists;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
+ * 通过集合简单实现管程的通信原理
  * @author: liuxi
  * @time: 2019/9/3 11:14
  */
