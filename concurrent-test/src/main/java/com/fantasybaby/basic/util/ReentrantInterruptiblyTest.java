@@ -1,6 +1,7 @@
 package com.fantasybaby.basic.util;
 
-import com.fantasybaby.basic.checker.DeadlockChecker;
+
+import com.fantasybaby.basic.deadlock.DeadlockChecker;
 
 import java.util.concurrent.locks.ReentrantLock;
 
