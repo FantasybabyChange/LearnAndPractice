@@ -7,8 +7,9 @@
            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
     <dubbo:application name="demo-provider"/>
     <dubbo:registry address="zookeeper://172.31.224.152:2181"/>
+    <dubbo:protocol name="dubbo" port="20880"/>
     <context:annotation-config/>
-<!--    <context:component-scan base-package="com.fantasybaby.gradle.provider"/>-->
+    <context:component-scan base-package="com.fantasybaby"/>
     <!--use annotation without xml config -->
 <!--    <dubbo:annotation package="com.fantasybaby.gradle.provider" />-->
     <!--use config -->

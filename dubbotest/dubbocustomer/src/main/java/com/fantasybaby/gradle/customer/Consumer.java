@@ -15,8 +15,7 @@ public class Consumer {
         return dubboService.getName();
     }
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-                new String[]{"customer.xml"});
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("customer.xml");
         context.start();
         Consumer consumer = (Consumer) context.getBean("consumer");
         System.out.println(consumer.sayHello());

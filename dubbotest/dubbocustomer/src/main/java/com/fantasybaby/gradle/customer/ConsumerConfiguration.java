@@ -17,8 +17,7 @@ import org.springframework.context.annotation.PropertySource;
  */
 @Configuration
 @EnableDubbo(scanBasePackages = "com.fantasybaby")
-@PropertySource("classpath:/customer.xml")
-@ComponentScan(value = {"com.fantasybaby"})
+//@PropertySource("classpath:/customer.xml")
 public class ConsumerConfiguration {
 
 }

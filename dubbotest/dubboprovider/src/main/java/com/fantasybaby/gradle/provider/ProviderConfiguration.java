@@ -1,7 +1,7 @@
 package com.fantasybaby.gradle.provider;
+
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
 /**
  * @author: liuxi
@@ -9,6 +9,6 @@ import org.springframework.context.annotation.PropertySource;
  */
 @Configuration
 @EnableDubbo(scanBasePackages = "com.fantasybaby.gradle.provider")
-@PropertySource("classpath:/provider.xml")
+//@PropertySource("classpath:/provider.xml")
 public class ProviderConfiguration {
 }
