@@ -5,6 +5,6 @@ archivesBaseName = 'dubbocustomer'
 dependencies{
     compile project(':dubboservice')
     compile(
-            "com.alibaba:dubbo"
+            "org.apache.dubbo:dubbo"
     )
 }

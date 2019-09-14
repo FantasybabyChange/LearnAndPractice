@@ -1,12 +1,13 @@
 package com.fantasybaby.gradle.customer;
 
-import com.alibaba.dubbo.config.annotation.Reference;
 import com.fatansybaby.gradle.service.IDubboService;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 @Component(value = "consumer")
 public class Consumer {
+//    @Reference(version = "1.0.0")
     @Reference(version = "1.0.0")
     private IDubboService dubboService;
 

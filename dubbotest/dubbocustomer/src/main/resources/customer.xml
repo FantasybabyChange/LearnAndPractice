@@ -6,12 +6,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd    http://www.springframework.org/schema/context
            http://www.springframework.org/schema/context/spring-context-3.0.xsd">
     <dubbo:application name="demo-consumer" owner="programmer" organization="dubbox"/>
-    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+    <dubbo:registry address="zookeeper://172.31.224.152:2181"/>
     <!-- use annotation without config-->
-    <dubbo:annotation package="com.fantasybaby"/>
+<!--    <dubbo:annotation package="com.fantasybaby"/>-->
 
     <context:annotation-config/>
-    <context:component-scan base-package="com.fantasybaby.consumer"/>
+<!--    <context:component-scan base-package="com.fantasybaby.gradle.customer"/>-->
     <!-- use config file-->
     <!--<dubbo:reference id="demoService" interface="com.fantasybaby.service.IDubboService"/>-->
 </beans>

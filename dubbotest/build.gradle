@@ -40,7 +40,8 @@ subprojects {
         springVersion = '4.3.12.RELEASE'
         zookeeperVersion='3.4.6'
         zookeeperClientVersion='0.1'
-        dubboVersion='2.5.7'
+        dubboVersion='2.7.3'
+//        dubboVersion='2.5.7'
     }
 
     repositories{
@@ -71,7 +72,9 @@ subprojects {
                 "org.springframework:spring-tx:$springVersion",
                 "org.apache.zookeeper:zookeeper:$zookeeperVersion",
                 "com.github.sgroschupf:zkclient:$zookeeperClientVersion",
-                "com.alibaba:dubbo:$dubboVersion",
+                "org.apache.dubbo:dubbo-dependencies-zookeeper:$dubboVersion",
+                "org.apache.dubbo:dubbo:$dubboVersion"
+//                "com.alibaba:dubbo:$dubboVersion",
         )
 
         // 依赖maven中不存在的jar
