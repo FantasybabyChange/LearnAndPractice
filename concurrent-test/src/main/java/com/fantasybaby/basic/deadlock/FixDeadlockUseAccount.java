@@ -9,7 +9,7 @@ import java.util.List;
 public class FixDeadlockUseAccount {
     class Account {
         // actr 应该为单例
-        private Allocator actr = Allocator.getInstance();
+        private BetterAllocator actr = BetterAllocator.getInstance();
         private int balance;
         // 转账
         void transfer(Account target, int amt){

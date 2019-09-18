@@ -8,7 +8,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**共享锁
+/**通过信号量 实现多线程共享资源
  * @author liuxi
  * @date2018年04月14日 22:57
  */
