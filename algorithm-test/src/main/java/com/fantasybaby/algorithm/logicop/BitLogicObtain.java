@@ -13,7 +13,7 @@ public class BitLogicObtain {
     static final int EXCLUSIVE_MASK = (1 << SHARED_SHIFT)-1;
 
     /** Returns the number of shared holds represented in count  */
-    static int getHeighBit(int c)    { return c >>> SHARED_SHIFT; }
+    static int getHigherBit(int c)    { return c >>> SHARED_SHIFT; }
     /** Returns the number of exclusive holds represented in count  */
     static int getLowerBit(int c) { return c & EXCLUSIVE_MASK; }
 
@@ -21,7 +21,7 @@ public class BitLogicObtain {
         int a = 1000000;
         String binary = RadixConversation.decimalToBinary(a);
         System.out.println(binary);
-        int heighBit = getHeighBit(a);
+        int heighBit = getHigherBit(a);
         String heighBinary = RadixConversation.decimalToBinary(heighBit);
         System.out.println("b:"+heighBinary);
         int lowerBit = getLowerBit(a);

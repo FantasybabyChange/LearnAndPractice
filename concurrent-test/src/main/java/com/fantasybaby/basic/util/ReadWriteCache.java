@@ -47,4 +47,12 @@ public class ReadWriteCache<T> {
             writeLock.unlock();
         }
     }
+
+    public static void main(String[] args) {
+        ReadWriteCache<Object> objectReadWriteCache = new ReadWriteCache<>();
+        objectReadWriteCache.write("1","a");
+        Object b = objectReadWriteCache.read("1", "b");
+        System.out.println((String)b);
+
+    }
 }
