@@ -15,8 +15,14 @@ public class CyclicBarrierUtilTest {
         @Override
         public void run() {
             try {
+                /**
+                 * 先集合
+                 */
                 cb.await();
                 doWork();
+                /**
+                 *工作完毕
+                 */
                 cb.await();
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -37,7 +43,7 @@ public class CyclicBarrierUtilTest {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }finally {
-                System.out.println("work done");
+                System.out.println(Thread.currentThread().getName()+"work done");
             }
         }
     }
