@@ -22,7 +22,7 @@ public class CompletableFutureTest {
      */
     @Test
     public void testNotify(){
-        demo.completablNotifyTest();
+        demo.completableNotifyTest();
     }
     /**
      * 异步执行

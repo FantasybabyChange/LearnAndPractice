@@ -60,7 +60,7 @@ public class CompletableFutureDemo {
     /**
      * 测试通知的代码
      */
-    public void completablNotifyTest(){
+    public void completableNotifyTest(){
         CompletableFuture<Integer> future = new CompletableFuture<>();
         Thread thread = new Thread(new AskThread(future));
         Thread thread1 = new Thread(new NotifyThread(future));
@@ -92,6 +92,7 @@ public class CompletableFutureDemo {
     public static Integer getAsyncValue() throws ExecutionException, InterruptedException {
         CompletableFuture<Integer> future =
                 CompletableFuture.supplyAsync(() -> calc(50));
+        System.out.println("end call");
         return future.get();
     }
 }

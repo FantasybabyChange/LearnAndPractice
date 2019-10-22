@@ -1,38 +1,38 @@
-package com.fantasybaby.basic.threadpool;
+package com.fantasybaby.basic.j8new;
 
+import com.fantasybaby.basic.threadpool.MakeTeaTask;
+
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 /**
- * 泡茶问题
- * T1处理洗水壶->烧开水->等待T2拿茶叶->泡茶
- * T2 洗茶壶->洗茶杯->拿茶叶
- *
+ * 使用completable 异步编程 完成泡茶
  * @author: liuxi
- * @time: 2019/10/21 20:52
+ * @time: 2019/10/22 16:53
  */
-public class MakeTea {
+public class MakeTeaUseCompletable {
 
     public static void main(String[] args) {
         ExecutorService service = Executors.newFixedThreadPool(2);
-        Future<String> t2 = service.submit(() -> {
+        CompletableFuture<String> t2 = CompletableFuture.supplyAsync(() -> {
             MakeTeaTask makeTea1 = new MakeTeaTask("洗茶壶", 1000L, null);
             makeTea1.doTask();
             MakeTeaTask makeTea2 = new MakeTeaTask("洗茶杯", 2000L, null);
             makeTea2.doTask();
-            MakeTeaTask makeTea3 = new MakeTeaTask("拿茶叶", 500L, "铁观音");
+            MakeTeaTask makeTea3 = new MakeTeaTask("拿茶叶", 400L, "铁观音");
             return makeTea3.doTask();
         });
-        service.submit(() -> {
+        CompletableFuture<String> t1 = CompletableFuture.runAsync(() -> {
             MakeTeaTask makeTea1 = new MakeTeaTask("洗水壶", 1000L, null);
             makeTea1.doTask();
             MakeTeaTask makeTea2 = new MakeTeaTask("烧开水", 2000L, null);
             makeTea2.doTask();
-            String s;
+        }).thenCombine(t2, (c, a) -> {
             try {
-                s = t2.get();
+                System.out.println(c+"");
+                String s = t2.get();
                 MakeTeaTask makeTea3 = new MakeTeaTask("泡茶:" + s, 2000L, "");
                 makeTea3.doTask();
             } catch (InterruptedException e) {
@@ -40,7 +40,10 @@ public class MakeTea {
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
+            return "";
         });
+        t1.join();
+
         service.shutdown();
     }
 }
