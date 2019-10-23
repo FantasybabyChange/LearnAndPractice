@@ -52,12 +52,10 @@ public class MapReduceWords {
                 mr1.fork();
                 MR mr2 = new MR(
                         fc, mid, end);
-//                mr2.fork();
+                invokeAll(mr1,mr2);
                 //计算子任务，并返回合并的结果
-//                return merge(mr2.join(),
-//                        mr1.join());
                 //上面和下面两种方法都可以
-                return merge(mr2.compute(),
+                return merge(mr2.join(),
                         mr1.join());
             }
         }

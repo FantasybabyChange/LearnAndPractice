@@ -26,8 +26,9 @@ public class FibonacciForkJoin{
             }else{
                 FibonacciTask fibonacciTask = new FibonacciTask(n - 1);
                 FibonacciTask fibonacciTask1 = new FibonacciTask(n - 2);
-                fibonacciTask.fork();
-                fibonacciTask1.fork();
+//                fibonacciTask.fork();
+//                fibonacciTask1.fork();
+                invokeAll(fibonacciTask1,fibonacciTask);
                 Integer join1 = fibonacciTask.join();
                 Integer join2 = fibonacciTask1.join();
                 return join1 + join2;
