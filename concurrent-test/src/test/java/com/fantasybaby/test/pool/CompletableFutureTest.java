@@ -38,4 +38,8 @@ public class CompletableFutureTest {
             e.printStackTrace();
         }
     }
+    @Test
+    public void testSynApply(){
+        demo.asyToShowSynchronize();
+    }
 }

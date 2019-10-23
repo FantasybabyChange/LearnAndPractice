@@ -89,10 +89,25 @@ public class CompletableFutureDemo {
         return para*para;
     }
 
-    public static Integer getAsyncValue() throws ExecutionException, InterruptedException {
+    public Integer getAsyncValue() throws ExecutionException, InterruptedException {
         CompletableFuture<Integer> future =
                 CompletableFuture.supplyAsync(() -> calc(50));
         System.out.println("end call");
         return future.get();
+    }
+
+    /**
+     * 通过异步编程体现任务得串行执行
+     * @throws ExecutionException
+     * @throws InterruptedException
+     */
+    public void asyToShowSynchronize() {
+        CompletableFuture.supplyAsync(() -> "hello").thenApply(a -> {
+            System.out.println(a);
+            return a + "1";
+        }).thenCompose(a-> CompletableFuture.supplyAsync(()-> a +"compose")).
+                thenAccept(a-> System.out.println(a))
+                 .thenRun(()->System.out.println("endhello"));
+
     }
 }
