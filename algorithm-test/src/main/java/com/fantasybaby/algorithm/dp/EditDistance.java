@@ -3,7 +3,7 @@ package com.fantasybaby.algorithm.dp;
 import java.util.Objects;
 
 /**
- *
+ *  动态规划求编辑距离
  * 		B empty	  m	            o	           u	            s               	e
  * empty 0	      1	            2	          3	                4	                5
  * 	m	 1	Min(2,2,0)=0	Min(3,1,2)=1	Min(4,2,3)=2	Min(5,3,4)=3	Min(6,4,5)=4
