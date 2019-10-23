@@ -10,10 +10,10 @@ import java.util.concurrent.*;
  * 使用executor线程池完成分治
  */
 @Slf4j
-public class ExecutoServiceCalculatior implements  ICalculator{
+public class ExecutorServiceCalculator implements  ICalculator{
     private int parallism;
     private ExecutorService pool;
-    public ExecutoServiceCalculatior(){
+    public ExecutorServiceCalculator(){
         parallism = Runtime.getRuntime().availableProcessors();
         log.info("getAvailableProcessors core "+parallism);
         pool = Executors.newFixedThreadPool(parallism);
@@ -51,6 +51,9 @@ public class ExecutoServiceCalculatior implements  ICalculator{
     @Override
     public long sumUp(long[] numbers) {
         List<Future<Long>> results = new ArrayList();
+        /**
+         * 数组大小/核心数
+         */
         int part = numbers.length / parallism;
         for (int i = 0; i < parallism; i++) {
             int from = i * part;

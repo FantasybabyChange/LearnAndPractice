@@ -43,7 +43,7 @@ def createFolder ={
 }
 
 task buildNormalProject(group:'build') {
-    def paths =['src/main/java','src/main/resource','src/test/java','src/test/resource']
+    def paths =['src/main/java','src/main/resources','src/test/java','src/test/resource']
     doLast{
         paths.forEach(createFolder)
     }
@@ -55,7 +55,7 @@ sourceSets {
             srcDir file('src/main/java')
         }
         resources {
-            srcDir file('src/main/resource')
+            srcDir file('src/main/resources')
         }
     }
 
