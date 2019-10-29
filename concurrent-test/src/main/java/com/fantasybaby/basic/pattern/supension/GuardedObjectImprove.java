@@ -27,6 +27,9 @@ public class GuardedObjectImprove<T> {
         //静态方法创建GuardedObject
         static <K> GuardedObject
         create(K key){
+            /**
+             * 创建后需要销毁,不然会造成内存泄漏
+             */
             GuardedObject go=new GuardedObject();
             gos.put(key, go);
             return go;
