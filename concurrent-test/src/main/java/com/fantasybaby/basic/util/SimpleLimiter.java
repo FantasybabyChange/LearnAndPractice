@@ -17,7 +17,7 @@ public class SimpleLimiter {
     long maxPermits = 3;
     //下一令牌产生时间
     long next = System.nanoTime();
-    //发放令牌间隔：纳秒
+    //发放令牌间隔：纳秒=1S
     long interval = 1000_000_000;
 
     //请求时间在下一令牌产生时间之后,则
