@@ -23,6 +23,7 @@ ext{
     springVersion ='5.0.4.RELEASE'
     lombokVersion ='1.16.16'
     logbackVersion = '1.1.1'
+    akkaVersion='2.6.0'
 }
 dependencies {
     compile group: 'org.slf4j', name: 'slf4j-api', version:'1.7.10'
@@ -30,6 +31,8 @@ dependencies {
     compile group: 'ch.qos.logback', name: 'logback-classic', version:logbackVersion
     compile group: 'com.google.guava', name: 'guava', version:'24.0-jre'
     compile   "org.projectlombok:lombok:$lombokVersion"
+    compile 'com.typesafe.akka:akka-actor-typed_2.13:2.6.0'
+    testCompile 'com.typesafe.akka:akka-actor-testkit-typed_2.13:2.6.0'
     implementation 'com.lmax:disruptor:3.4.2'
     testCompile   "org.projectlombok:lombok:$lombokVersion"
     testCompile group: 'junit', name: 'junit', version:'4.11'
