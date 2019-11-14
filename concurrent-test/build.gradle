@@ -26,6 +26,8 @@ ext{
     akkaVersion='2.6.0'
 }
 dependencies {
+    // https://mvnrepository.com/artifact/org.multiverse/multiverse-core
+    compile group: 'org.multiverse', name: 'multiverse-core', version: '0.7.0'
     compile group: 'org.slf4j', name: 'slf4j-api', version:'1.7.10'
     compile group: 'ch.qos.logback', name: 'logback-core', version:logbackVersion
     compile group: 'ch.qos.logback', name: 'logback-classic', version:logbackVersion
