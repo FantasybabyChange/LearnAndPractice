@@ -5,6 +5,7 @@ import org.multiverse.api.references.TxnLong;
 import static org.multiverse.api.StmUtils.*;
 
 /**
+ * 使用multiverse 来使用stm
  * @author: liuxi
  * @time: 2019/11/13 20:55
  */
