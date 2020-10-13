@@ -6,7 +6,9 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.LongAdder;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -63,6 +65,7 @@ public class ConcurrentHashMapUnsafe {
 
     /**
      * througn
+     *
      * @return
      * @throws InterruptedException
      */
@@ -90,4 +93,48 @@ public class ConcurrentHashMapUnsafe {
 
         return "OK";
     }
+
+
+    //循环次数
+    private static int LOOP_COUNT = 10000000;
+
+    public Map<String, Long> useLockToAdd() throws InterruptedException {
+        ConcurrentHashMap<String, Long> freqs = new ConcurrentHashMap<>(ITEM_COUNT);
+        ForkJoinPool forkJoinPool = new ForkJoinPool(THREAD_COUNT);
+        forkJoinPool.execute(() -> IntStream.rangeClosed(1, LOOP_COUNT).parallel().forEach(i -> {
+                    //获得一个随机的Key
+                    String key = "item" + ThreadLocalRandom.current().nextInt(ITEM_COUNT);
+                    synchronized (freqs) {
+                        if (freqs.containsKey(key)) {
+                            //Key存在则+1
+                            freqs.put(key, freqs.get(key) + 1);
+                        } else {
+                            //Key不存在则初始化为1
+                            freqs.put(key, 1L);
+                        }
+                    }
+                }
+        ));
+        forkJoinPool.shutdown();
+        forkJoinPool.awaitTermination(1, TimeUnit.HOURS);
+        return freqs;
+    }
+
+    public Map<String, Long> casToAdd() throws InterruptedException {
+        ConcurrentHashMap<String, LongAdder> freqs = new ConcurrentHashMap<>(ITEM_COUNT);
+        ForkJoinPool forkJoinPool = new ForkJoinPool(THREAD_COUNT);
+        forkJoinPool.execute(() -> IntStream.rangeClosed(1, LOOP_COUNT).parallel().forEach(i -> {
+                    //获得一个随机的Key
+                    String key = "item" + ThreadLocalRandom.current().nextInt(ITEM_COUNT);
+                    /**
+                     * 使用LongAdder
+                     */
+                    freqs.computeIfAbsent(key, v -> new LongAdder()).increment();
+                }
+        ));
+        forkJoinPool.shutdown();
+        forkJoinPool.awaitTermination(1, TimeUnit.HOURS);
+        return freqs.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey,t->t.getValue().longValue()));
+    }
+
 }
