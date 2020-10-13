@@ -23,9 +23,9 @@ public class ConcurrentHashMapUnsafe {
     private static Map<String, Integer> hashMap = Maps.newConcurrentMap();
 
     //线程个数
-    private static int THREAD_COUNT = 10;
+    public static int THREAD_COUNT = 10;
     //总元素数量
-    private static int ITEM_COUNT = 10000;
+    public static int ITEM_COUNT = 10000;
 
     /**
      * 帮助方法，用来获得一个指定元素数量模拟数据的ConcurrentHashMap
@@ -96,7 +96,7 @@ public class ConcurrentHashMapUnsafe {
 
 
     //循环次数
-    private static int LOOP_COUNT = 10000000;
+    public static int LOOP_COUNT = 10000000;
 
     public Map<String, Long> useLockToAdd() throws InterruptedException {
         ConcurrentHashMap<String, Long> freqs = new ConcurrentHashMap<>(ITEM_COUNT);
