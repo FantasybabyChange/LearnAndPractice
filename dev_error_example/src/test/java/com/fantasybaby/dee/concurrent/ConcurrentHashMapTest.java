@@ -13,7 +13,16 @@ public class ConcurrentHashMapTest {
     @Test
     public void testWrong(){
         try {
-            map.wrong();
+            map.unsafePut();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+    @Test
+    public void testSafe(){
+        try {
+            map.safePut();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
