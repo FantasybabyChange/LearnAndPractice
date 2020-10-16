@@ -12,7 +12,7 @@ public class Sku {
     private String name;
     private Integer remaining;
     @ToString.Exclude
-    private ReentrantLock rl = new ReentrantLock();
+    private ReentrantLock rl;
 
     public void reduce() {
         remaining--;

@@ -26,8 +26,8 @@ public class DeadLockUnsafe {
     private Map<String, Sku> skus;
 
     public DeadLockUnsafe() {
-        skus = IntStream.rangeClosed(1, 3).parallel().mapToObj(i -> Sku.builder().name("item" + i).
-                remaining(1000).build())
+        skus = IntStream.rangeClosed(0, 10).parallel().mapToObj(i -> Sku.builder().name("item" + i).
+                remaining(1000).rl(new ReentrantLock()).build())
                 .collect(Collectors.toConcurrentMap(Sku::getName, Function.identity()));
     }
 

@@ -73,9 +73,10 @@ public class TestNoLockAndThreadUnSafe {
                 .filter(result -> result)
                 .count();
         del.getSkus().entrySet().stream().map(kv->kv.getValue());
-//        log.info("success:{} totalRemaining:{} took:{}ms items:{}",
-//                success,
-//                del.getSkus().entrySet().stream().map(item -> item.getValue().getR).reduce(0, Integer::sum),
-//                System.currentTimeMillis() - begin, items);
+        log.info("success:{} totalRemaining:{} took:{}ms items:{}",
+                success,
+                del.getSkus().entrySet().stream().map(item -> item.getValue().getRemaining()).reduce(0, Integer::sum),
+                System.currentTimeMillis() - begin, del.getSkus());
+
     }
 }
