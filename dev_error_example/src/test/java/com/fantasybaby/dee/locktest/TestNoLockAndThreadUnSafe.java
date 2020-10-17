@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -68,6 +69,25 @@ public class TestNoLockAndThreadUnSafe {
         long success = IntStream.rangeClosed(1, 100).parallel()
                 .mapToObj(i -> {
                     List<Sku> cart = del.createCart();
+                    return del.createOrder(cart);
+                })
+                .filter(result -> result)
+                .count();
+        del.getSkus().entrySet().stream().map(kv->kv.getValue());
+        log.info("success:{} totalRemaining:{} took:{}ms items:{}",
+                success,
+                del.getSkus().entrySet().stream().map(item -> item.getValue().getRemaining()).reduce(0, Integer::sum),
+                System.currentTimeMillis() - begin, del.getSkus());
+
+    }
+    @Test
+    public void deadlockRight() {
+        long begin = System.currentTimeMillis();
+        //并发进行100次下单操作，统计成功次数
+        long success = IntStream.rangeClosed(1, 100).parallel()
+                .mapToObj(i -> {
+                    List<Sku> cart = del.createCart();
+                    cart.sort(Comparator.comparing(Sku::getName));
                     return del.createOrder(cart);
                 })
                 .filter(result -> result)
