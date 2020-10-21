@@ -10,8 +10,13 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
+
 @Slf4j
 public class ThreadPoolMonitorTest {
+    /**
+     * 监控线程的策略
+     * @throws InterruptedException
+     */
     @Test
     public void testThreadMonitor() throws InterruptedException {
         //使用一个计数器跟踪完成的任务数
@@ -24,7 +29,7 @@ public class ThreadPoolMonitorTest {
                 new ThreadFactoryBuilder().setNameFormat("demo-threadpool-%d").build(),
                 new ThreadPoolExecutor.AbortPolicy());
 
-        new ThreadMonitor().printStats(threadPool);
+        ThreadMonitor.printStats(threadPool);
 
         IntStream.rangeClosed(1, 20).forEach(i -> {
             try {
@@ -37,7 +42,7 @@ public class ThreadPoolMonitorTest {
                 threadPool.submit(() -> {
                     log.info("{} started", id);
                     //每个任务耗时10秒
-                    log.info("thread name:{}",Thread.currentThread().getName());
+                    log.info("thread name:{}", Thread.currentThread().getName());
                     try {
                         TimeUnit.SECONDS.sleep(10);
                     } catch (InterruptedException e) {
@@ -52,6 +57,10 @@ public class ThreadPoolMonitorTest {
         });
 
         TimeUnit.SECONDS.sleep(60);
-        System.out.println(atomicInteger.intValue());
+        log.info(""+atomicInteger.intValue());
+    }
+    @Test
+    public void testThreadPoolPolicyUse(){
+
     }
 }
