@@ -19,6 +19,9 @@ import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
 
 @Slf4j
 public class ThreadPoolPolicyMixUse {
+    /**
+     * 该策略会导致 线程池线程打满之后 让调用线程去执行  导致系统卡顿
+     */
     private static ThreadPoolExecutor threadPool = new ThreadPoolExecutor(
             2, 2,
             1, TimeUnit.HOURS,
@@ -26,7 +29,9 @@ public class ThreadPoolPolicyMixUse {
             new ThreadFactoryBuilder().setNameFormat("batchfileprocess-threadpool-%d").build(),
             new ThreadPoolExecutor.CallerRunsPolicy());
 
-
+    /**
+     * 加大吞吐量
+     */
     private static ThreadPoolExecutor asyncCalcThreadPool = new ThreadPoolExecutor(
             200, 200,
             1, TimeUnit.HOURS,

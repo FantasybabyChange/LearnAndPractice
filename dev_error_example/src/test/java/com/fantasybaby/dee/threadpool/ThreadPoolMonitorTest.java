@@ -1,6 +1,8 @@
 package com.fantasybaby.dee.threadpool;
 
+import com.fantasybaby.dee.code.threadpool.CustomerThreadPool;
 import com.fantasybaby.dee.code.threadpool.ThreadMonitor;
+import com.fantasybaby.dee.code.threadpool.ThreadPoolPolicyReused;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -15,6 +17,7 @@ import java.util.stream.IntStream;
 public class ThreadPoolMonitorTest {
     /**
      * 监控线程的策略
+     *
      * @throws InterruptedException
      */
     @Test
@@ -57,10 +60,11 @@ public class ThreadPoolMonitorTest {
         });
 
         TimeUnit.SECONDS.sleep(60);
-        log.info(""+atomicInteger.intValue());
+        log.info("" + atomicInteger.intValue());
     }
     @Test
-    public void testThreadPoolPolicyUse(){
-
+    public void testCustomerThreadPool(){
+        new CustomerThreadPool().monitorCustomerThreadPool();
     }
+
 }

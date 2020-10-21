@@ -16,8 +16,7 @@ import java.util.stream.IntStream;
  */
 @Slf4j
 public class ThreadPoolPolicyReused {
-    public String wrong() throws InterruptedException {
-        ThreadPoolExecutor threadPool = ThreadPoolHelper.getThreadPool();
+    public void executeTask(ThreadPoolExecutor threadPool) {
         IntStream.rangeClosed(1, 10).forEach(i -> {
             threadPool.execute(() -> {
                 String payload = IntStream.rangeClosed(1, 1000000)
@@ -30,10 +29,9 @@ public class ThreadPoolPolicyReused {
                 log.debug(payload);
             });
         });
-        return "OK";
     }
 
-    static class ThreadPoolHelper {
+    public static class ThreadPoolHelper {
         private static ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
                 10, 50,
                 2, TimeUnit.SECONDS,
@@ -44,7 +42,7 @@ public class ThreadPoolPolicyReused {
             return (ThreadPoolExecutor) Executors.newCachedThreadPool();
         }
 
-        static ThreadPoolExecutor getRightThreadPool() {
+        public static ThreadPoolExecutor getRightThreadPool() {
             return threadPoolExecutor;
         }
     }
