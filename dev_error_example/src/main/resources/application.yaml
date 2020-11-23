@@ -1,3 +1,12 @@
+spring:
+  application:
+    name: dev_error
 ribbon:
   ReadTimeout: 4000
   ConnectTimeout: 4000
+server:
+  port: 7888
+  servlet:
+    encoding:
+      force: true
+      charset: UTF-8
