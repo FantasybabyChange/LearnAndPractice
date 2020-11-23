@@ -1,0 +1,3 @@
+ribbon:
+  ReadTimeout: 4000
+  ConnectTimeout: 4000
