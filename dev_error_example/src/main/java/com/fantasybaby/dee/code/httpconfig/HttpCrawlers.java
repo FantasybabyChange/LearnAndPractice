@@ -23,9 +23,11 @@ import java.util.stream.IntStream;
 @Slf4j
 public class HttpCrawlers {
     static CloseableHttpClient httpClient1;
+    static CloseableHttpClient httpClient2;
 
     static {
         httpClient1 = HttpClients.custom().setConnectionManager(new PoolingHttpClientConnectionManager()).build();
+        httpClient2 = HttpClients.custom().setMaxConnTotal(50).setMaxConnPerRoute(20).build();
     }
 
     private int sendRequest(int count, Supplier<CloseableHttpClient> client) throws InterruptedException {
@@ -52,6 +54,7 @@ public class HttpCrawlers {
 
     /**
      * 使用PoolingHttpClientConnectionManager 10个请求是5s
+     *
      * @param count
      * @return
      * @throws InterruptedException
@@ -60,9 +63,19 @@ public class HttpCrawlers {
         return sendRequest(count, () -> httpClient1);
     }
 
+    public int right(int count) throws InterruptedException {
+        return sendRequest(count, () -> httpClient2);
+    }
+
     public static void main(String[] args) {
         try {
             new HttpCrawlers().wrong(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            new HttpCrawlers().right(10);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
