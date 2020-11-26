@@ -6,3 +6,5 @@
 确定线程是否是被复用
 ### ThreadPoolPolicyMixUse
 混合使用的时候确认使用策略
+### CustomerThreadPool
+自定义一个激进线程池
