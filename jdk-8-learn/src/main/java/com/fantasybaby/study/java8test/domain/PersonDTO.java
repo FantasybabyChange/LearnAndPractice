@@ -1,9 +1,9 @@
-package com.fantasybaby.study.java8test.dozer;
+package com.fantasybaby.study.java8test.domain;
 
 import lombok.Data;
 
 @Data
-public class PersonDO {
+public class PersonDTO {
     private String personName;
     private String personLike;
 

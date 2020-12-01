@@ -1,7 +1,7 @@
 package com.fantasybaby.study.java8test.lambadatest;
 
 import com.fantasybaby.study.java8test.change.ObjectFactory;
-import com.fantasybaby.study.java8test.dozer.UserBean;
+import com.fantasybaby.study.java8test.domain.UserBean;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
@@ -285,7 +285,6 @@ public class LambadaTest {
 //        lambadaTest.convertToMap();
         lambadaTest.testSortWithMany();
     }
-
 
 
 }

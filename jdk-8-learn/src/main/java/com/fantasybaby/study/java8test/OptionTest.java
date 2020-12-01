@@ -1,7 +1,7 @@
 package com.fantasybaby.study.java8test;
 
 
-import com.fantasybaby.study.java8test.dozer.UserDO;
+import com.fantasybaby.study.java8test.domain.UserDO;
 
 import java.util.Optional;
 import java.util.function.Consumer;

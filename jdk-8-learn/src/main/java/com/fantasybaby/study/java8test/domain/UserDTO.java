@@ -1,4 +1,4 @@
-package com.fantasybaby.study.java8test.dozer;
+package com.fantasybaby.study.java8test.domain;
 
 import lombok.Data;
 
