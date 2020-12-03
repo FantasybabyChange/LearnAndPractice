@@ -53,11 +53,15 @@ public class FunctionLambada {
     public void functionBinaryOperator() {
         BinaryOperator<Integer> add = Integer::sum;
         BinaryOperator<Integer> subtraction = (a, b) -> a - b;
-        subtraction.apply(add.apply(1, 2), 3);
+        Integer apply = subtraction.apply(add.apply(1, 2), 3);
+        System.out.println(apply);
+
     }
 
     public static void main(String[] args) {
         new FunctionLambada().functionFunction();
+        new FunctionLambada().functionBinaryOperator();
+
     }
 
 }
