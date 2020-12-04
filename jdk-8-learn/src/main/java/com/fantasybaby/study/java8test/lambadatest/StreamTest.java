@@ -70,9 +70,10 @@ public class StreamTest {
 
     private static Random random = new Random();
     private List<Order> orders;
+
     public void testFilter() {
 
-//最近半年的金额大于40的订单
+        //最近半年的金额大于40的订单
         orders.stream()
                 .filter(Objects::nonNull) //过滤null值
                 .filter(order -> order.getPlacedAt().isAfter(LocalDateTime.now().minusMonths(6))) //最近半年的订单
