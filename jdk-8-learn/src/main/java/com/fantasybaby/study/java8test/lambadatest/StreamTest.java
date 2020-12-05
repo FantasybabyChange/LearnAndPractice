@@ -1,13 +1,7 @@
 package com.fantasybaby.study.java8test.lambadatest;
 
-import com.fantasybaby.study.java8test.domain.Order;
-
 import java.math.BigInteger;
-import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -68,16 +62,4 @@ public class StreamTest {
                 .collect(Collectors.toList());
     }
 
-    private static Random random = new Random();
-    private List<Order> orders;
-
-    public void testFilter() {
-
-        //最近半年的金额大于40的订单
-        orders.stream()
-                .filter(Objects::nonNull) //过滤null值
-                .filter(order -> order.getPlacedAt().isAfter(LocalDateTime.now().minusMonths(6))) //最近半年的订单
-                .filter(order -> order.getTotalPrice() > 40) //金额大于40的订单
-                .forEach(System.out::println);
-    }
 }
