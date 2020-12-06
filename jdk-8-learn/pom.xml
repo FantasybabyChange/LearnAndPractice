@@ -46,7 +46,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13</version>
-            <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
         <dependency>
@@ -59,12 +58,12 @@
             <artifactId>cglib</artifactId>
             <version>3.1</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest</artifactId>
             <version>2.2</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency>-->
     </dependencies>
     <repositories>
         <repository>

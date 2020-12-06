@@ -11,6 +11,7 @@ import java.util.Random;
 import java.util.concurrent.atomic.LongAdder;
 
 import static java.util.Comparator.comparing;
+import static java.util.stream.Collectors.joining;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
@@ -53,12 +54,39 @@ public class OrderExampleLambada {
                         .mapToLong(OrderItem::getProductQuantity).sum()).sum()));
     }
 
+    public void orderFlatMap() {
+
+        //直接展开订单商品进行价格统计
+        System.out.println(orders.stream()
+                .flatMap(order -> order.getOrderItemList().stream())
+                .mapToDouble(item -> item.getProductQuantity() * item.getProductPrice()).sum());
+
+        //另一种方式flatMap+mapToDouble=flatMapToDouble
+        System.out.println(orders.stream()
+                .flatMapToDouble(order ->
+                        order.getOrderItemList()
+                                .stream().mapToDouble(item -> item.getProductQuantity() * item.getProductPrice()))
+                .sum());
+    }
+
     public void orderSorted() {
         //大于50的订单,按照订单价格倒序前5
         orders.stream().filter(order -> order.getTotalPrice() > 50)
                 .sorted(comparing(Order::getTotalPrice).reversed())
                 .limit(5)
                 .forEach(System.out::println);
+    }
+
+    public void orderDistinct(){
+
+        //去重的下单用户
+        System.out.println(orders.stream().map(order -> order.getCustomerName()).distinct().collect(joining(",")));
+
+        //所有购买过的商品
+        System.out.println(orders.stream()
+                .flatMap(order -> order.getOrderItemList().stream())
+                .map(OrderItem::getProductName)
+                .distinct().collect(joining(",")));
     }
 
     public static void main(String[] args) {
