@@ -77,7 +77,7 @@ public class OrderExampleLambada {
                 .forEach(System.out::println);
     }
 
-    public void orderDistinct(){
+    public void orderDistinct() {
 
         //去重的下单用户
         System.out.println(orders.stream().map(order -> order.getCustomerName()).distinct().collect(joining(",")));
@@ -87,6 +87,19 @@ public class OrderExampleLambada {
                 .flatMap(order -> order.getOrderItemList().stream())
                 .map(OrderItem::getProductName)
                 .distinct().collect(joining(",")));
+    }
+
+    public void orderSkip() {
+        //按照下单时间排序，查询前2个订单的顾客姓名和下单时间
+        orders.stream()
+                .sorted(comparing(Order::getPlacedAt))
+                .map(order -> order.getCustomerName() + "@" + order.getPlacedAt())
+                .limit(2).forEach(System.out::println);
+        //按照下单时间排序，查询第3和第4个订单的顾客姓名和下单时间
+        orders.stream()
+                .sorted(comparing(Order::getPlacedAt))
+                .map(order -> order.getCustomerName() + "@" + order.getPlacedAt())
+                .skip(2).limit(2).forEach(System.out::println);
     }
 
     public static void main(String[] args) {
