@@ -101,4 +101,8 @@ public class CollectorTest {
                         groupingBy(order -> order.getCustomerName(),
                                 mapping(order -> order.getId(), toList())))));
     }
+    public void collectorParit(){
+
+
+    }
 }
