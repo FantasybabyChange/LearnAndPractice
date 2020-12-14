@@ -24,13 +24,18 @@ public class MostPopularCollector<T> implements Collector<T, Map<T, Integer>, Op
         return HashMap::new;
     }
 
+    /**
+     * 累加器
+     * acc是容器  elem流源遍历的对象
+     * @return
+     */
     @Override
     public BiConsumer<Map<T, Integer>, T> accumulator() {
         return (acc, elem) -> acc.merge(elem, 1, (old, value) -> old + value);
     }
 
     /**
-     * 合并
+     * 组合器
      * @return
      */
     @Override
@@ -40,7 +45,7 @@ public class MostPopularCollector<T> implements Collector<T, Map<T, Integer>, Op
     }
 
     /**
-     * 结束
+     * 终结者
      * @return
      */
     @Override
