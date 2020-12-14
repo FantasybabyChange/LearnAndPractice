@@ -1,5 +1,6 @@
 package com.fantasybaby.study.java8test.lambadatest;
 
+import com.fantasybaby.study.java8test.domain.Customer;
 import com.fantasybaby.study.java8test.domain.Order;
 import com.fantasybaby.study.java8test.domain.OrderItem;
 
@@ -95,14 +96,23 @@ public class CollectorTest {
                 (groupingBy(order -> order.getPlacedAt().format(DateTimeFormatter.ofPattern("yyyyMM")),
                         mapping(order -> order.getId(), toList()))));
 
-    //根据下单年月+用户名两次分组，统计订单ID列表
+        //根据下单年月+用户名两次分组，统计订单ID列表
         System.out.println(orders.stream().collect
                 (groupingBy(order -> order.getPlacedAt().format(DateTimeFormatter.ofPattern("yyyyMM")),
                         groupingBy(order -> order.getCustomerName(),
                                 mapping(order -> order.getId(), toList())))));
     }
-    public void collectorParit(){
 
+    public void collectorPartition() {
+        //根据是否有下单记录进行分区
+        Map<Boolean, List<Customer>> collect = Customer.getData().stream().collect(
+                partitioningBy(customer -> orders.stream().mapToLong(Order::getCustomerId)
+                        .anyMatch(id -> id == customer.getId())));
+        System.out.println(collect);
 
+    }
+
+    public static void main(String[] args) {
+        new CollectorTest().collectorPartition();
     }
 }
