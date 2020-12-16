@@ -27,6 +27,8 @@ public class MostPopularCollector<T> implements Collector<T, Map<T, Integer>, Op
     /**
      * 累加器
      * acc是容器  elem流源遍历的对象
+     * 会把每个元素遍历的时候都执行一遍
+     * 每次遍历 通过map的merge 将key相通的value+1
      * @return
      */
     @Override
@@ -36,6 +38,7 @@ public class MostPopularCollector<T> implements Collector<T, Map<T, Integer>, Op
 
     /**
      * 组合器
+     * 多线程parallel 会用到
      * @return
      */
     @Override
@@ -61,7 +64,7 @@ public class MostPopularCollector<T> implements Collector<T, Map<T, Integer>, Op
     }
 
     public static void main(String[] args) {
-        assertThat(Stream.of(1, 1, 2, 2, 2, 3, 4, 5, 5).collect(new MostPopularCollector<>()).get(), CoreMatchers.is(2));
+//        assertThat(Stream.of(1, 1, 2, 2, 2, 3, 4, 5, 5).collect(new MostPopularCollector<>()).get(), CoreMatchers.is(2));
         assertThat(Stream.of('a', 'b', 'c', 'c', 'c', 'd').collect(new MostPopularCollector<>()).get(), CoreMatchers.is('c'));
     }
 }
