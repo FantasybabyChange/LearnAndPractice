@@ -16,6 +16,12 @@ import java.util.stream.IntStream;
 @Slf4j
 public class EqualStudy {
     List<String> list = new ArrayList<>();
+
+    /**
+     * 使用intern 如果不设置字符串常量池大小 性能很差
+     * @param size
+     * @return
+     */
     public int internPerformance(int size) {
         //-XX:+PrintStringTableStatistics
         //-XX:StringTableSize=10000000
