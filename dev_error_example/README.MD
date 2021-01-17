@@ -4,3 +4,4 @@
 3. connectpool  连接池池的错误使用
 4. httpconfig  http错误使用
 5. equals    对象相等以及hashcode  
+6. precision  java精度相关
