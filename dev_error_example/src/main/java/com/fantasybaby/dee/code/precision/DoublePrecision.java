@@ -29,7 +29,7 @@ public class DoublePrecision {
     /**
      * 使用 BigDecimal 表示和计算浮点数，且务必使用字符串的构造方法来初始化 BigDecimal
      */
-    public void useBigDecimal(){
+    public void useBigDecimal() {
         System.out.println(new BigDecimal(0.1).add(new BigDecimal(0.2)));
         System.out.println(new BigDecimal(1.0).subtract(new BigDecimal(0.8)));
         System.out.println(new BigDecimal(4.015).multiply(new BigDecimal(100)));
@@ -39,11 +39,20 @@ public class DoublePrecision {
     /**
      * 使用 BigDecimal 表示和计算浮点数，且务必使用字符串的构造方法来初始化 BigDecimal
      */
-    public void useBigDecimalStr(){
+    public void useBigDecimalStr() {
         System.out.println(new BigDecimal("0.1").add(new BigDecimal("0.2")));
         System.out.println(new BigDecimal("1.0").subtract(new BigDecimal("0.8")));
         System.out.println(new BigDecimal("4.015").multiply(new BigDecimal("100")));
         System.out.println(new BigDecimal("123.3").divide(new BigDecimal("100")));
+    }
+
+    /**
+     * BigDecimal 有 scale 和 precision 的概念
+     */
+    public void useDoubleNotStr() {
+        System.out.println(new BigDecimal("4.015").multiply(new BigDecimal(Double.toString(100))));
+        System.out.println(new BigDecimal("4.015").divide(new BigDecimal(Double.toString(100))));
+
     }
 
     public static void main(String[] args) {
@@ -51,5 +60,6 @@ public class DoublePrecision {
 //        doublePrecision.notMatchMind();
 //        doublePrecision.useBigDecimal();
         doublePrecision.useBigDecimalStr();
+        doublePrecision.useDoubleNotStr();
     }
 }
