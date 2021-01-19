@@ -1,5 +1,7 @@
 package com.fantasybaby.dee.code.precision;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.math.BigDecimal;
 
 /**
@@ -7,6 +9,7 @@ import java.math.BigDecimal;
  *
  * @authorfantasybaby
  **/
+@Slf4j
 public class DoublePrecision {
     /**
      * 计算机是以二进制存储数值的
@@ -55,11 +58,34 @@ public class DoublePrecision {
 
     }
 
+    /**
+     * scale 代表小数点右边的位数  precision代表
+     */
+    private static void testScale() {
+        BigDecimal bigDecimal1 = new BigDecimal("100");
+        BigDecimal bigDecimal2 = new BigDecimal(String.valueOf(100d));
+        BigDecimal bigDecimal3 = new BigDecimal(String.valueOf(100));
+        BigDecimal bigDecimal4 = BigDecimal.valueOf(100d);
+        BigDecimal bigDecimal5 = new BigDecimal(Double.toString(100));
+
+        print(bigDecimal1); //scale 0 precision 3 result 401.500
+        print(bigDecimal2); //scale 1 precision 4 result 401.5000
+        print(bigDecimal3); //scale 0 precision 3 result 401.500
+        print(bigDecimal4); //scale 1 precision 4 result 401.5000
+        print(bigDecimal5); //scale 1 precision 4 result 401.5000
+    }
+
+    private static void print(BigDecimal bigDecimal) {
+        log.info("scale {} precision {} result {}", bigDecimal.scale(), bigDecimal.precision(), bigDecimal.multiply(new BigDecimal("4.015")));
+    }
+
+
     public static void main(String[] args) {
         DoublePrecision doublePrecision = new DoublePrecision();
 //        doublePrecision.notMatchMind();
 //        doublePrecision.useBigDecimal();
-        doublePrecision.useBigDecimalStr();
-        doublePrecision.useDoubleNotStr();
+//        doublePrecision.useBigDecimalStr();
+//        doublePrecision.useDoubleNotStr();
+        doublePrecision.testScale();
     }
 }
