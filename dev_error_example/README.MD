@@ -5,3 +5,6 @@
 4. httpconfig  http错误使用
 5. equals    对象相等以及hashcode  
 6. precision  java精度相关
+7. list  使用list相关坑,以及注意事项
+8. npe  处理空指针问题
+
