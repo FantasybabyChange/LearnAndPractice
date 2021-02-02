@@ -15,7 +15,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String nickname;
+    private String nickName;
     private Integer age;
-    private Date createDate = new Date();
+    private Date createdDate = new Date();
 }
