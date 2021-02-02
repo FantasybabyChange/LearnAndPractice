@@ -3,6 +3,7 @@ package com.fantasybaby.dee.code;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
 /**
@@ -12,7 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 //@EnableEurekaClient
-//@EnableTransactionManagement
+@EnableTransactionManagement
 @ComponentScan(basePackages = {"com.fantasybaby.dee"})
 public class NormalControllerApplication {
 
