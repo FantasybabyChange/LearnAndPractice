@@ -8,3 +8,12 @@ CREATE TABLE IF NOT EXISTS `fantasybaby_dev_error`.`user`(
     ENGINE = INNODB
     DEFAULT CHARACTER SET = utf8
     COMMENT '用户';
+
+
+CREATE TABLE IF NOT EXISTS `fantasybaby_dev_error`.`user_score`(
+     `id` BIGINT NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+    `score` BIGINT  NULL  COMMENT '分数',
+    PRIMARY KEY (`id`))
+    ENGINE = INNODB
+    DEFAULT CHARACTER SET = utf8
+    COMMENT '用户分数';

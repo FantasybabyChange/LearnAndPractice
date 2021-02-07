@@ -26,4 +26,4 @@ server:
       charset: UTF-8
 logging:
   level:
-    ROOT: INFO
+    ROOT: DEBUG

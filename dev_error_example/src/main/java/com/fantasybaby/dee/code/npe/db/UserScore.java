@@ -1,4 +1,4 @@
-package com.fantasybaby.dee.code.npe;
+package com.fantasybaby.dee.code.npe.db;
 
 import lombok.Data;
 
@@ -8,14 +8,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * 用户分数
+ */
 @Data
 @Entity
-public class User {
+public class UserScore {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String nickName;
-    private Integer age;
-    private Date createdDate = new Date();
+    private Long score;
 }
