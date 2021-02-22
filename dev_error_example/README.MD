@@ -7,4 +7,5 @@
 6. precision  java精度相关
 7. list  使用list相关坑,以及注意事项
 8. npe  处理空指针问题
+9.exception 异常处理
 
