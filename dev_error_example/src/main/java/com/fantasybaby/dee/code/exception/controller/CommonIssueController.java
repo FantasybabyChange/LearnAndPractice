@@ -17,6 +17,7 @@ import java.nio.file.Paths;
  * @create 2021-02-22 21:44
  */
 @Slf4j
+
 @RestController
 @RequestMapping("exception")
 public class CommonIssueController {
