@@ -15,12 +15,13 @@ import java.util.Date;
 @Slf4j
 public class DbNullController {
 
-    @Resource
+    //    @Resource
     private UserRepository userRepository;
-    @Resource
+    //    @Resource
     private UserEntityRepository userEntityRepository;
-    @Resource
+    //    @Resource
     private UserScoreRepository userScoreRepository;
+
     /**
      * {
      * "name":"曦月",
@@ -59,10 +60,12 @@ public class DbNullController {
         }
         return userEntityRepository.save(userEntity);
     }
-    @PostConstruct
+
+//    @PostConstruct
     public void init() {
         userScoreRepository.save(new UserScore());
     }
+
     @GetMapping("wrong")
     public void wrong() {
         log.info("result: {} {} {} ", userScoreRepository.wrong1(), userScoreRepository.wrong2(), userScoreRepository.wrong3());
