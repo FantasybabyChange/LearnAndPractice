@@ -25,8 +25,7 @@ server:
       force: true
       charset: UTF-8
 logging:
-  level:
-    ROOT: INFO
+  config: classpath:logback-spring.xml
 #  spring:
 #    autoconfigure:
 #      exclude:
