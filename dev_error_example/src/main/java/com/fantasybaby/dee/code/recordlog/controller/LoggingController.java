@@ -3,12 +3,14 @@ package com.fantasybaby.dee.code.recordlog.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
+import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -47,4 +49,6 @@ public class LoggingController {
         IntStream.rangeClosed(1, count).forEach(i -> log.info("log-{}", i));
         System.out.println("took " + (System.currentTimeMillis() - begin) + " ms");
     }
+
+
 }
