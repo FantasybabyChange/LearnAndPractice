@@ -2,6 +2,7 @@ package com.fantasybaby.dee.code.fileio;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Hex;
+import org.springframework.util.StopWatch;
 
 import java.io.FileInputStream;
 import java.io.FileReader;
@@ -10,6 +11,8 @@ import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 
 /**
  * 文件编码问题
@@ -60,10 +63,30 @@ public class EncodeFile {
     /**
      * read all line
      * 会OOM
+     *
      * @throws IOException
      */
     private static void readGBKFileAllLineCharset() throws IOException {
         log.info("result: {}", Files.readAllLines(Paths.get("hello.txt"), Charset.forName("GBK")).stream().findFirst().orElse(""));
+    }
+
+    private static void readFileLimit() throws IOException {
+        //输出文件大小
+        log.info("file size:{}", Files.size(Paths.get("test.txt")));
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start("read 200000 lines");
+        //使用Files.lines方法读取20万行数据
+        log.info("lines {}", Files.lines(Paths.get("test.txt")).limit(200000).collect(Collectors.toList()).size());
+        stopWatch.stop();
+        stopWatch.start("read 2000000 lines");
+        //使用Files.lines方法读取200万行数据
+        log.info("lines {}", Files.lines(Paths.get("test.txt")).limit(2000000).collect(Collectors.toList()).size());
+        stopWatch.stop();
+        log.info(stopWatch.prettyPrint());
+        AtomicLong atomicLong = new AtomicLong();
+        //使用Files.lines方法统计文件总行数
+        Files.lines(Paths.get("test.txt")).forEach(line -> atomicLong.incrementAndGet());
+        log.info("total lines {}", atomicLong.get());
     }
 
     public static void main(String[] args) throws IOException {
@@ -71,6 +94,7 @@ public class EncodeFile {
         readGBKFileNoCharset();
         readGBKFileCharset();
         readGBKFileAllLineCharset();
+        readFileLimit();
     }
 
 }
