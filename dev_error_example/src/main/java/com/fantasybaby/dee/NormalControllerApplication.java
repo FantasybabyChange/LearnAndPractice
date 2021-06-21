@@ -1,4 +1,4 @@
-package com.fantasybaby.dee.code;
+package com.fantasybaby.dee;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
