@@ -40,7 +40,7 @@ public class BankService {
         stringBuilder.append(String.format("%-11s", mobile).replace(' ', '_'));
         //最后加上MD5作为签名
         stringBuilder.append(DigestUtils.md2Hex(stringBuilder.toString()));
-        return Request.Post("http://localhost:45678/reflection/bank/createUser")
+        return Request.Post("http://localhost:7888/reflection/bank/createUser")
                 .bodyString(stringBuilder.toString(), ContentType.APPLICATION_JSON)
                 .execute().returnContent().asString();
     }
@@ -60,7 +60,7 @@ public class BankService {
         stringBuilder.append(String.format("%010d", amount.setScale(2, RoundingMode.DOWN).multiply(new BigDecimal("100")).longValue()));
         //最后加上MD5作为签名
         stringBuilder.append(DigestUtils.md2Hex(stringBuilder.toString()));
-        return Request.Post("http://localhost:45678/reflection/bank/pay")
+        return Request.Post("http://localhost:7888/reflection/bank/pay")
                 .bodyString(stringBuilder.toString(), ContentType.APPLICATION_JSON)
                 .execute().returnContent().asString();
     }
